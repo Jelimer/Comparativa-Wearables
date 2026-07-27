@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-signal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-signal)" />
+
+  <ellipse cx="150" cy="135" rx="86" ry="60" fill="#1e293b" stroke="#34d399" stroke-width="4" />
+  <ellipse cx="150" cy="135" rx="64" ry="42" fill="#0f172a" stroke="#10b981" stroke-width="2" />
+
+  <!-- Pulse Wave -->
+  <path d="M110 135 H130 L135 120 L145 150 L155 125 L165 140 L170 135 H190" fill="none" stroke="#34d399" stroke-width="3" stroke-linecap="round" />
+
+  <text x="150" y="212" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="800">SIGNAL RING (VITAL SIGNALS)</text>
+  <text x="150" y="230" text-anchor="middle" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Presión Arterial Médica Hemodinámica</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#34d399" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#34d399" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Signal Ring (Vital Signals)</text>
+</svg>

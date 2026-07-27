@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-xiaomi" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-xiaomi)" />
+
+  <rect x="125" y="20" width="50" height="260" rx="14" fill="#1e293b" />
+
+  <!-- Pill Module -->
+  <rect x="115" y="70" width="70" height="160" rx="35" fill="#0f172a" stroke="#f97316" stroke-width="3" />
+  <rect x="123" y="82" width="54" height="136" rx="27" fill="#18181b" />
+
+  <text x="150" y="130" text-anchor="middle" fill="#ffedd5" font-family="system-ui, sans-serif" font-size="20" font-weight="900">10:08</text>
+  <text x="150" y="155" text-anchor="middle" fill="#f97316" font-family="system-ui, sans-serif" font-size="11" font-weight="800">21 DÍAS</text>
+  <text x="150" y="175" text-anchor="middle" fill="#fdba74" font-family="system-ui, sans-serif" font-size="10">SpO2 / HRV</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#f97316" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#fdba74" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Xiaomi Smart Band 9</text>
+</svg>

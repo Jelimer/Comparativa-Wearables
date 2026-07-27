@@ -12,6 +12,7 @@ import {
   Award,
 } from 'lucide-react';
 import { Wearable } from '../types/wearable';
+import { Tooltip } from './Tooltip';
 
 interface ComparisonModalProps {
   isOpen: boolean;
@@ -37,7 +38,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-6xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+      <div className="relative w-full max-w-[95vw] 2xl:max-w-7xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Header */}
         <div className="px-6 py-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-4 sticky top-0 z-20">
           <div className="flex items-center gap-3">
@@ -144,7 +145,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                           alt={dev.name}
                           className="w-16 h-16 object-contain mb-2 filter drop-shadow-md"
                           onError={(e) => {
-                            (e.target as HTMLElement).style.display = 'none';
+                            e.currentTarget.src = '/images/devices/placeholder.svg';
                           }}
                         />
                         <span className="text-xs font-semibold text-cyan-400 uppercase tracking-wide">
@@ -175,7 +176,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                   ))}
                 </MatrixRow>
 
-                <MatrixRow label="Autonomía Batería" icon={<Zap className="w-4 h-4 text-amber-400" />}>
+                <MatrixRow label="Autonomía Batería" icon={<Zap className="w-4 h-4 text-amber-400" />} termKey="battery">
                   {selectedDevices.map((dev) => (
                     <td key={dev.id} className="p-3 text-center font-bold text-emerald-400">
                       {dev.batteryLife}
@@ -183,7 +184,7 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                   ))}
                 </MatrixRow>
 
-                <MatrixRow label="Suscripción Mensual" icon={<Sparkles className="w-4 h-4 text-purple-400" />}>
+                <MatrixRow label="Suscripción Mensual" icon={<Sparkles className="w-4 h-4 text-purple-400" />} termKey="subscription">
                   {selectedDevices.map((dev) => (
                     <td key={dev.id} className="p-3 text-center text-xs">
                       {dev.subscriptionRequired ? (
@@ -226,13 +227,13 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                   </td>
                 </tr>
 
-                <SensorCheckRow label="ECG (Electrocardiograma FDA)" keyName="ecg" devices={selectedDevices} />
-                <SensorCheckRow label="SpO2 (Oxígeno en sangre)" keyName="spO2" devices={selectedDevices} />
-                <SensorCheckRow label="cEDA (Estrés Continuo 24/7)" keyName="edaStress" devices={selectedDevices} />
-                <SensorCheckRow label="Composición Corporal (BIA)" keyName="bodyComposition" devices={selectedDevices} />
+                <SensorCheckRow label="ECG (Electrocardiograma FDA)" keyName="ecg" devices={selectedDevices} termKey="ecg" />
+                <SensorCheckRow label="SpO2 (Oxígeno en sangre)" keyName="spO2" devices={selectedDevices} termKey="spO2" />
+                <SensorCheckRow label="cEDA (Estrés Continuo 24/7)" keyName="edaStress" devices={selectedDevices} termKey="edaStress" />
+                <SensorCheckRow label="Composición Corporal (BIA)" keyName="bodyComposition" devices={selectedDevices} termKey="bodyComposition" />
                 <SensorCheckRow label="Presión Arterial Continuo" keyName="bloodPressure" devices={selectedDevices} />
-                <SensorCheckRow label="GPS Integrado" keyName="gps" devices={selectedDevices} />
-                <SensorCheckRow label="Temperatura Cutánea" keyName="skinTemp" devices={selectedDevices} />
+                <SensorCheckRow label="GPS Integrado" keyName="gps" devices={selectedDevices} termKey="gps" />
+                <SensorCheckRow label="Temperatura Cutánea" keyName="skinTemp" devices={selectedDevices} termKey="skinTemp" />
 
                 {/* Pros and Cons Matrix */}
                 <tr className="bg-slate-950/90 font-bold text-cyan-400 text-xs">
@@ -298,15 +299,19 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
 interface MatrixRowProps {
   label: string;
   icon?: React.ReactNode;
+  termKey?: string;
   children: React.ReactNode;
 }
 
-const MatrixRow: React.FC<MatrixRowProps> = ({ label, icon, children }) => (
+const MatrixRow: React.FC<MatrixRowProps> = ({ label, icon, termKey, children }) => (
   <tr className="hover:bg-slate-800/30 transition-colors">
     <td className="p-3 bg-slate-950/50 text-slate-300 font-semibold text-xs border-r border-slate-800/50">
-      <div className="flex items-center gap-2">
-        {icon}
-        <span>{label}</span>
+      <div className="flex items-center justify-between gap-2">
+        <div className="flex items-center gap-2">
+          {icon}
+          <span>{label}</span>
+        </div>
+        {termKey && <Tooltip termKey={termKey} iconOnly />}
       </div>
     </td>
     {children}
@@ -317,12 +322,16 @@ interface SensorCheckRowProps {
   label: string;
   keyName: keyof Wearable['sensors'];
   devices: Wearable[];
+  termKey?: string;
 }
 
-const SensorCheckRow: React.FC<SensorCheckRowProps> = ({ label, keyName, devices }) => (
+const SensorCheckRow: React.FC<SensorCheckRowProps> = ({ label, keyName, devices, termKey }) => (
   <tr className="hover:bg-slate-800/30 transition-colors">
     <td className="p-3 bg-slate-950/50 text-slate-300 font-semibold text-xs border-r border-slate-800/50">
-      {label}
+      <div className="flex items-center justify-between gap-2">
+        <span>{label}</span>
+        {termKey && <Tooltip termKey={termKey} iconOnly />}
+      </div>
     </td>
     {devices.map((dev) => {
       const isPresent = Boolean(dev.sensors[keyName]);

@@ -13,10 +13,10 @@ import { Wearable, FilterState } from './types/wearable';
 
 const INITIAL_FILTERS: FilterState = {
   searchQuery: '',
-  brand: 'all',
-  category: 'all',
-  ecosystem: 'all',
-  subscription: 'all',
+  selectedBrands: [],
+  selectedCategories: [],
+  selectedEcosystems: [],
+  selectedSubscriptions: [],
   maxPrice: 1000,
   minBatteryHours: 0,
   requiredSensors: {
@@ -55,10 +55,10 @@ export default function App() {
   const activeFilterCount = useMemo(() => {
     let count = 0;
     if (filters.searchQuery.trim() !== '') count++;
-    if (filters.brand !== 'all') count++;
-    if (filters.category !== 'all') count++;
-    if (filters.ecosystem !== 'all') count++;
-    if (filters.subscription !== 'all') count++;
+    count += filters.selectedBrands.length;
+    count += filters.selectedCategories.length;
+    count += filters.selectedEcosystems.length;
+    count += filters.selectedSubscriptions.length;
     if (filters.maxPrice < 1000) count++;
     if (filters.minBatteryHours > 0) count++;
     Object.values(filters.requiredSensors).forEach((val) => {
@@ -98,7 +98,7 @@ export default function App() {
     return WEARABLES_DATA.filter((device) => {
       // Search query filter
       if (filters.searchQuery.trim() !== '') {
-        const query = filters.searchQuery.toLowerCase();
+        const query = filters.searchQuery.trim().toLowerCase();
         const matchName = device.name.toLowerCase().includes(query);
         const matchBrand = device.brand.toLowerCase().includes(query);
         const matchDesc = device.description.toLowerCase().includes(query);
@@ -109,29 +109,31 @@ export default function App() {
         }
       }
 
-      // Brand filter
-      if (filters.brand !== 'all' && device.brand !== filters.brand) {
+      // Brand multi-select filter (OR within brands)
+      if (filters.selectedBrands.length > 0 && !filters.selectedBrands.includes(device.brand)) {
         return false;
       }
 
-      // Category filter
-      if (filters.category !== 'all' && device.category !== filters.category) {
+      // Category multi-select filter (OR within categories)
+      if (filters.selectedCategories.length > 0 && !filters.selectedCategories.includes(device.category)) {
         return false;
       }
 
-      // Ecosystem filter
-      if (filters.ecosystem !== 'all') {
-        if (!device.ecosystem.includes(filters.ecosystem as any)) {
+      // Ecosystem multi-select filter
+      if (
+        filters.selectedEcosystems.length > 0 &&
+        !device.ecosystem.some((eco) => filters.selectedEcosystems.includes(eco))
+      ) {
+        return false;
+      }
+
+      // Subscription multi-select filter
+      if (filters.selectedSubscriptions.length > 0) {
+        const matchesFree = filters.selectedSubscriptions.includes('free') && !device.subscriptionRequired;
+        const matchesSub = filters.selectedSubscriptions.includes('subscription') && device.subscriptionRequired;
+        if (!matchesFree && !matchesSub) {
           return false;
         }
-      }
-
-      // Subscription filter
-      if (filters.subscription === 'free' && device.subscriptionRequired) {
-        return false;
-      }
-      if (filters.subscription === 'subscription' && !device.subscriptionRequired) {
-        return false;
       }
 
       // Price filter
@@ -198,7 +200,7 @@ export default function App() {
       <HeroSection onScrollToExplore={scrollToExplore} />
 
       {/* Main App Container */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-16">
+      <main className="flex-1 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-10 space-y-16">
         {/* Recommendation Highlights */}
         <RecommendationBanner
           wearables={WEARABLES_DATA}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-whoop" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#881337" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-whoop)" />
+
+  <!-- Whoop Fabric Strap -->
+  <rect x="90" y="30" width="120" height="220" rx="20" fill="#18181b" stroke="#f43f5e" stroke-width="3" />
+  <rect x="105" y="40" width="90" height="200" rx="14" fill="#27272a" />
+
+  <!-- Whoop Metal Clasp -->
+  <rect x="110" y="115" width="80" height="70" rx="12" fill="#09090b" stroke="#fb7185" stroke-width="2.5" />
+  <text x="150" y="145" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="900">WHOOP</text>
+  <text x="150" y="165" text-anchor="middle" fill="#f43f5e" font-family="system-ui, sans-serif" font-size="10" font-weight="800">STRAIN 18.4</text>
+
+  <text x="150" y="222" text-anchor="middle" fill="#fecdd3" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Recovery 92% · Sleep 8h 40m</text>
+
+  <!-- Badge -->
+  <rect x="60" y="258" width="180" height="26" rx="13" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#fb7185" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Whoop 4.0 Peak</text>
+</svg>

@@ -3,8 +3,8 @@ import { Activity, ShieldCheck, Heart, FileText } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 px-4 sm:px-6 lg:px-8 mt-16">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 px-4 sm:px-6 lg:px-10 xl:px-12 mt-16">
+      <div className="w-full max-w-[1920px] mx-auto space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1: Brand info */}
           <div className="space-y-3 md:col-span-2">

@@ -12,6 +12,7 @@ import {
   ShieldAlert,
 } from 'lucide-react';
 import { Wearable } from '../types/wearable';
+import { Tooltip } from './Tooltip';
 
 interface DeviceCardProps {
   device: Wearable;
@@ -93,7 +94,13 @@ export const DeviceCard: React.FC<DeviceCardProps> = ({
           <img
             src={device.imageUrl}
             alt={device.name}
-            onError={() => setImgError(true)}
+            onError={(e) => {
+              if (e.currentTarget.src.includes('placeholder.svg')) {
+                setImgError(true);
+              } else {
+                e.currentTarget.src = '/images/devices/placeholder.svg';
+              }
+            }}
             className="max-h-full max-w-full object-contain filter drop-shadow-xl group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
@@ -133,8 +140,9 @@ export const DeviceCard: React.FC<DeviceCardProps> = ({
               <span className="text-lg font-extrabold text-white">${device.priceUsd} <span className="text-xs text-slate-400 font-normal">USD</span></span>
             </div>
             <div className="text-right">
-              <span className="text-[10px] text-slate-400 uppercase tracking-wide block font-medium">
-                Autonomía
+              <span className="text-[10px] text-slate-400 uppercase tracking-wide flex items-center justify-end gap-1 font-medium">
+                <span>Autonomía</span>
+                <Tooltip termKey="battery" iconOnly />
               </span>
               <span className="text-xs sm:text-sm font-bold text-emerald-400 flex items-center gap-1 justify-end">
                 <Zap className="w-3.5 h-3.5 text-amber-400" />
@@ -146,14 +154,20 @@ export const DeviceCard: React.FC<DeviceCardProps> = ({
           {/* Subscription Status */}
           <div className="mt-2.5">
             {device.subscriptionRequired ? (
-              <div className="flex items-center gap-1.5 text-xs text-amber-300 bg-amber-950/40 border border-amber-800/50 px-2.5 py-1 rounded-lg">
-                <ShieldAlert className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
-                <span className="truncate">Suscripción: <strong>{device.subscriptionCost}</strong></span>
+              <div className="flex items-center justify-between text-xs text-amber-300 bg-amber-950/40 border border-amber-800/50 px-2.5 py-1 rounded-lg">
+                <div className="flex items-center gap-1.5 truncate">
+                  <ShieldAlert className="w-3.5 h-3.5 text-amber-400 flex-shrink-0" />
+                  <span className="truncate">Suscripción: <strong>{device.subscriptionCost}</strong></span>
+                </div>
+                <Tooltip termKey="subscription" iconOnly />
               </div>
             ) : (
-              <div className="flex items-center gap-1.5 text-xs text-emerald-300 bg-emerald-950/40 border border-emerald-800/50 px-2.5 py-1 rounded-lg">
-                <CheckCircle className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                <span>Sin Suscripción ($0 cuotas)</span>
+              <div className="flex items-center justify-between text-xs text-emerald-300 bg-emerald-950/40 border border-emerald-800/50 px-2.5 py-1 rounded-lg">
+                <div className="flex items-center gap-1.5">
+                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
+                  <span>Sin Suscripción ($0 cuotas)</span>
+                </div>
+                <Tooltip termKey="subscription" iconOnly />
               </div>
             )}
           </div>
@@ -161,23 +175,27 @@ export const DeviceCard: React.FC<DeviceCardProps> = ({
           {/* Key Sensor Badges */}
           <div className="mt-3 flex flex-wrap gap-1.5">
             {device.sensors.ecg && (
-              <span className="px-2 py-0.5 text-[10px] font-semibold rounded bg-cyan-950 text-cyan-300 border border-cyan-800/60">
-                ECG FDA
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded bg-cyan-950 text-cyan-300 border border-cyan-800/60">
+                <span>ECG FDA</span>
+                <Tooltip termKey="ecg" iconOnly />
               </span>
             )}
             {device.sensors.spO2 && (
-              <span className="px-2 py-0.5 text-[10px] font-semibold rounded bg-sky-950 text-sky-300 border border-sky-800/60">
-                SpO2
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded bg-sky-950 text-sky-300 border border-sky-800/60">
+                <span>SpO2</span>
+                <Tooltip termKey="spO2" iconOnly />
               </span>
             )}
             {device.sensors.edaStress && (
-              <span className="px-2 py-0.5 text-[10px] font-semibold rounded bg-purple-950 text-purple-300 border border-purple-800/60">
-                cEDA Estrés
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded bg-purple-950 text-purple-300 border border-purple-800/60">
+                <span>cEDA Estrés</span>
+                <Tooltip termKey="edaStress" iconOnly />
               </span>
             )}
             {device.sensors.bodyComposition && (
-              <span className="px-2 py-0.5 text-[10px] font-semibold rounded bg-pink-950 text-pink-300 border border-pink-800/60">
-                BIA Composición
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded bg-pink-950 text-pink-300 border border-pink-800/60">
+                <span>BIA Composición</span>
+                <Tooltip termKey="bodyComposition" iconOnly />
               </span>
             )}
             {device.sensors.bloodPressure && (
@@ -186,8 +204,9 @@ export const DeviceCard: React.FC<DeviceCardProps> = ({
               </span>
             )}
             {device.sensors.gps && (
-              <span className="px-2 py-0.5 text-[10px] font-semibold rounded bg-blue-950 text-blue-300 border border-blue-800/60">
-                GPS
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded bg-blue-950 text-blue-300 border border-blue-800/60">
+                <span>GPS</span>
+                <Tooltip termKey="gps" iconOnly />
               </span>
             )}
           </div>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-gw9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="screen-gw9" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-gw9)" />
+
+  <!-- Straps -->
+  <rect x="115" y="15" width="70" height="75" rx="10" fill="#334155" />
+  <rect x="115" y="210" width="70" height="75" rx="10" fill="#334155" />
+
+  <!-- Circular Watch -->
+  <circle cx="150" cy="150" r="74" fill="#475569" stroke="#38bdf8" stroke-width="2" />
+  <circle cx="150" cy="150" r="66" fill="url(#screen-gw9)" />
+
+  <text x="150" y="130" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="900">10:08</text>
+  <text x="150" y="150" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="11" font-weight="700">BioActive Sensor 2.0</text>
+  <text x="150" y="170" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Presión Arterial / ECG</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Samsung Galaxy Watch 9</text>
+</svg>

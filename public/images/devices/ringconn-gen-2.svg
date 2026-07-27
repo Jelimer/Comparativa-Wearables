@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-ringconn" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-ringconn)" />
+
+  <ellipse cx="150" cy="135" rx="86" ry="60" fill="#312e81" stroke="#a7f3d0" stroke-width="3" />
+  <ellipse cx="150" cy="135" rx="66" ry="43" fill="#0f172a" stroke="#34d399" stroke-width="2" />
+
+  <circle cx="130" cy="144" r="5" fill="#34d399" />
+  <circle cx="150" cy="150" r="5" fill="#34d399" />
+  <circle cx="170" cy="144" r="5" fill="#34d399" />
+
+  <text x="150" y="212" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="800">RINGCONN GEN 2</text>
+  <text x="150" y="230" text-anchor="middle" fill="#a7f3d0" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Batería 12 Días · Monitoreo Apnea</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#34d399" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="11" font-weight="700">RingConn Gen 2</text>
+</svg>

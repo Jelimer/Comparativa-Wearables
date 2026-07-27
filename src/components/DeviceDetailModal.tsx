@@ -10,6 +10,7 @@ import {
   Plus,
 } from 'lucide-react';
 import { Wearable } from '../types/wearable';
+import { Tooltip } from './Tooltip';
 
 interface DeviceDetailModalProps {
   device: Wearable | null;
@@ -60,7 +61,7 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
                 alt={device.name}
                 className="max-h-full max-w-full object-contain filter drop-shadow-xl"
                 onError={(e) => {
-                  (e.target as HTMLElement).style.display = 'none';
+                  e.currentTarget.src = '/images/devices/placeholder.svg';
                 }}
               />
             </div>
@@ -130,13 +131,13 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs">
-              <SensorDetailPill label="Electrocardiograma (ECG)" active={device.sensors.ecg} />
-              <SensorDetailPill label="Oxígeno SpO2" active={device.sensors.spO2} />
-              <SensorDetailPill label="cEDA Estrés 24/7" active={device.sensors.edaStress} />
-              <SensorDetailPill label="Composición Corporal BIA" active={device.sensors.bodyComposition} />
+              <SensorDetailPill label="Electrocardiograma (ECG)" active={device.sensors.ecg} termKey="ecg" />
+              <SensorDetailPill label="Oxígeno SpO2" active={device.sensors.spO2} termKey="spO2" />
+              <SensorDetailPill label="cEDA Estrés 24/7" active={device.sensors.edaStress} termKey="edaStress" />
+              <SensorDetailPill label="Composición Corporal BIA" active={device.sensors.bodyComposition} termKey="bodyComposition" />
               <SensorDetailPill label="Presión Arterial" active={Boolean(device.sensors.bloodPressure)} />
-              <SensorDetailPill label="GPS Integrado" active={device.sensors.gps} />
-              <SensorDetailPill label="Temperatura Cutánea" active={device.sensors.skinTemp} />
+              <SensorDetailPill label="GPS Integrado" active={device.sensors.gps} termKey="gps" />
+              <SensorDetailPill label="Temperatura Cutánea" active={device.sensors.skinTemp} termKey="skinTemp" />
             </div>
             <p className="text-[11px] text-slate-400 pt-1">
               *Sensor de frecuencia cardíaca: <strong>{device.sensors.heartRate}</strong>
@@ -221,19 +222,26 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
   );
 };
 
-const SensorDetailPill: React.FC<{ label: string; active: boolean }> = ({ label, active }) => (
+const SensorDetailPill: React.FC<{ label: string; active: boolean; termKey?: string }> = ({
+  label,
+  active,
+  termKey,
+}) => (
   <div
-    className={`p-2 rounded-lg border flex items-center gap-2 ${
+    className={`p-2 rounded-lg border flex items-center justify-between gap-1.5 ${
       active
         ? 'bg-cyan-950/40 border-cyan-800/60 text-cyan-300 font-semibold'
         : 'bg-slate-900 border-slate-800 text-slate-600 line-through'
     }`}
   >
-    {active ? (
-      <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
-    ) : (
-      <X className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" />
-    )}
-    <span className="truncate">{label}</span>
+    <div className="flex items-center gap-1.5 truncate">
+      {active ? (
+        <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+      ) : (
+        <X className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" />
+      )}
+      <span className="truncate">{label}</span>
+    </div>
+    {termKey && <Tooltip termKey={termKey} iconOnly />}
   </div>
 );

@@ -6,13 +6,13 @@ Aplicación Web SPA construida con Vite, React, TypeScript y Tailwind CSS para d
 - **Estado Global/Contexto**: React Context / Custom Hooks (`useWearables`) para manejar selección de filtros, búsqueda, lista de comparación (hasta 4 dispositivos lado a lado) y modo oscuro/claro.
 - **Datos de Dispositivos**: `src/data/wearables.ts` estructurado con tipos TypeScript estrictos (`Wearable`), métricas médicas, pros/contras, precios, batería, URLs de imágenes oficiales, badges ("Mejor Opción Global", "Más Económica", "Mejor Calidad/Precio").
 
-## Milestones
+## Milestones (Iteration 2)
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 1 | Recolección de Datos & Imágenes Oficiales | Extraer todos los wearables de `informe_wearables_salud.md` + investigar especificaciones e imágenes oficiales de Whoop 4.0/5.0, Apple Watch Series/Ultra, Xiaomi, etc. | none | IN_PROGRESS |
-| 2 | Desarrollo Frontend & UI Premium | Inicializar proyecto Vite React Tailwind y construir la UI interactiva (Filtros, Grid, Comparador Side-by-Side, Recomendaciones) | M1 | PLANNED |
-| 3 | Verificación de Build & Git Push | Ejecutar `npm run build` sin errores, inicializar Git, commit y push a `https://github.com/Jelimer/Comparativa-Wearables` | M2 | PLANNED |
-| 4 | Auditoría Forense de Integridad | Auditoría forense independiente para garantizar que no hay mocks tramposos, el código es genuino y compila perfectamente | M3 | PLANNED |
+| 1 | Análisis y Exploración (R1-R5) | Inspeccionar layout, imágenes rotas, filtros y puntos de integración de tooltips | none | IN_PROGRESS |
+| 2 | Optimización de Layout (R1) & Recursos Locales (R2) | Full width container y descarga/mapeo de imágenes locales en `public/` | M1 | PLANNED |
+| 3 | Tooltips Educativos (R3) & Selección Múltiple de Filtros (R4) | Componente Tooltip + help buttons y refactor de FilterBar para multiselect | M2 | PLANNED |
+| 4 | Verificación, Build & Push (R5) | Probar `npm run build`, auditoría de integridad, commit y push a GitHub | M3 | PLANNED |
 
 ## Interface Contracts & Data Schema
 ```typescript

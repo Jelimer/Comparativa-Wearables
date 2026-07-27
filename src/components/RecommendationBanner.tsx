@@ -1,6 +1,7 @@
 import React from 'react';
 import { Award, DollarSign, Activity, Sparkles, CheckCircle2 } from 'lucide-react';
 import { Wearable } from '../types/wearable';
+import { Tooltip } from './Tooltip';
 
 interface RecommendationBannerProps {
   wearables: Wearable[];
@@ -40,8 +41,10 @@ export const RecommendationBanner: React.FC<RecommendationBannerProps> = ({
               <span>Mejor Opción Global</span>
             </div>
             <h4 className="text-lg font-bold text-white">Alto Rendimiento & Salud Clínica</h4>
-            <p className="text-xs text-slate-300 leading-relaxed">
-              Dispositivos sin concesiones para quienes buscan la máxima precisión biométrica, ECG médico FDA y análisis avanzado.
+            <p className="text-xs text-slate-300 leading-relaxed inline-flex flex-wrap items-center gap-1">
+              <span>Dispositivos sin concesiones para quienes buscan la máxima precisión biométrica,</span>
+              <Tooltip termKey="ecg" label="ECG médico FDA" />
+              <span>y análisis avanzado.</span>
             </p>
             <div className="space-y-2 pt-2">
               {bestOverall.slice(0, 3).map((item) => (
@@ -51,7 +54,14 @@ export const RecommendationBanner: React.FC<RecommendationBannerProps> = ({
                   className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src={item.imageUrl} alt={item.name} className="w-8 h-8 object-contain" />
+                    <img
+                      src={item.imageUrl}
+                      alt={item.name}
+                      onError={(e) => {
+                        e.currentTarget.src = '/images/devices/placeholder.svg';
+                      }}
+                      className="w-8 h-8 object-contain"
+                    />
                     <div>
                       <span className="text-xs font-bold text-white block line-clamp-1">{item.name}</span>
                       <span className="text-[10px] text-amber-400 font-semibold">{item.brand} • ${item.priceUsd} USD</span>
@@ -83,7 +93,14 @@ export const RecommendationBanner: React.FC<RecommendationBannerProps> = ({
                   className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src={item.imageUrl} alt={item.name} className="w-8 h-8 object-contain" />
+                    <img
+                      src={item.imageUrl}
+                      alt={item.name}
+                      onError={(e) => {
+                        e.currentTarget.src = '/images/devices/placeholder.svg';
+                      }}
+                      className="w-8 h-8 object-contain"
+                    />
                     <div>
                       <span className="text-xs font-bold text-white block line-clamp-1">{item.name}</span>
                       <span className="text-[10px] text-emerald-400 font-semibold">{item.brand} • ${item.priceUsd} USD</span>
@@ -115,7 +132,14 @@ export const RecommendationBanner: React.FC<RecommendationBannerProps> = ({
                   className="flex items-center justify-between p-2.5 rounded-xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 transition-colors cursor-pointer"
                 >
                   <div className="flex items-center gap-2.5">
-                    <img src={item.imageUrl} alt={item.name} className="w-8 h-8 object-contain" />
+                    <img
+                      src={item.imageUrl}
+                      alt={item.name}
+                      onError={(e) => {
+                        e.currentTarget.src = '/images/devices/placeholder.svg';
+                      }}
+                      className="w-8 h-8 object-contain"
+                    />
                     <div>
                       <span className="text-xs font-bold text-white block line-clamp-1">{item.name}</span>
                       <span className="text-[10px] text-cyan-400 font-semibold">{item.brand} • ${item.priceUsd} USD</span>

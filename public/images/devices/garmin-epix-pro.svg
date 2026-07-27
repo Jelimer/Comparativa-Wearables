@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-garmin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#451a03" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="bezel-garmin" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-garmin)" />
+
+  <!-- Heavy Strap -->
+  <rect x="105" y="15" width="90" height="75" rx="8" fill="#1e293b" />
+  <rect x="105" y="210" width="90" height="75" rx="8" fill="#1e293b" />
+
+  <!-- Rugged Bezel Screws -->
+  <circle cx="150" cy="150" r="78" fill="url(#bezel-garmin)" stroke="#d97706" stroke-width="3" />
+  <circle cx="150" cy="76" r="3" fill="#f59e0b" />
+  <circle cx="224" cy="150" r="3" fill="#f59e0b" />
+  <circle cx="150" cy="224" r="3" fill="#f59e0b" />
+  <circle cx="76" cy="150" r="3" fill="#f59e0b" />
+
+  <!-- Screen AMOLED Map / Fitness UI -->
+  <circle cx="150" cy="150" r="64" fill="#022c22" stroke="#10b981" stroke-width="1.5" />
+
+  <!-- Topo Map lines -->
+  <path d="M100 140 Q 130 120 160 145 T 200 130" fill="none" stroke="#059669" stroke-width="1.5" />
+  <path d="M95 160 Q 135 150 170 170 T 205 150" fill="none" stroke="#047857" stroke-width="1.5" />
+
+  <text x="150" y="130" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="22" font-weight="900">10:08</text>
+  <text x="150" y="152" text-anchor="middle" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="10" font-weight="800">ALT 2,450M · VO2 62</text>
+  <text x="150" y="172" text-anchor="middle" fill="#34d399" font-family="system-ui, sans-serif" font-size="10" font-weight="700">GPS MULTI-BANDA</text>
+  <text x="150" y="192" text-anchor="middle" fill="#f59e0b" font-family="system-ui, sans-serif" font-size="11" font-weight="800">BATERÍA 31 DÍAS</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#d97706" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Garmin Epix Pro (Gen 2)</text>
+</svg>

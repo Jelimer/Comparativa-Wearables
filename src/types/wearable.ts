@@ -49,10 +49,10 @@ export interface Wearable {
 
 export interface FilterState {
   searchQuery: string;
-  brand: string;
-  category: string;
-  ecosystem: string;
-  subscription: string; // 'all' | 'free' | 'subscription'
+  selectedBrands: BrandType[];
+  selectedCategories: CategoryType[];
+  selectedEcosystems: EcosystemType[];
+  selectedSubscriptions: ('free' | 'subscription')[];
   maxPrice: number;
   minBatteryHours: number;
   requiredSensors: {

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-sg-ring" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+    <linearGradient id="ring-titanium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#94a3b8" />
+      <stop offset="50%" stop-color="#e2e8f0" />
+      <stop offset="100%" stop-color="#475569" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-sg-ring)" />
+
+  <!-- Outer Ring Loop 3D Perspective -->
+  <ellipse cx="150" cy="140" rx="85" ry="60" fill="url(#ring-titanium)" stroke="#cbd5e1" stroke-width="3" />
+  <ellipse cx="150" cy="140" rx="65" ry="42" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
+
+  <!-- Inner PPG Sensors (3 Nubs) -->
+  <circle cx="120" cy="148" r="6" fill="#10b981" />
+  <circle cx="150" cy="154" r="6" fill="#10b981" />
+  <circle cx="180" cy="148" r="6" fill="#10b981" />
+
+  <text x="150" y="215" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="12" font-weight="800">SAMSUNG GALAXY RING</text>
+  <text x="150" y="232" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Titanio Cóncavo · 0.0g Cuotas $0</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Samsung Galaxy Ring</text>
+</svg>

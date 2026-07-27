@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-oura" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312e81" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="ring-oura-finish" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#cbd5e1" />
+      <stop offset="50%" stop-color="#64748b" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-oura)" />
+
+  <!-- Ring 3D -->
+  <ellipse cx="150" cy="135" rx="88" ry="62" fill="url(#ring-oura-finish)" stroke="#a5b4fc" stroke-width="3" />
+  <ellipse cx="150" cy="135" rx="66" ry="44" fill="#0f172a" stroke="#818cf8" stroke-width="2" />
+
+  <!-- Recessed Sensors Smart Sensing -->
+  <circle cx="125" cy="144" r="5" fill="#f43f5e" />
+  <circle cx="150" cy="150" r="5" fill="#38bdf8" />
+  <circle cx="175" cy="144" r="5" fill="#10b981" />
+
+  <text x="150" y="212" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="800">OURA RING 4</text>
+  <text x="150" y="230" text-anchor="middle" fill="#c7d2fe" font-family="system-ui, sans-serif" font-size="10" font-weight="600">Smart Sensing Tech · Sleep Score 94</text>
+
+  <!-- Badge -->
+  <rect x="60" y="258" width="180" height="26" rx="13" fill="#0f172a" stroke="#818cf8" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Oura Ring 4</text>
+</svg>
