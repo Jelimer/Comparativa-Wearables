@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-appleu3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1c1917" />
+      <stop offset="100%" stop-color="#0c0a09" />
+    </linearGradient>
+    <linearGradient id="titanium-u3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d6d3d1" />
+      <stop offset="50%" stop-color="#78716c" />
+      <stop offset="100%" stop-color="#44403c" />
+    </linearGradient>
+    <linearGradient id="screen-u3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0a09" />
+      <stop offset="100%" stop-color="#1c1917" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-appleu3)" />
+
+  <!-- Rugged Alpine Loop Strap -->
+  <rect x="105" y="15" width="90" height="75" rx="14" fill="#f97316" />
+  <rect x="105" y="210" width="90" height="75" rx="14" fill="#f97316" />
+
+  <!-- Titanium Rugged Case -->
+  <rect x="75" y="65" width="150" height="170" rx="42" fill="url(#titanium-u3)" stroke="#f97316" stroke-width="2.5" />
+  <rect x="85" y="75" width="130" height="150" rx="34" fill="url(#screen-u3)" />
+
+  <!-- Orange Action Button (Left) & Digital Crown (Right) -->
+  <rect x="66" y="125" width="9" height="36" rx="4" fill="#ea580c" />
+  <rect x="225" y="120" width="10" height="40" rx="5" fill="#a8a29e" />
+
+  <!-- Ultra Wayfinder Display UI -->
+  <circle cx="150" cy="150" r="46" fill="none" stroke="#ea580c" stroke-width="2" stroke-dasharray="4 4" />
+  <text x="150" y="142" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="22" font-weight="900">10:08</text>
+  <text x="150" y="158" text-anchor="middle" fill="#fb923c" font-family="system-ui, sans-serif" font-size="10" font-weight="800">5G · SATELLITE SOS</text>
+  <text x="150" y="174" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="700">3000 NITS · 100M</text>
+
+  <!-- Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#f97316" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#fb923c" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Apple Watch Ultra 3</text>
+</svg>

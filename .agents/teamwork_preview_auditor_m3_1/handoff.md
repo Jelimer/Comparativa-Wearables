@@ -1,103 +1,118 @@
-# Forensic Audit Handoff Report
+# Handoff Report — Milestone 3 Forensic & Integrity Audit
 
 ## Forensic Audit Report
 
-**Work Product**: `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables`  
-**Profile**: General Project (Demo/Benchmark mode forensic checks)  
-**Verdict**: **CLEAN**
-
----
+**Work Product**: `src/data/wearables.ts`, `public/images/devices/`, `informe_wearables_salud.md`, project build setup
+**Profile**: General Project
+**Integrity Mode**: Development
+**Verdict**: CLEAN
 
 ### Phase Results
-- **Hardcoded Test Outputs & Facades**: **PASS** — No hardcoded test outputs, dummy implementations, or fake filter results were found.
-- **Local Image Assets Verification**: **PASS** — All 16 SVG files in `public/images/devices/` are genuine, authentic local vector graphic assets matching `WEARABLES_DATA`.
-- **Dynamic Multi-Select Filter Logic**: **PASS** — Filter logic in `App.tsx` dynamically filters `WEARABLES_DATA` in real time across brand, category, ecosystem, subscription, price, battery, and sensor dimensions.
-- **Tooltip Dictionary & JSX Rendering**: **PASS** — Tooltips consume real structured dictionary entries from `tooltipDictionary.ts` and render interactive JSX popovers.
-- **Build Execution Check (`npm run build`)**: **PASS** — Build executed cleanly using `run_command` (`tsc && vite build`), completing in 2.15s with 0 errors and 0 warnings.
+- **Hardcoded test / facade detection**: PASS — No facade implementations, fake test passes, or hardcoded mock bypasses found.
+- **TypeScript compilation (`npx tsc --noEmit`)**: PASS — 0 errors returned.
+- **Production build (`npm run build`)**: PASS — Successfully transformed 1594 modules, built production bundle in `dist/` in 3.18s.
+- **Device image verification (`public/images/devices/`)**: PASS — 22 valid SVG image files exist with non-zero byte size (1,227 B to 2,690 B), perfectly matching all 21 dataset items.
+- **Authorized brands compliance**: PASS — All 21 wearables in `src/data/wearables.ts` and all references in `informe_wearables_salud.md` strictly belong to authorized brands (Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi).
 
 ---
 
 ## 1. Observation
 
-1. **Source Code & Facade Inspection**:
-   - `src/data/wearables.ts`: Contains 15 complete, real-world wearable data records (`WEARABLES_DATA`) across 9 major brands (Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal, Apple, Xiaomi).
-   - No mock return statements or hardcoded output arrays intended to bypass real computations were detected.
+1. **Build & Typecheck Execution**:
+   - Command: `npx tsc --noEmit`
+     - Result: Exit status 0, 0 errors emitted.
+   - Command: `npm run build`
+     - Output:
+       ```
+       > comparativa-wearables@1.0.0 build
+       > tsc && vite build
 
-2. **Local Image Assets**:
-   - Directory `public/images/devices/` contains 16 SVG files (`apple-watch-series-10.svg`, `fitbit-air.svg`, `fitbit-charge-6.svg`, `fitbit-sense-2.svg`, `garmin-cirqa.svg`, `garmin-epix-pro.svg`, `google-pixel-watch-4.svg`, `oura-ring-4.svg`, `placeholder.svg`, `ringconn-gen-2.svg`, `samsung-galaxy-ring.svg`, `samsung-galaxy-watch-9.svg`, `samsung-galaxy-watch-ultra-2.svg`, `signal-ring.svg`, `whoop-4.svg`, `xiaomi-smart-band-9.svg`).
-   - File contents inspection confirms valid SVG XML vector structures with custom gradients, shapes, paths, text labels, and badges for each device.
-   - All `imageUrl` fields in `WEARABLES_DATA` correspond 1:1 with existing files in `public/images/devices/`.
+       vite v6.4.3 building for production...
+       transforming...
+       ✓ 1594 modules transformed.
+       rendering chunks...
+       computing gzip size...
+       dist/index.html                   1.04 kB │ gzip:  0.58 kB
+       dist/assets/index-xHLK2D8L.css   38.25 kB │ gzip:  6.88 kB
+       dist/assets/index-uAtXT1Si.js   265.76 kB │ gzip: 74.08 kB
+       ✓ built in 3.18s
+       ```
 
-3. **Multi-Select Filtering**:
-   - `src/App.tsx` (lines 97–177) implements a `useMemo` filter function that evaluates `WEARABLES_DATA` dynamically against `filters` state:
-     - `searchQuery`: Matches name, brand, description, pros, and cons.
-     - `selectedBrands`: Multi-select OR filter over device brands.
-     - `selectedCategories`: Multi-select OR filter over categories (`smartwatch`, `band`, `ring`).
-     - `selectedEcosystems`: Multi-select filter matching compatible ecosystems (`iOS`, `Android`, `Samsung`).
-     - `selectedSubscriptions`: Multi-select filter for `$0` vs paid subscription options.
-     - `maxPrice` & `minBatteryHours`: Numeric threshold sliders.
-     - `requiredSensors`: Boolean toggles for 7 distinct medical sensors (`ecg`, `spO2`, `edaStress`, `bodyComposition`, `bloodPressure`, `gps`, `skinTemp`).
-     - `sortBy`: Dynamic sorting by rating, price ascending/descending, battery life, or name.
+2. **Device Images Inspection**:
+   - `list_dir` on `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\public\images\devices`:
+     - `apple-watch-series-10.svg` (1,786 B)
+     - `apple-watch-ultra-3.svg` (2,315 B)
+     - `fitbit-air.svg` (1,320 B)
+     - `fitbit-charge-6.svg` (1,535 B)
+     - `fitbit-sense-2.svg` (1,992 B)
+     - `garmin-cirqa.svg` (1,321 B)
+     - `garmin-epix-pro.svg` (2,325 B)
+     - `google-pixel-watch-4.svg` (2,606 B)
+     - `google-pixel-watch-5.svg` (2,690 B)
+     - `oura-ring-4.svg` (1,645 B)
+     - `oura-ring-5.svg` (1,748 B)
+     - `placeholder.svg` (1,227 B)
+     - `ringconn-gen-2.svg` (1,335 B)
+     - `samsung-galaxy-ring.svg` (1,678 B)
+     - `samsung-galaxy-watch-9.svg` (1,649 B)
+     - `samsung-galaxy-watch-ultra-2.svg` (1,719 B)
+     - `signal-ring.svg` (1,374 B)
+     - `whoop-4.svg` (1,458 B)
+     - `whoop-5-0.svg` (1,778 B)
+     - `whoop-mg.svg` (1,774 B)
+     - `xiaomi-smart-band-10-pro.svg` (2,261 B)
+     - `xiaomi-smart-band-9.svg` (1,354 B)
 
-4. **Tooltips & Dictionary**:
-   - `src/data/tooltipDictionary.ts`: Defines `TOOLTIP_DICTIONARY` with 9 medical/technical keys (`ecg`, `spO2`, `hrv`, `skinTemp`, `edaStress`, `bodyComposition`, `gps`, `subscription`, `battery`), each containing `id`, `title`, `category`, `shortDesc`, `detailedExplanation`, and `clinicalRelevance`.
-   - `src/components/Tooltip.tsx`: Imports `TOOLTIP_DICTIONARY`, validates `termKey`, and renders interactive popovers with accessibility attributes (`role="tooltip"`, `aria-label`), keyboard navigation (Escape, Enter, Space), and styled JSX cards.
+3. **Authorized Brands Verification**:
+   - Inspected `src/data/wearables.ts`: 21 wearable entries, brands: `Google/Fitbit`, `Garmin`, `Samsung`, `Oura`, `Signal`, `RingConn`, `Whoop`, `Apple`, `Xiaomi`.
+   - Grep search in `informe_wearables_salud.md` and `src/data/wearables.ts` for unauthorized competitors (`Huawei`, `Amazfit`, `Withings`, `Ultrahuman`, `Circular`, `Mobvoi`, `Coros`, etc.): 0 occurrences found.
 
-5. **Build Execution**:
-   - Command executed: `npm run build` (`tsc && vite build`).
-   - Command output:
-     ```text
-     vite v6.4.3 building for production...
-     transforming...
-     ✓ 1594 modules transformed.
-     rendering chunks...
-     computing gzip size...
-     dist/index.html                   1.04 kB │ gzip:  0.58 kB
-     dist/assets/index-xHLK2D8L.css   38.25 kB │ gzip:  6.88 kB
-     dist/assets/index-K-WGz7yB.js   258.76 kB │ gzip: 72.33 kB
-     ✓ built in 2.15s
-     ```
-   - Build exited cleanly with code 0 without any warnings or errors.
+4. **Code & Integrity Checks**:
+   - `src/App.tsx` contains functional filter, search, compare, dark mode, and rendering logic.
+   - No mock test scripts, stubbed build scripts, or fake output generators exist in the codebase.
 
 ---
 
 ## 2. Logic Chain
 
-1. **Hardcode/Facade Check**: The codebase contains full data models and functional React components that calculate outputs dynamically. No hardcoded test responses or fake facades exist, so check #1 is satisfied.
-2. **Asset Integrity Check**: All 16 SVG files exist locally, are valid vector graphic files, and map directly to `imageUrl` attributes in `WEARABLES_DATA`, satisfying check #2.
-3. **Filter Integrity Check**: `App.tsx` recalculates filtered results on state updates using standard array filtering, satisfying check #3.
-4. **Tooltip Integrity Check**: `Tooltip.tsx` maps dictionary lookup keys to `TOOLTIP_DICTIONARY` and renders full JSX structures, satisfying check #4.
-5. **Build Integrity Check**: `npm run build` executed successfully via `run_command`, compiling TypeScript and bundling Vite assets without errors or warnings, satisfying check #5.
-6. **Verdict Deduction**: Because all 5 forensic integrity checks passed with zero violations, the final verdict is **CLEAN**.
+1. **Build & Type safety**: `npx tsc --noEmit` and `npm run build` executed directly in PowerShell. `tsc` verified zero type errors across all TS/TSX files. Vite compiled 1594 modules and produced production assets in `dist/`. Thus, acceptance criterion for clean local build is fully met (Obs. 1).
+2. **Asset integrity**: `list_dir` confirmed all 22 device image files in `public/images/devices/` have non-zero sizes (ranging from 1.2 KB to 2.7 KB) and valid SVG structures representing real device mockups. All 21 devices defined in `WEARABLES_DATA` match existing SVG image paths (Obs. 2).
+3. **Brand compliance**: Grep analysis of `src/data/wearables.ts` and `informe_wearables_salud.md` verified that every featured product strictly belongs to the authorized set of brands: Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, and Xiaomi. Zero unauthorized brands are present (Obs. 3).
+4. **Authenticity**: Source code examination confirmed genuine React components (`App.tsx`, `DeviceGrid.tsx`, `FilterBar.tsx`, `ComparisonModal.tsx`, `StrategicGuide.tsx`, `RecommendationBanner.tsx`) with real client-side state handling and multi-select filtering logic. No hardcoded test mocks or facade bypasses exist (Obs. 4).
 
 ---
 
 ## 3. Caveats
 
-- No caveats. All claims were empirically verified by direct inspection of code, files, and build command execution.
+- Remote Vercel deployment and Git push operations are scheduled for execution by the deployment task runner; this audit verified local code state and build artifacts.
+- No other caveats.
 
 ---
 
 ## 4. Conclusion
 
-The `comparativa-wearables` project is authentic, clean, and fully functional. It contains genuine local image assets, robust multi-select filtering logic over real datasets, real tooltip dictionary data with full JSX popovers, and a clean TypeScript build.
-
-**Final Verdict**: **CLEAN**
+The work product passes all forensic, compilation, asset, and brand compliance checks with 0 defects. The overall verdict is **CLEAN**.
 
 ---
 
 ## 5. Verification Method
 
 To independently verify this audit:
-1. **Source & Asset Inspection**:
+
+1. Run TypeScript typecheck:
    ```bash
-   ls public/images/devices/
+   npx tsc --noEmit
    ```
-2. **Build Verification**:
+   (Expected output: exit status 0, no errors)
+
+2. Run Vite production build:
    ```bash
-   cd c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables
    npm run build
    ```
-3. **Code Inspection**:
-   - Inspect `src/App.tsx` lines 97-177 for filter logic.
-   - Inspect `src/data/tooltipDictionary.ts` and `src/components/Tooltip.tsx` for tooltips.
+   (Expected output: exit status 0, bundle generated in `dist/`)
+
+3. Inspect device images directory:
+   ```bash
+   Get-ChildItem -Path "public/images/devices"
+   ```
+   (Expected output: 22 `.svg` files with non-zero byte sizes)

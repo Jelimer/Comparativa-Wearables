@@ -72,3 +72,39 @@ Realizar el commit de todos estos cambios y hacer un push a la rama principal de
 ### Control de Calidad y Git
 - [ ] La aplicación web debe compilar sin errores localmente (`npm run build`).
 - [ ] Todos los cambios deben ser subidos exitosamente (`git push`) al repositorio remoto.
+
+## Follow-up — 2026-08-13T03:04:47Z
+
+Auditoría de mercado (Agosto 2026) para investigar nuevos lanzamientos o actualizaciones de wearables de las marcas autorizadas, actualizando tanto el informe Markdown como la aplicación web, y desplegando los cambios en Vercel vía GitHub.
+
+Working directory: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables
+Integrity mode: development
+
+## Requirements
+
+### R1. Investigación de Mercado (Agosto 2026)
+Realizar búsquedas en internet para identificar lanzamientos recientes o actualizaciones de especificaciones técnicas (hasta agosto de 2026) que apliquen **estrictamente** a la lista de marcas autorizadas actuales (Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi).
+
+### R2. Actualización del Informe de Texto
+Si se encuentran novedades, actualizar el archivo `informe_wearables_salud.md` incorporando los nuevos dispositivos o modificaciones. Se debe mantener intacto el formato de tablas y alertas de GitHub, respetando la regla estricta de exclusión de marcas no autorizadas.
+
+### R3. Actualización de la Aplicación Web
+Si se agregan nuevos dispositivos, actualizar el dataset de la aplicación web de React/Vite. Las imágenes de los nuevos productos deben buscarse en sitios oficiales, descargarse y almacenarse localmente en la carpeta del proyecto (ej. `public/images/devices/`) para asegurar que no se rompan.
+
+### R4. Control de Calidad y Despliegue
+Realizar el commit de todos estos cambios y hacer un push a la rama principal del repositorio remoto `https://github.com/Jelimer/Comparativa-Wearables` para disparar el despliegue automático en Vercel.
+
+## Acceptance Criteria
+
+### Investigación y Contenido
+- [ ] Debe haber evidencia de que el equipo realizó búsquedas web (ej. `search_web`) sobre novedades tecnológicas en agosto de 2026.
+- [ ] El documento `informe_wearables_salud.md` debe estar actualizado (si hubo hallazgos) y **no contener menciones** a marcas competidoras no autorizadas.
+
+### Código y Recursos
+- [ ] El dataset de la aplicación web debe reflejar los mismos cambios que el documento de texto.
+- [ ] Cualquier imagen nueva debe existir físicamente en el directorio del proyecto y estar correctamente referenciada en el código.
+
+### Verificación Técnica
+- [ ] La aplicación web debe compilar sin errores localmente (`npm run build`).
+- [ ] Todos los cambios deben ser subidos exitosamente (`git push`) al repositorio remoto.
+

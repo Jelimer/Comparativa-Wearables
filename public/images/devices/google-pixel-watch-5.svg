@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-pixel5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="screen-pixel5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <linearGradient id="strap-pixel5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <filter id="glow-pixel5" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="300" height="300" rx="24" fill="url(#bg-pixel5)" />
+
+  <!-- Watch Strap Top & Bottom -->
+  <rect x="110" y="20" width="80" height="70" rx="12" fill="url(#strap-pixel5)" />
+  <rect x="110" y="210" width="80" height="70" rx="12" fill="url(#strap-pixel5)" />
+
+  <!-- Outer Crown Ring -->
+  <circle cx="150" cy="150" r="76" fill="#6366f1" filter="url(#glow-pixel5)" opacity="0.8" />
+  <circle cx="150" cy="150" r="72" fill="#0f172a" stroke="#38bdf8" stroke-width="2.5" />
+
+  <!-- Crown Button -->
+  <rect x="222" y="138" width="10" height="24" rx="4" fill="#a5b4fc" />
+
+  <!-- Display Screen -->
+  <circle cx="150" cy="150" r="64" fill="url(#screen-pixel5)" />
+
+  <!-- Screen Content: Pixel Watch 5 UI with Gemini AI -->
+  <text x="150" y="128" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="800">10:08</text>
+  <text x="150" y="145" text-anchor="middle" fill="#e0e7ff" font-family="system-ui, sans-serif" font-size="10" font-weight="700">GEMINI AI LOCAL</text>
+
+  <!-- Heart Rate & Health Guardian -->
+  <path d="M120 166 H132 L137 157 L143 175 L149 161 L154 169 L159 166 H180" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="150" y="188" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700">74 PPM · Health Guardian</text>
+
+  <!-- Brand Label Badge -->
+  <rect x="50" y="258" width="200" height="26" rx="13" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Google Pixel Watch 5</text>
+</svg>

@@ -1,77 +1,36 @@
-# Project: Comparativa Wearables Web App
+# Project: Comparativa Wearables — Agosto 2026 Audit Update
 
 ## Architecture
-Aplicación Web SPA construida con Vite, React, TypeScript y Tailwind CSS para despliegue óptimo e instantáneo en Vercel.
-- **Componentes de UI**: Header, FilterBar, DeviceGrid, DeviceCard, ComparisonDrawer/Modal, RecommendationSection, FeatureMatrix, Footer.
-- **Estado Global/Contexto**: React Context / Custom Hooks (`useWearables`) para manejar selección de filtros, búsqueda, lista de comparación (hasta 4 dispositivos lado a lado) y modo oscuro/claro.
-- **Datos de Dispositivos**: `src/data/wearables.ts` estructurado con tipos TypeScript estrictos (`Wearable`), métricas médicas, pros/contras, precios, batería, URLs de imágenes oficiales, badges ("Mejor Opción Global", "Más Económica", "Mejor Calidad/Precio").
+- Documentation: `informe_wearables_salud.md` (Markdown report with GitHub tables and GitHub callouts/alerts).
+- Web Application: React + Vite + TypeScript web application (`src/data/wearables.ts`, `src/components/`, `public/images/devices/`).
+- Build & Deploy Pipeline: Vite build (`npm run build`), Git repository -> GitHub (`https://github.com/Jelimer/Comparativa-Wearables`) -> Vercel deployment.
 
-## Milestones (Iteration 2)
+## Feature Inventory
+| # | Feature | Description | Milestone | Source |
+|---|---------|-------------|-----------|--------|
+| 1 | Auditoría Agosto 2026 - Marcas Autorizadas | Búsqueda y recopilación de especificaciones de Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi. | M1, M2 | Survey |
+| 2 | Actualización de `informe_wearables_salud.md` | Inclusión de Pixel Watch 5, Galaxy Watch Ultra 2 / 9, Galaxy Ring update, Garmin CIRQA, Oura Ring 5, Whoop 5.0 / MG, RingConn Gen 2, Signal Ring, Apple Watch Ultra 3, Xiaomi Smart Band 10 Pro. Tablas GitHub y alertas intactas. Exclusión estricta de marcas no autorizadas. | M1 | Request & Survey |
+| 3 | Actualización de dataset TypeScript | Actualizar `src/data/wearables.ts` con todos los nuevos modelos y especificaciones técnicas actualizadas a agosto 2026. | M2 | Request & Survey |
+| 4 | Descarga de Imágenes Oficiales | Descargar/generar imágenes oficiales de los nuevos dispositivos y almacenarlas localmente en `public/images/devices/`. | M2 | Request & Survey |
+| 5 | Compilación Local sin Errores | Ejecutar `npm run build` localmente y verificar que compila con 0 errores. | M3 | Request |
+| 6 | Verificación de Auditoría e Integridad | Ejecutar revisión y auditoría forense sin cheating/hardcoding. | M3 | System Protocol |
+| 7 | Git Commit & Push a GitHub | Commitear todos los cambios y hacer push a `https://github.com/Jelimer/Comparativa-Wearables` para desplegar en Vercel. | M3 | Request |
+
+## Milestones
 | # | Name | Scope | Dependencies | Status |
 |---|------|-------|-------------|--------|
-| 1 | Análisis y Exploración (R1-R5) | Inspeccionar layout, imágenes rotas, filtros y puntos de integración de tooltips | none | IN_PROGRESS |
-| 2 | Optimización de Layout (R1) & Recursos Locales (R2) | Full width container y descarga/mapeo de imágenes locales en `public/` | M1 | PLANNED |
-| 3 | Tooltips Educativos (R3) & Selección Múltiple de Filtros (R4) | Componente Tooltip + help buttons y refactor de FilterBar para multiselect | M2 | PLANNED |
-| 4 | Verificación, Build & Push (R5) | Probar `npm run build`, auditoría de integridad, commit y push a GitHub | M3 | PLANNED |
+| M1 | Document Update | Actualizar `informe_wearables_salud.md` con nuevos modelos y parches de software a agosto de 2026 | none | DONE |
+| M2 | Dataset & Image Assets | Actualizar dataset React/TS (`src/data/wearables.ts`) y descargar imágenes en `public/images/devices/` | M1 | DONE |
+| M3 | Build, Audit & Deploy | Probar compilación `npm run build`, auditoría de integridad, git commit y push a GitHub | M2 | IN_PROGRESS |
 
-## Interface Contracts & Data Schema
-```typescript
-export interface Wearable {
-  id: string;
-  name: string;
-  brand: 'Google/Fitbit' | 'Garmin' | 'Samsung' | 'Oura' | 'Whoop' | 'RingConn' | 'Signal' | 'Apple' | 'Xiaomi';
-  category: 'smartwatch' | 'band' | 'ring';
-  priceUsd: number;
-  batteryLife: string; // e.g. "24-36h", "7 días", "10 días"
-  batteryHours: number; // para ordenamiento por batería
-  subscriptionRequired: boolean;
-  subscriptionCost?: string; // e.g. "$6/mes" o "$30/mes"
-  imageUrl: string; // URL real del sitio oficial de la marca
-  officialSiteUrl: string;
-  ecosystem: ('iOS' | 'Android' | 'Samsung')[];
-  rating: number; // 1-5
-  recommendationTag?: 'best_overall' | 'best_budget' | 'best_value';
-  sensors: {
-    heartRate: string;
-    ecg: boolean;
-    spO2: boolean;
-    skinTemp: boolean;
-    edaStress: boolean;
-    bodyComposition: boolean;
-    gps: boolean;
-    bloodPressure?: boolean;
-  };
-  pros: string[];
-  cons: string[];
-  description: string;
-}
-```
+## Interface Contracts
+### Document ↔ Web Dataset
+- Los identificadores de dispositivos y especificaciones técnicas coinciden exactamente entre `informe_wearables_salud.md` y `src/data/wearables.ts`.
+- Las imágenes en `public/images/devices/<id>.*` se corresponden con la propiedad `image` del dataset en TypeScript.
 
 ## Code Layout
-```
-c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\
-├── .agents/                    # Metadatos de coordinación de subagentes
-├── public/                     # Assets estáticos y favicons
-├── src/
-│   ├── components/             # Componentes modulares React
-│   │   ├── Header.tsx
-│   │   ├── FilterBar.tsx
-│   │   ├── DeviceCard.tsx
-│   │   ├── ComparisonModal.tsx
-│   │   ├── RecommendationBanner.tsx
-│   │   └── Footer.tsx
-│   ├── data/
-│   │   └── wearables.ts        # Dataset completo con todos los wearables + Whoop + URLs de imágenes oficiales
-│   ├── types/
-│   │   └── wearable.ts
-│   ├── App.tsx
-│   ├── index.css
-│   └── main.tsx
-├── package.json
-├── vite.config.ts
-├── tailwind.config.js
-├── index.html
-├── ORIGINAL_REQUEST.md
-├── informe_wearables_salud.md
-└── PROJECT.md
-```
+- `informe_wearables_salud.md` — Informe Markdown de salud y wearables.
+- `src/data/wearables.ts` — Dataset TypeScript con la lista de dispositivos.
+- `src/types/` — Definiciones de tipos TypeScript para wearables.
+- `public/images/devices/` — Imágenes estáticas locales de los dispositivos.
+- `package.json` — Scripts de compilación y dependencias.
