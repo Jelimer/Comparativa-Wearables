@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-sage" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-sage)" />
+
+  <!-- Kobo Sage 8.0" (Wide Screen with Ergonomic Grip) -->
+  <rect x="44" y="28" width="210" height="218" rx="14" fill="#0f172a" stroke="#0284c7" stroke-width="2.5" />
+  
+  <!-- 8.0" Screen on the left -->
+  <rect x="54" y="38" width="150" height="198" rx="4" fill="#f8fafc" />
+
+  <!-- E-Ink Carta 1200 Text Simulation -->
+  <text x="64" y="60" fill="#0f172a" font-family="Georgia, serif" font-size="9.5" font-weight="bold">Pantalla 8.0" Carta 1200</text>
+  <rect x="64" y="70" width="130" height="3" rx="1.5" fill="#334155" />
+  <rect x="64" y="78" width="130" height="3" rx="1.5" fill="#334155" />
+  <rect x="64" y="86" width="130" height="3" rx="1.5" fill="#334155" />
+  <rect x="64" y="94" width="130" height="3" rx="1.5" fill="#334155" />
+  <rect x="64" y="102" width="130" height="3" rx="1.5" fill="#334155" />
+  <rect x="64" y="110" width="95" height="3" rx="1.5" fill="#334155" />
+
+  <text x="129" y="222" text-anchor="middle" fill="#0284c7" font-family="system-ui, sans-serif" font-size="7.5" font-weight="bold">Dropbox & Google Drive Integrados</text>
+
+  <!-- Physical Buttons on the Right Bezel -->
+  <rect x="214" y="80" width="30" height="52" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.5" />
+  <path d="M229 100 L229 112 M224 106 L229 100 L234 106" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+
+  <rect x="214" y="145" width="30" height="52" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.5" />
+  <path d="M229 164 L229 176 M224 170 L229 176 L234 170" fill="none" stroke="#38bdf8" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Model Badge -->
+  <rect x="45" y="258" width="210" height="26" rx="13" fill="#082f49" stroke="#0284c7" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#7dd3fc" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Kobo Sage (8.0" + Botones Físicos)</text>
+</svg>

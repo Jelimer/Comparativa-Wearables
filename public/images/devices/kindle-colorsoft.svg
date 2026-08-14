@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-colorsoft" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="color-comic" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffedd5" />
+      <stop offset="50%" stop-color="#fed7aa" />
+      <stop offset="100%" stop-color="#fdba74" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-colorsoft)" />
+
+  <!-- Kindle Colorsoft Body -->
+  <rect x="68" y="28" width="164" height="218" rx="14" fill="#0f172a" stroke="#f59e0b" stroke-width="2.5" />
+  <!-- Flush 7.0" Color Screen -->
+  <rect x="80" y="40" width="140" height="186" rx="4" fill="#fefce8" />
+
+  <!-- Color E-Ink Visual Elements (Comic/Cover Art Simulation) -->
+  <rect x="90" y="50" width="120" height="75" rx="4" fill="url(#color-comic)" stroke="#ea580c" stroke-width="1" />
+  <circle cx="150" cy="80" r="18" fill="#f43f5e" opacity="0.8" />
+  <rect x="110" y="100" width="80" height="15" rx="3" fill="#3b82f6" opacity="0.8" />
+  <text x="150" y="111" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="8" font-weight="900">COLORSOFT E-INK</text>
+
+  <!-- Color Highlights in Text -->
+  <rect x="90" y="136" width="120" height="8" rx="2" fill="#fef08a" opacity="0.7" />
+  <text x="94" y="143" fill="#0f172a" font-family="Georgia, serif" font-size="7.5" font-weight="bold">Resaltado a Todo Color</text>
+  
+  <rect x="90" y="150" width="120" height="8" rx="2" fill="#bae6fd" opacity="0.7" />
+  <text x="94" y="157" fill="#0f172a" font-family="Georgia, serif" font-size="7.5" font-weight="bold">Portadas Vivas • 150/300 PPI</text>
+
+  <rect x="90" y="165" width="120" height="2.5" rx="1" fill="#475569" />
+  <rect x="90" y="172" width="90" height="2.5" rx="1" fill="#475569" />
+
+  <!-- Model Badge -->
+  <rect x="35" y="258" width="230" height="26" rx="13" fill="#78350f" stroke="#f59e0b" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#fef3c7" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Kindle Colorsoft Signature (7.0")</text>
+</svg>

@@ -21,7 +21,7 @@
 |---|------|-------|-------------|--------|
 | M1 | Document Update | Actualizar `informe_wearables_salud.md` con nuevos modelos y parches de software a agosto de 2026 | none | DONE |
 | M2 | Dataset & Image Assets | Actualizar dataset React/TS (`src/data/wearables.ts`) y descargar imágenes en `public/images/devices/` | M1 | DONE |
-| M3 | Build, Audit & Deploy | Probar compilación `npm run build`, auditoría de integridad, git commit y push a GitHub | M2 | IN_PROGRESS |
+| M3 | Build, Audit & Deploy | Probar compilación `npm run build`, auditoría de integridad, git commit y push a GitHub | M2 | DONE |
 
 ## Interface Contracts
 ### Document ↔ Web Dataset

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-boox" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+
+  <rect width="300" height="300" rx="24" fill="url(#bg-boox)" />
+
+  <!-- BOOX Palma Smartphone-style E-Ink Reader (6.13" 2:1 Aspect Ratio) -->
+  <rect x="95" y="25" width="110" height="225" rx="18" fill="#18181b" stroke="#f97316" stroke-width="2.5" />
+  
+  <!-- Flush 6.13" 300 PPI Screen -->
+  <rect x="103" y="38" width="94" height="196" rx="10" fill="#f8fafc" />
+
+  <!-- Speaker grille / camera at top -->
+  <rect x="135" y="30" width="30" height="3" rx="1.5" fill="#52525b" />
+  <circle cx="120" cy="31.5" r="2" fill="#52525b" />
+
+  <!-- Android Icons / App Grid Simulation on E-Ink -->
+  <text x="150" y="55" text-anchor="middle" fill="#0f172a" font-family="system-ui, sans-serif" font-size="8" font-weight="900">BOOX OS (Android 13)</text>
+
+  <!-- App Icons row 1 -->
+  <rect x="110" y="66" width="22" height="22" rx="5" fill="#f97316" />
+  <text x="121" y="80" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="7" font-weight="bold">K</text>
+
+  <rect x="139" y="66" width="22" height="22" rx="5" fill="#0284c7" />
+  <text x="150" y="80" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="7" font-weight="bold">Ko</text>
+
+  <rect x="168" y="66" width="22" height="22" rx="5" fill="#10b981" />
+  <text x="179" y="80" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="7" font-weight="bold">RW</text>
+
+  <!-- Article Reader Simulation -->
+  <rect x="110" y="100" width="80" height="2" rx="1" fill="#475569" />
+  <rect x="110" y="106" width="80" height="2" rx="1" fill="#475569" />
+  <rect x="110" y="112" width="80" height="2" rx="1" fill="#475569" />
+  <rect x="110" y="118" width="80" height="2" rx="1" fill="#475569" />
+  <rect x="110" y="124" width="60" height="2" rx="1" fill="#475569" />
+
+  <!-- BSR (BOOX Super Refresh) chip indicator -->
+  <text x="150" y="215" text-anchor="middle" fill="#f97316" font-family="system-ui, sans-serif" font-size="7" font-weight="bold">Google Play • BSR 6.13"</text>
+
+  <!-- Model Badge -->
+  <rect x="45" y="258" width="210" height="26" rx="13" fill="#431407" stroke="#f97316" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#fed7aa" font-family="system-ui, sans-serif" font-size="11" font-weight="700">BOOX Palma (Formato Móvil E-Ink)</text>
+</svg>

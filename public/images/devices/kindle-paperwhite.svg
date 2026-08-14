@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-kindle" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="screen-paperwhite" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdfbf7" />
+      <stop offset="100%" stop-color="#f5efe6" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background card -->
+  <rect width="300" height="300" rx="24" fill="url(#bg-kindle)" />
+
+  <!-- Kindle Paperwhite Body -->
+  <rect x="70" y="30" width="160" height="215" rx="14" fill="#18181b" stroke="#38bdf8" stroke-width="2" />
+  
+  <!-- Flush Glass Screen 6.8" -->
+  <rect x="82" y="44" width="136" height="180" rx="4" fill="url(#screen-paperwhite)" />
+
+  <!-- E-Ink Text Simulation -->
+  <text x="92" y="65" fill="#0f172a" font-family="Georgia, serif" font-size="9" font-weight="bold">Capítulo I</text>
+  <rect x="92" y="74" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="82" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="90" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="98" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="106" width="90" height="3" rx="1.5" fill="#334155" />
+
+  <rect x="92" y="120" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="128" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="136" width="116" height="3" rx="1.5" fill="#334155" />
+  <rect x="92" y="144" width="105" height="3" rx="1.5" fill="#334155" />
+
+  <!-- Page Footer -->
+  <text x="150" y="215" text-anchor="middle" fill="#64748b" font-family="system-ui, sans-serif" font-size="7">Pág. 42 de 320 • 68%</text>
+
+  <!-- Amazon logo subtle at bottom bezel -->
+  <path d="M142 235 Q150 239 158 235" fill="none" stroke="#71717a" stroke-width="1.5" stroke-linecap="round" />
+
+  <!-- Model Badge -->
+  <rect x="40" y="258" width="220" height="26" rx="13" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="150" y="275" text-anchor="middle" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="11" font-weight="700">Kindle Paperwhite (6.8")</text>
+</svg>
