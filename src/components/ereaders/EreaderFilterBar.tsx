@@ -21,7 +21,14 @@ interface EreaderFilterBarProps {
   activeFilterCount: number;
 }
 
-const BRANDS: EreaderBrand[] = ['Amazon Kindle', 'Rakuten Kobo', 'Onyx BOOX', 'PocketBook'];
+const BRANDS: EreaderBrand[] = [
+  'Amazon Kindle',
+  'Rakuten Kobo',
+  'reMarkable',
+  'Onyx BOOX',
+  'Lenovo',
+  'PocketBook',
+];
 
 const CATEGORIES: { id: EreaderCategory; label: string; icon: string }[] = [
   { id: 'compact', label: 'Compactos (6.0")', icon: '📱' },
@@ -67,7 +74,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             type="text"
             value={filters.searchQuery}
             onChange={(e) => setFilters((prev) => ({ ...prev, searchQuery: e.target.value }))}
-            placeholder="Buscar por modelo, marca (Kindle, Kobo, BOOX), pantalla, formato..."
+            placeholder="Buscar por modelo, marca (Kindle, Kobo, reMarkable, BOOX, Lenovo)..."
             className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700/80 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all"
           />
           {filters.searchQuery && (
@@ -316,7 +323,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             <input
               type="range"
               min="90"
-              max="500"
+              max="600"
               step="10"
               value={filters.maxPrice}
               onChange={(e) => setFilters((prev) => ({ ...prev, maxPrice: Number(e.target.value) }))}
@@ -324,8 +331,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             />
             <div className="flex justify-between text-[10px] text-slate-500 mt-1">
               <span>$90 USD (Kindle Básico)</span>
-              <span>$250 USD</span>
-              <span>$500 USD (BOOX Note Color)</span>
+              <span>$300 USD</span>
+              <span>$600 USD (reMarkable Paper Pro)</span>
             </div>
           </div>
         </div>

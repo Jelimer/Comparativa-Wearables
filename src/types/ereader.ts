@@ -1,4 +1,10 @@
-export type EreaderBrand = 'Amazon Kindle' | 'Rakuten Kobo' | 'Onyx BOOX' | 'PocketBook';
+export type EreaderBrand =
+  | 'Amazon Kindle'
+  | 'Rakuten Kobo'
+  | 'Onyx BOOX'
+  | 'PocketBook'
+  | 'reMarkable'
+  | 'Lenovo';
 
 export type EreaderCategory = 'compact' | 'standard' | 'large_note' | 'color';
 
@@ -7,6 +13,8 @@ export type ScreenTech =
   | 'Carta 1300'
   | 'Kaleido 3 (Color)'
   | 'Colorsoft E-Ink'
+  | 'Canvas Display'
+  | 'Canvas Color (Color)'
   | 'E-Ink Carta HD'
   | 'Mobius E-Ink';
 
@@ -25,7 +33,7 @@ export interface Ereader {
   priceUsd: number;
   rating: number;
   recommendationTag?: EreaderRecommendationTag;
-  screenSize: number; // e.g. 6.0, 6.8, 7.0, 10.2
+  screenSize: number; // e.g. 6.0, 6.8, 7.0, 10.2, 10.3, 11.8
   screenResolution: string; // e.g. '300 ppi (1448 × 1072)'
   ppi: number;
   colorPpi?: number;
@@ -37,15 +45,15 @@ export interface Ereader {
   stylusSupport: boolean; // Compatible con lápiz óptico / notas
   waterproof: string; // e.g. 'IPX8 (2m en agua dulce)', 'No resistente'
   storageGb: number;
-  batteryLife: string; // e.g. 'Hasta 10 semanas', 'Hasta 6 semanas'
+  batteryLife: string; // e.g. 'Hasta 10 semanas', 'Hasta 2 semanas'
   weightGrams: number;
   usbPort: string; // 'USB-C'
   wirelessCharging?: boolean;
-  ecosystem: string[]; // ['Amazon Kindle Store', 'Audible', 'Kindle Unlimited']
+  ecosystem: string[]; // ['Amazon Kindle Store', 'Audible', 'reMarkable Cloud']
   supportedFormats: string[]; // ['EPUB', 'PDF', 'MOBI', 'AZW3', 'CBZ', 'CBR', 'TXT']
   audiobookSupport: boolean; // Bluetooth / Altavoz
   openAndroid: boolean; // Permite Google Play (ej. BOOX)
-  subscriptionEco?: string; // 'Kindle Unlimited ($11.99/mes)', 'Kobo Plus ($9.99/mes)'
+  subscriptionEco?: string; // 'reMarkable Connect ($2.99/mes)', 'Kindle Unlimited'
   pros: string[];
   cons: string[];
   description: string;

@@ -84,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({
               <BookOpen className="w-4 h-4" />
               <span>E-readers / Kindles</span>
               <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-400/20 text-amber-300 font-extrabold">
-                15
+                18
               </span>
             </button>
           </div>
