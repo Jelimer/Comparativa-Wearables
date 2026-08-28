@@ -1,12 +1,16 @@
-## 2026-08-13T00:05:59Z
-You are Explorer 3 (teamwork_preview_explorer).
+## 2026-08-28T15:02:54Z
+You are an Explorer agent investigating UI/UX, Design Systems, and Responsive Behavior.
 Your working directory is: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3
-Path to ORIGINAL_REQUEST.md: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md
+The authoritative user request is at: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md
+Also read: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\PROJECT.md
 
-Your task:
-1. Read c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md (specifically the latest request under "## Follow-up — 2026-08-13T03:04:47Z").
-2. Inspect existing project files: informe_wearables_salud.md, dataset files in src/, React/Vite app structure, package.json, and image assets in public/images/devices/.
-3. Perform web searches for August 2026 market audit regarding recent releases or technical spec updates up to August 2026 for strictly authorized brands: Apple, Xiaomi.
-4. Note: Strict exclusion of unauthorized brands. Authorized brands are ONLY: Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi.
-5. Write your complete findings, evidence chains, codebase audit, and recommended additions/updates to c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\handoff.md.
-6. Update progress.md in your working directory and send a message back to parent when complete.
+Tasks:
+1. Inspect all UI components and styling in `src/` and configuration in `tailwind.config.js`, `src/index.css` (or equivalent).
+2. Evaluate visual hierarchy, premium aesthetics, dark mode & light mode contrast, readable badges, font sizing, and spacing.
+3. Check microinteractions, hover effects, active states, smooth transitions across cards, tab switchers, comparison drawer/modal, filter controls.
+4. Assess responsive layouts across mobile (<640px), tablet (640px-1024px), desktop (1024px-1536px), and ultrawide (>1536px).
+5. Check tooltips and modal dialog usability and consistency.
+6. Write your detailed findings and concrete UI/UX improvements to `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\survey_ui_ux.md` and handoff at `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\handoff.md`.
+7. Send a message to the caller when done.
+
+Language: Español.

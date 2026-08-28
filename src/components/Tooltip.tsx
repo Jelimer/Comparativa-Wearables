@@ -9,7 +9,7 @@ interface TooltipProps {
   className?: string;
 }
 
-export const Tooltip: React.FC<TooltipProps> = ({
+export const Tooltip: React.FC<TooltipProps> = React.memo(({
   termKey,
   label,
   iconOnly = false,
@@ -56,7 +56,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
       onMouseLeave={() => setIsOpen(false)}
     >
       {!iconOnly && label && (
-        <span className="text-slate-300 font-medium text-xs sm:text-sm">{label}</span>
+        <span className="text-slate-700 dark:text-slate-300 font-medium text-xs sm:text-sm">{label}</span>
       )}
 
       <button
@@ -68,7 +68,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
         onKeyDown={handleKeyDown}
         aria-expanded={isOpen}
         aria-label={`Información médica y técnica sobre ${info.title}`}
-        className="text-cyan-400 hover:text-cyan-300 focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 p-0.5 rounded-full hover:bg-cyan-500/10 transition-colors cursor-pointer inline-flex items-center justify-center"
+        className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 focus:text-cyan-700 dark:focus:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-500/50 p-0.5 rounded-full hover:bg-cyan-50 dark:hover:bg-cyan-500/10 transition-colors cursor-pointer inline-flex items-center justify-center"
       >
         <HelpCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
       </button>
@@ -76,13 +76,13 @@ export const Tooltip: React.FC<TooltipProps> = ({
       {isOpen && (
         <div
           role="tooltip"
-          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 sm:w-80 p-4 bg-slate-900/95 backdrop-blur-md border border-cyan-500/50 rounded-2xl shadow-2xl z-50 text-left space-y-2.5 animate-in fade-in zoom-in-95 duration-150"
+          className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-72 sm:w-80 max-w-[calc(100vw-2rem)] p-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-cyan-500/50 rounded-2xl shadow-xl dark:shadow-2xl z-50 text-left space-y-2.5 animate-in fade-in zoom-in-95 duration-150"
         >
           {/* Popover Header */}
-          <div className="flex items-center justify-between border-b border-slate-800 pb-2">
+          <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-2">
             <div className="flex items-center gap-1.5">
-              <Info className="w-4 h-4 text-cyan-400" />
-              <h4 className="text-xs font-bold text-cyan-300 line-clamp-1">{info.title}</h4>
+              <Info className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
+              <h4 className="text-xs font-bold text-cyan-700 dark:text-cyan-300 line-clamp-1">{info.title}</h4>
             </div>
             <button
               type="button"
@@ -90,7 +90,7 @@ export const Tooltip: React.FC<TooltipProps> = ({
                 e.stopPropagation();
                 setIsOpen(false);
               }}
-              className="text-slate-400 hover:text-white p-0.5 rounded-md hover:bg-slate-800 transition-colors"
+              className="text-slate-400 hover:text-slate-700 dark:hover:text-white p-0.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
               aria-label="Cerrar ventana de información"
             >
               <X className="w-3.5 h-3.5" />
@@ -98,24 +98,24 @@ export const Tooltip: React.FC<TooltipProps> = ({
           </div>
 
           {/* Short & Detailed Descriptions */}
-          <p className="text-xs font-semibold text-slate-200 leading-snug">{info.shortDesc}</p>
-          <p className="text-[11px] text-slate-400 leading-relaxed">{info.detailedExplanation}</p>
+          <p className="text-xs font-semibold text-slate-900 dark:text-slate-200 leading-snug">{info.shortDesc}</p>
+          <p className="text-[11px] text-slate-600 dark:text-slate-400 leading-relaxed">{info.detailedExplanation}</p>
 
           {/* Clinical Relevance Badge */}
           {info.clinicalRelevance && (
-            <div className="pt-1.5 text-[11px] text-emerald-300 font-medium bg-emerald-950/50 border border-emerald-800/50 rounded-xl p-2.5 space-y-1">
-              <div className="flex items-center gap-1 text-emerald-400 font-bold text-[10px] uppercase tracking-wide">
+            <div className="pt-1.5 text-[11px] text-emerald-800 dark:text-emerald-300 font-medium bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/50 rounded-xl p-2.5 space-y-1">
+              <div className="flex items-center gap-1 text-emerald-700 dark:text-emerald-400 font-bold text-[10px] uppercase tracking-wide">
                 <Activity className="w-3 h-3" />
                 <span>Relevancia Clínica y de Rendimiento</span>
               </div>
-              <p className="text-[10px] text-emerald-200/90 leading-tight">{info.clinicalRelevance}</p>
+              <p className="text-[10px] text-emerald-700 dark:text-emerald-200/90 leading-tight">{info.clinicalRelevance}</p>
             </div>
           )}
 
           {/* Arrow Pointer */}
-          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-slate-900 pointer-events-none" />
+          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-white dark:border-t-slate-900 pointer-events-none" />
         </div>
       )}
     </div>
   );
-};
+});

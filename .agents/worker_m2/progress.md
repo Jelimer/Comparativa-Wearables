@@ -1,14 +1,14 @@
-# Progress Tracker — worker_m2
+# Progress - Worker M2
 
-Last visited: 2026-07-27T16:41:45Z
+Last visited: 2026-08-28T15:31:00Z
 
-- [x] Create BRIEFING.md and ORIGINAL_REQUEST.md
-- [x] Inspect `.agents/explorer_m1/handoff.md` and `.agents/explorer_m1/dataset.ts`
-- [x] Initialize / setup Vite + React + TypeScript + Tailwind CSS project
-- [x] Create `src/types/wearable.ts` and `src/data/wearables.ts` with all 15 wearables
-- [x] Implement UI components (Header, HeroSection, FilterBar, DeviceCard, DeviceGrid, ComparisonModal, RecommendationBanner, StrategicGuide, DeviceDetailModal, Footer)
-- [x] Connect state & interactions (Dark mode, filters, compare selection, modal, strategic guide tools)
-- [x] Install NPM dependencies (`npm install`)
-- [x] Verify build (`npm run build` — 100% clean build)
-- [x] Git commit and push to remote (`https://github.com/Jelimer/Comparativa-Wearables` branch `main`)
-- [x] Write `.agents/worker_m2/handoff.md` and send completion message to parent agent
+- [x] Inicializar DISPATCH.md y BRIEFING.md
+- [x] Leer ORIGINAL_REQUEST.md, PROJECT.md, survey_performance.md y worker_m1/changes.md
+- [x] Inspeccionar vite.config.ts, App.tsx, WearablesView.tsx, EreadersView.tsx y componentes relacionados
+- [x] Implementar manualChunks en vite.config.ts (`vendor-react`, `vendor-icons`)
+- [x] Implementar React.memo en DeviceCard, EreaderCard, FilterBar, EreaderFilterBar, Tooltip, EreaderTooltip, Grid, Hero, Banner, Header, Footer
+- [x] Implementar useCallback en App.tsx, WearablesView.tsx, EreadersView.tsx
+- [x] Implementar React.lazy y Suspense con fallback accesible en App.tsx, WearablesView.tsx, EreadersView.tsx
+- [x] Ejecutar build de verificación (`npm run build`) y asegurar 0 errores y generación correcta de chunks
+- [x] Redactar changes.md y handoff.md
+- [ ] Notificar al agente orquestador (parent)

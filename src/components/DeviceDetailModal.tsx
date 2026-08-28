@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   X,
   ExternalLink,
@@ -27,25 +27,48 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
   isSelectedForCompare,
   isCompareMaxReached,
 }) => {
+  useEffect(() => {
+    if (!device) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [device, onClose]);
+
   if (!device) return null;
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/60 dark:bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-4 animate-in fade-in duration-200"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] transition-colors"
+      >
         {/* Header */}
-        <div className="px-6 py-4 bg-slate-900 border-b border-slate-800 flex items-center justify-between gap-4 sticky top-0 z-10">
+        <div className="px-6 py-4 bg-white dark:bg-slate-900 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4 sticky top-0 z-10">
           <div className="flex items-center gap-2">
-            <span className="px-2.5 py-0.5 rounded-lg bg-cyan-950 text-cyan-400 border border-cyan-800 text-xs font-bold">
+            <span className="px-2.5 py-0.5 rounded-lg bg-cyan-50 dark:bg-cyan-950 text-cyan-700 dark:text-cyan-400 border border-cyan-200 dark:border-cyan-800 text-xs font-bold">
               {device.brand}
             </span>
-            <span className="text-xs text-slate-400 font-semibold uppercase tracking-wide">
+            <span className="text-xs text-slate-500 dark:text-slate-400 font-semibold uppercase tracking-wide">
               {device.category}
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition-colors cursor-pointer"
+            className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -55,7 +78,7 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
         <div className="p-6 overflow-y-auto space-y-6 flex-1">
           {/* Main Info Hero */}
           <div className="flex flex-col sm:flex-row items-center gap-6">
-            <div className="w-40 h-40 bg-slate-950 rounded-2xl p-4 flex items-center justify-center border border-slate-800 flex-shrink-0">
+            <div className="w-40 h-40 bg-slate-50 dark:bg-slate-950 rounded-2xl p-4 flex items-center justify-center border border-slate-200 dark:border-slate-800 flex-shrink-0">
               <img
                 src={device.imageUrl}
                 alt={device.name}
@@ -67,22 +90,22 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
             </div>
 
             <div className="space-y-2 text-center sm:text-left flex-1">
-              <h3 className="text-2xl font-black text-white">{device.name}</h3>
-              <p className="text-xs text-slate-300 leading-relaxed">{device.description}</p>
+              <h3 className="text-2xl font-black text-slate-900 dark:text-white">{device.name}</h3>
+              <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">{device.description}</p>
 
               <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-3">
-                <div className="flex items-center gap-1 text-amber-400 font-bold text-sm">
-                  <Star className="w-4 h-4 fill-amber-400" />
+                <div className="flex items-center gap-1 text-amber-500 dark:text-amber-400 font-bold text-sm">
+                  <Star className="w-4 h-4 fill-amber-500 dark:fill-amber-400" />
                   <span>{device.rating} / 5.0</span>
                 </div>
 
-                <div className="flex items-center gap-1 text-emerald-400 font-extrabold text-lg">
+                <div className="flex items-center gap-1 text-emerald-600 dark:text-emerald-400 font-extrabold text-lg">
                   <DollarSign className="w-4 h-4" />
                   <span>${device.priceUsd} USD</span>
                 </div>
 
-                <div className="flex items-center gap-1 text-slate-300 font-bold text-xs bg-slate-800 px-3 py-1 rounded-lg">
-                  <Zap className="w-3.5 h-3.5 text-amber-400" />
+                <div className="flex items-center gap-1 text-slate-700 dark:text-slate-300 font-bold text-xs bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-lg">
+                  <Zap className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
                   <span>Autonomía: {device.batteryLife}</span>
                 </div>
               </div>
@@ -91,30 +114,30 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
 
           {/* Subscription & Ecosystem info */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-              <span className="text-[10px] text-slate-400 uppercase tracking-wide font-bold block mb-1">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wide font-bold block mb-1">
                 Modelo de Cobro
               </span>
               {device.subscriptionRequired ? (
-                <span className="text-xs font-bold text-amber-400">
+                <span className="text-xs font-bold text-amber-700 dark:text-amber-400">
                   Requiere Suscripción: {device.subscriptionCost}
                 </span>
               ) : (
-                <span className="text-xs font-bold text-emerald-400">
+                <span className="text-xs font-bold text-emerald-700 dark:text-emerald-400">
                   Sin Suscripción Mensual ($0/mes)
                 </span>
               )}
             </div>
 
-            <div className="p-4 rounded-xl bg-slate-950 border border-slate-800">
-              <span className="text-[10px] text-slate-400 uppercase tracking-wide font-bold block mb-1">
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wide font-bold block mb-1">
                 Ecosistemas Compatibles
               </span>
               <div className="flex flex-wrap gap-1.5 mt-1">
                 {device.ecosystem.map((eco) => (
                   <span
                     key={eco}
-                    className="px-2 py-0.5 rounded bg-slate-800 text-slate-200 text-xs font-semibold"
+                    className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-semibold"
                   >
                     {eco}
                   </span>
@@ -124,8 +147,8 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
           </div>
 
           {/* Detailed Sensors Grid */}
-          <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-3">
-            <div className="flex items-center gap-2 text-cyan-400 font-bold text-xs uppercase tracking-wider">
+          <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800 space-y-3">
+            <div className="flex items-center gap-2 text-cyan-700 dark:text-cyan-400 font-bold text-xs uppercase tracking-wider">
               <HeartPulse className="w-4 h-4" />
               <span>Capacidades de Sensores Médicos Biométricos</span>
             </div>
@@ -139,31 +162,31 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
               <SensorDetailPill label="GPS Integrado" active={device.sensors.gps} termKey="gps" />
               <SensorDetailPill label="Temperatura Cutánea" active={device.sensors.skinTemp} termKey="skinTemp" />
             </div>
-            <p className="text-[11px] text-slate-400 pt-1">
+            <p className="text-[11px] text-slate-500 dark:text-slate-400 pt-1">
               *Sensor de frecuencia cardíaca: <strong>{device.sensors.heartRate}</strong>
             </p>
           </div>
 
           {/* Pros & Cons */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-4 rounded-xl bg-emerald-950/20 border border-emerald-500/30 space-y-2">
-              <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider">Ventajas Clave</h4>
-              <ul className="text-xs text-slate-300 space-y-1.5">
+            <div className="p-4 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-500/30 space-y-2">
+              <h4 className="text-xs font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider">Ventajas Clave</h4>
+              <ul className="text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
                 {device.pros.map((p, i) => (
                   <li key={i} className="flex items-start gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0 mt-0.5" />
+                    <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 flex-shrink-0 mt-0.5" />
                     <span>{p}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-4 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2">
-              <h4 className="text-xs font-bold text-amber-400 uppercase tracking-wider">Limitaciones</h4>
-              <ul className="text-xs text-slate-300 space-y-1.5">
+            <div className="p-4 rounded-xl bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-500/30 space-y-2">
+              <h4 className="text-xs font-bold text-amber-700 dark:text-amber-400 uppercase tracking-wider">Limitaciones</h4>
+              <ul className="text-xs text-slate-700 dark:text-slate-300 space-y-1.5">
                 {device.cons.map((c, i) => (
                   <li key={i} className="flex items-start gap-1.5">
-                    <span className="text-amber-400 font-bold">•</span>
+                    <span className="text-amber-600 dark:text-amber-400 font-bold">•</span>
                     <span>{c}</span>
                   </li>
                 ))}
@@ -173,15 +196,15 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
         </div>
 
         {/* Footer Actions */}
-        <div className="px-6 py-4 bg-slate-900 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div className="px-6 py-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3">
           <a
             href={device.officialSiteUrl}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-700 transition-colors"
           >
             <span>Ver en sitio oficial</span>
-            <ExternalLink className="w-3.5 h-3.5 text-cyan-400" />
+            <ExternalLink className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
           </a>
 
           <div className="flex items-center gap-2">
@@ -192,8 +215,8 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
                 isSelectedForCompare
                   ? 'bg-cyan-500 text-white shadow-md'
                   : isCompareMaxReached
-                  ? 'bg-slate-800 text-slate-600 cursor-not-allowed'
-                  : 'bg-slate-800 hover:bg-cyan-600 hover:text-white text-cyan-400 border border-cyan-500/30'
+                  ? 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-600 cursor-not-allowed'
+                  : 'bg-slate-100 hover:bg-cyan-600 hover:text-white dark:bg-slate-800 dark:hover:bg-cyan-600 dark:hover:text-white text-cyan-700 dark:text-cyan-400 border border-cyan-300 dark:border-cyan-500/30'
               }`}
             >
               {isSelectedForCompare ? (
@@ -211,7 +234,7 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
 
             <button
               onClick={onClose}
-              className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition-colors cursor-pointer"
+              className="px-4 py-2 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-white text-xs font-bold transition-colors cursor-pointer"
             >
               Cerrar
             </button>
@@ -230,15 +253,15 @@ const SensorDetailPill: React.FC<{ label: string; active: boolean; termKey?: str
   <div
     className={`p-2 rounded-lg border flex items-center justify-between gap-1.5 ${
       active
-        ? 'bg-cyan-950/40 border-cyan-800/60 text-cyan-300 font-semibold'
-        : 'bg-slate-900 border-slate-800 text-slate-600 line-through'
+        ? 'bg-cyan-50 dark:bg-cyan-950/40 border-cyan-200 dark:border-cyan-800/60 text-cyan-800 dark:text-cyan-300 font-semibold'
+        : 'bg-slate-100 dark:bg-slate-900 border-slate-200 dark:border-slate-800 text-slate-400 dark:text-slate-600 line-through'
     }`}
   >
     <div className="flex items-center gap-1.5 truncate">
       {active ? (
-        <Check className="w-3.5 h-3.5 text-cyan-400 flex-shrink-0" />
+        <Check className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400 flex-shrink-0" />
       ) : (
-        <X className="w-3.5 h-3.5 text-slate-600 flex-shrink-0" />
+        <X className="w-3.5 h-3.5 text-slate-400 dark:text-slate-600 flex-shrink-0" />
       )}
       <span className="truncate">{label}</span>
     </div>

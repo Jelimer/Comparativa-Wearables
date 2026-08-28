@@ -1,49 +1,54 @@
-# BRIEFING — 2026-07-27T16:41:40Z
+# BRIEFING — 2026-08-28T15:31:00Z
 
 ## Mission
-Desarrollar y publicar la Web App de Comparativa de Wearables (Milestones 2 y 3).
+Implementar el Hito 2: Arquitectura de rendimiento, Code Splitting (`React.lazy` + `Suspense`), optimización de chunks de Rollup/Vite y Memoización de componentes y callbacks (`React.memo`, `useCallback`).
 
 ## 🔒 My Identity
-- Archetype: implementer/qa/specialist
+- Archetype: worker
 - Roles: implementer, qa, specialist
 - Working directory: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\worker_m2
-- Original parent: 3d79d300-21e7-4d5f-bce5-dea4fcdf0e73
-- Milestone: Milestone 2 & Milestone 3
+- Original parent: 16213801-81bf-45fe-a35e-ea0310d3622b
+- Milestone: Milestone 2 - Performance Architecture, Code Splitting & Memoization
 
 ## 🔒 Key Constraints
-- Idioma de la interfaz y explicaciones: Español.
-- No shortcuts or hardcoded facades.
-- Todos los 15 wearables deben estar implementados.
-- Compilación 100% limpia sin errores.
+- Code-Splitting en `src/App.tsx` para vistas (`WearablesView`, `EreadersView`) y modales/guías (`CompareModal`, `EreaderCompareModal`, `BuyingGuide`, `EreaderBuyingGuide`).
+- `Suspense` con fallback accesible y limpio.
+- `manualChunks` en `vite.config.ts` para separar `vendor-react` y `vendor-icons`.
+- `React.memo` en `DeviceCard`, `EreaderCard`, `FilterBar`, `EreaderFilterBar`.
+- `useCallback` en `src/App.tsx`, `WearablesView.tsx`, `EreadersView.tsx` con dependencias exactas.
+- Verificar con `npm run build` (0 errores).
+- Sin código dummy ni atajos falsos.
+- Respuestas y explicaciones en Español.
 
 ## Current Parent
-- Conversation ID: 3d79d300-21e7-4d5f-bce5-dea4fcdf0e73
-- Updated: 2026-07-27T16:41:40Z
+- Conversation ID: 16213801-81bf-45fe-a35e-ea0310d3622b
+- Updated: 2026-08-28T15:31:00Z
 
 ## Task Summary
-- **What to build**: React + Vite + TypeScript + Tailwind CSS Wearable Comparison Web App.
-- **Success criteria**: 15 wearables dataset, rich filter bar, comparison modal side-by-side (max 4), strategic guide, recommendation banner, dark mode, clean build, git commit & push.
-- **Interface contracts**: `src/types/wearable.ts` and `src/data/wearables.ts`.
-- **Code layout**: Vite React SPA layout under `src/`.
-
-## Key Decisions Made
-- Implemented full dataset of 15 wearables, all UI components, dark mode, filters, comparison modal, strategic 4-step guide, recommendation banner.
-- Verified build: clean 0 errors with `npm run build`.
-- Initialized git, committed, and pushed to `https://github.com/Jelimer/Comparativa-Wearables` (branch `main`).
-
-## Artifact Index
-- `.agents/worker_m2/progress.md` — Progress tracker and liveness heartbeat
-- `.agents/worker_m2/handoff.md` — Final handoff report
+- **What to build**: Optimizaciones de rendimiento, lazy loading, Rollup chunking y memoización en React.
+- **Success criteria**: Build limpio, chunks separados, componentes memoizados, callbacks estables.
+- **Interface contracts**: PROJECT.md
 
 ## Change Tracker
-- **Files modified**: `package.json`, `vite.config.ts`, `tsconfig.json`, `tailwind.config.js`, `postcss.config.js`, `index.html`, `src/index.css`, `src/main.tsx`, `src/types/wearable.ts`, `src/data/wearables.ts`, `src/App.tsx`, `src/components/*`
-- **Build status**: PASS (100% clean)
-- **Pending issues**: None
+- **Files modified**: `vite.config.ts`, `src/App.tsx`, `src/components/WearablesView.tsx`, `src/components/EreadersView.tsx`, `src/components/DeviceCard.tsx`, `src/components/ereaders/EreaderCard.tsx`, `src/components/FilterBar.tsx`, `src/components/ereaders/EreaderFilterBar.tsx`, `src/components/DeviceGrid.tsx`, `src/components/ereaders/EreaderGrid.tsx`, `src/components/HeroSection.tsx`, `src/components/ereaders/EreaderHero.tsx`, `src/components/RecommendationBanner.tsx`, `src/components/ereaders/EreaderRecommendationBanner.tsx`, `src/components/StrategicGuide.tsx`, `src/components/ereaders/EreaderStrategicGuide.tsx`, `src/components/Tooltip.tsx`, `src/components/ereaders/EreaderTooltip.tsx`, `src/components/Header.tsx`, `src/components/Footer.tsx`.
+- **Build status**: PASS (código 0, 1608 módulos transformados, 13 chunks generados)
+- **Pending issues**: Ninguno
 
 ## Quality Status
-- **Build/test result**: PASS (vite build succeeded in 3.01s)
-- **Lint status**: PASS (0 TypeScript errors)
-- **Tests added/modified**: Build verification passed
+- **Build/test result**: PASS
+- **Lint status**: PASS (0 errores TypeScript con `tsc --noEmit`)
+- **Tests added/modified**: Cobertura de build e integración validada
 
 ## Loaded Skills
-- None
+- Ninguna requerida específicamente.
+
+## Key Decisions Made
+- `manualChunks` dividió el bundle monolítico de 366 kB en chunks pequeños cacheados (`vendor-react`, `vendor-icons`, `index` y chunks bajo demanda para vistas y modales).
+- `Suspense` cuenta con fallback accesible y animado según la sección activa.
+
+## Artifact Index
+- `.agents/worker_m2/DISPATCH.md` — Asignación de tarea
+- `.agents/worker_m2/BRIEFING.md` — Memoria operativa
+- `.agents/worker_m2/progress.md` — Heartbeat y seguimiento
+- `.agents/worker_m2/changes.md` — Detalle de cambios de código
+- `.agents/worker_m2/handoff.md` — Reporte formal de entrega de Hito 2

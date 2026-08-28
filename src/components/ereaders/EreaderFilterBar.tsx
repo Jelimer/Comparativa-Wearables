@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {
   Search,
+  X,
   RotateCcw,
   SlidersHorizontal,
   ChevronDown,
@@ -37,7 +38,7 @@ const CATEGORIES: { id: EreaderCategory; label: string; icon: string }[] = [
   { id: 'color', label: 'Pantallas a Color', icon: '🎨' },
 ];
 
-export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
+export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = React.memo(({
   filters,
   setFilters,
   onReset,
@@ -64,7 +65,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
   };
 
   return (
-    <div className="rounded-2xl bg-slate-900/90 border border-slate-800 p-4 sm:p-6 shadow-xl space-y-6">
+    <div className="rounded-2xl bg-white dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 p-4 sm:p-6 shadow-sm dark:shadow-xl space-y-6 transition-colors">
       {/* Top Search & Filter Bar */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         {/* Search Bar */}
@@ -75,14 +76,16 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             value={filters.searchQuery}
             onChange={(e) => setFilters((prev) => ({ ...prev, searchQuery: e.target.value }))}
             placeholder="Buscar por modelo, marca (Kindle, Kobo, reMarkable, BOOX, Lenovo)..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700/80 text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all"
+            className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 text-slate-900 dark:text-white placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all"
           />
           {filters.searchQuery && (
             <button
               onClick={() => setFilters((prev) => ({ ...prev, searchQuery: '' }))}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-white"
+              className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
+              aria-label="Borrar búsqueda"
+              title="Borrar búsqueda"
             >
-              Borrar
+              <X className="w-4 h-4" />
             </button>
           )}
         </div>
@@ -94,7 +97,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             onChange={(e) =>
               setFilters((prev) => ({ ...prev, sortBy: e.target.value as EreaderFilterState['sortBy'] }))
             }
-            className="px-3.5 py-2.5 rounded-xl bg-slate-950/80 border border-slate-700/80 text-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer"
+            className="px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer"
           >
             <option value="rating_desc">Puntuación (Mayor a menor)</option>
             <option value="price_asc">Precio (Más económico primero)</option>
@@ -107,8 +110,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             onClick={() => setIsExpanded(!isExpanded)}
             className={`inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer ${
               isExpanded || activeFilterCount > 0
-                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
-                : 'bg-slate-800 text-slate-300 hover:bg-slate-700 border border-slate-700'
+                ? 'bg-amber-50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-500/40'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-300 dark:border-slate-700'
             }`}
           >
             <SlidersHorizontal className="w-4 h-4" />
@@ -120,7 +123,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
             <button
               onClick={onReset}
               title="Limpiar todos los filtros"
-              className="inline-flex items-center gap-1 px-3 py-2.5 rounded-xl bg-rose-950/40 hover:bg-rose-900/60 text-rose-300 text-xs font-semibold border border-rose-800/50 transition-colors cursor-pointer"
+              className="inline-flex items-center gap-1 px-3 py-2.5 rounded-xl bg-rose-50 hover:bg-rose-100 dark:bg-rose-950/40 dark:hover:bg-rose-900/60 text-rose-700 dark:text-rose-300 text-xs font-semibold border border-rose-200 dark:border-rose-800/50 transition-colors cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Limpiar</span>
@@ -130,11 +133,11 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
       </div>
 
       {/* Brand & Category Filter Badges */}
-      <div className="space-y-4 pt-2 border-t border-slate-800/80">
+      <div className="space-y-4 pt-2 border-t border-slate-200 dark:border-slate-800/80">
         {/* Brand Multi-select */}
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
-            <Tag className="w-3.5 h-3.5 text-amber-400" />
+          <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
+            <Tag className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
             <span>Marca:</span>
           </span>
           {BRANDS.map((brand) => {
@@ -146,7 +149,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isSelected
                     ? 'bg-amber-500 text-slate-950 font-bold shadow-md shadow-amber-500/20'
-                    : 'bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60'
+                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60'
                 }`}
               >
                 {isSelected ? <CheckSquare className="w-3.5 h-3.5" /> : <Square className="w-3.5 h-3.5 text-slate-400" />}
@@ -158,8 +161,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
 
         {/* Category Multi-select */}
         <div className="flex flex-wrap items-center gap-2">
-          <span className="text-xs font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
-            <BookOpen className="w-3.5 h-3.5 text-yellow-400" />
+          <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider flex items-center gap-1 mr-1">
+            <BookOpen className="w-3.5 h-3.5 text-yellow-600 dark:text-yellow-400" />
             <span>Tipo:</span>
           </span>
           {CATEGORIES.map((cat) => {
@@ -171,7 +174,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                   isSelected
                     ? 'bg-yellow-500 text-slate-950 font-bold shadow-md shadow-yellow-500/20'
-                    : 'bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700/60'
+                    : 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800/80 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700/60'
                 }`}
               >
                 <span>{cat.icon}</span>
@@ -184,12 +187,12 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
 
       {/* Expanded Advanced Filters Panel */}
       {isExpanded && (
-        <div className="pt-4 border-t border-slate-800 space-y-6 animate-in fade-in duration-200">
+        <div className="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-6 animate-in fade-in duration-200">
           {/* Key Hardware Toggles Grid */}
           <div>
             <div className="flex items-center gap-2 mb-3">
-              <Sparkles className="w-4 h-4 text-amber-400" />
-              <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider">
+              <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400" />
+              <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 Características Clave de Hardware
               </h4>
             </div>
@@ -200,8 +203,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 onClick={() => setFilters((prev) => ({ ...prev, colorScreenOnly: !prev.colorScreenOnly }))}
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.colorScreenOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -218,8 +221,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 }
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.pageTurnButtonsOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -236,8 +239,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 }
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.stylusSupportOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -252,8 +255,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 onClick={() => setFilters((prev) => ({ ...prev, warmLightOnly: !prev.warmLightOnly }))}
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.warmLightOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -268,8 +271,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 onClick={() => setFilters((prev) => ({ ...prev, waterproofOnly: !prev.waterproofOnly }))}
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.waterproofOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -286,8 +289,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 }
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.openAndroidOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -302,8 +305,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
                 onClick={() => setFilters((prev) => ({ ...prev, audiobookOnly: !prev.audiobookOnly }))}
                 className={`flex items-center justify-between p-3 rounded-xl border text-xs font-semibold transition-colors cursor-pointer ${
                   filters.audiobookOnly
-                    ? 'bg-amber-950/50 border-amber-500 text-amber-300'
-                    : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:border-slate-700'
+                    ? 'bg-amber-50 dark:bg-amber-950/50 border-amber-400 dark:border-amber-500 text-amber-800 dark:text-amber-300'
+                    : 'bg-slate-50 dark:bg-slate-950/60 border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-400 hover:border-slate-300 dark:hover:border-slate-700'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -315,10 +318,10 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
           </div>
 
           {/* Price Range Slider */}
-          <div className="pt-2 border-t border-slate-800/80">
-            <div className="flex items-center justify-between text-xs font-bold text-slate-300 mb-2">
+          <div className="pt-2 border-t border-slate-200 dark:border-slate-800/80">
+            <div className="flex items-center justify-between text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">
               <span>Precio Máximo Hardware:</span>
-              <span className="text-amber-400 font-extrabold text-sm">${filters.maxPrice} USD</span>
+              <span className="text-amber-600 dark:text-amber-400 font-extrabold text-sm">${filters.maxPrice} USD</span>
             </div>
             <input
               type="range"
@@ -327,7 +330,7 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
               step="10"
               value={filters.maxPrice}
               onChange={(e) => setFilters((prev) => ({ ...prev, maxPrice: Number(e.target.value) }))}
-              className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
+              className="w-full h-2 bg-slate-200 dark:bg-slate-800 rounded-lg appearance-none cursor-pointer accent-amber-500"
             />
             <div className="flex justify-between text-[10px] text-slate-500 mt-1">
               <span>$90 USD (Kindle Básico)</span>
@@ -339,4 +342,4 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = ({
       )}
     </div>
   );
-};
+});

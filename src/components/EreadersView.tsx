@@ -1,13 +1,21 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useCallback, Suspense, lazy } from 'react';
 import { EreaderHero } from './ereaders/EreaderHero';
 import { EreaderRecommendationBanner } from './ereaders/EreaderRecommendationBanner';
 import { EreaderFilterBar } from './ereaders/EreaderFilterBar';
 import { EreaderGrid } from './ereaders/EreaderGrid';
-import { EreaderStrategicGuide } from './ereaders/EreaderStrategicGuide';
-import { EreaderComparisonModal } from './ereaders/EreaderComparisonModal';
-import { EreaderDetailModal } from './ereaders/EreaderDetailModal';
 import { EREADERS_DATA } from '../data/ereaders';
 import { Ereader, EreaderFilterState } from '../types/ereader';
+
+// On-demand code splitting for heavy modals and guides
+const EreaderComparisonModal = lazy(() =>
+  import('./ereaders/EreaderComparisonModal').then((m) => ({ default: m.EreaderComparisonModal }))
+);
+const EreaderDetailModal = lazy(() =>
+  import('./ereaders/EreaderDetailModal').then((m) => ({ default: m.EreaderDetailModal }))
+);
+const EreaderStrategicGuide = lazy(() =>
+  import('./ereaders/EreaderStrategicGuide').then((m) => ({ default: m.EreaderStrategicGuide }))
+);
 
 const INITIAL_EREADER_FILTERS: EreaderFilterState = {
   searchQuery: '',
@@ -21,7 +29,7 @@ const INITIAL_EREADER_FILTERS: EreaderFilterState = {
   waterproofOnly: false,
   audiobookOnly: false,
   openAndroidOnly: false,
-  maxPrice: 500,
+  maxPrice: 600,
   sortBy: 'rating_desc',
 };
 
@@ -31,13 +39,15 @@ interface EreadersViewProps {
   setSelectedCompareIds: React.Dispatch<React.SetStateAction<string[]>>;
   isCompareModalOpen: boolean;
   setIsCompareModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onFilteredCountChange?: (count: number) => void;
 }
 
-export const EreadersView: React.FC<EreadersViewProps> = ({
+export const EreadersView: React.FC<EreadersViewProps> = React.memo(({
   selectedCompareIds,
   setSelectedCompareIds,
   isCompareModalOpen,
   setIsCompareModalOpen,
+  onFilteredCountChange,
 }) => {
   const [filters, setFilters] = useState<EreaderFilterState>(INITIAL_EREADER_FILTERS);
   const [detailedDevice, setDetailedDevice] = useState<Ereader | null>(null);
@@ -57,15 +67,15 @@ export const EreadersView: React.FC<EreadersViewProps> = ({
     if (filters.waterproofOnly) count++;
     if (filters.audiobookOnly) count++;
     if (filters.openAndroidOnly) count++;
-    if (filters.maxPrice < 500) count++;
+    if (filters.maxPrice < 600) count++;
     return count;
   }, [filters]);
 
-  const handleResetFilters = () => {
+  const handleResetFilters = useCallback(() => {
     setFilters(INITIAL_EREADER_FILTERS);
-  };
+  }, []);
 
-  const handleToggleCompare = (device: Ereader) => {
+  const handleToggleCompare = useCallback((device: Ereader) => {
     setSelectedCompareIds((prev) => {
       if (prev.includes(device.id)) {
         return prev.filter((id) => id !== device.id);
@@ -75,22 +85,61 @@ export const EreadersView: React.FC<EreadersViewProps> = ({
       }
       return [...prev, device.id];
     });
-  };
+  }, [setSelectedCompareIds]);
 
-  const handleRemoveCompareDevice = (deviceId: string) => {
+  const handleRemoveCompareDevice = useCallback((deviceId: string) => {
     setSelectedCompareIds((prev) => prev.filter((id) => id !== deviceId));
-  };
+  }, [setSelectedCompareIds]);
 
-  const handleClearCompareAll = () => {
+  const handleClearCompareAll = useCallback(() => {
     setSelectedCompareIds([]);
-  };
+  }, [setSelectedCompareIds]);
 
-  // Filter & Sort E-readers
+  const handleOpenDetails = useCallback((device: Ereader) => {
+    setDetailedDevice(device);
+  }, []);
+
+  const handleCloseDetails = useCallback(() => {
+    setDetailedDevice(null);
+  }, []);
+
+  const handleCloseCompareModal = useCallback(() => {
+    setIsCompareModalOpen(false);
+  }, [setIsCompareModalOpen]);
+
+  // Filter & Sort E-readers with fast-fail optimization & hoisted search normalization
   const filteredEreaders = useMemo(() => {
+    const query = filters.searchQuery.trim().toLowerCase();
+
     return EREADERS_DATA.filter((device) => {
-      // Search query
-      if (filters.searchQuery.trim() !== '') {
-        const query = filters.searchQuery.trim().toLowerCase();
+      // 1. Fast Numeric check (O(1))
+      if (device.priceUsd > filters.maxPrice) {
+        return false;
+      }
+
+      // 2. Fast Boolean feature toggles (O(1))
+      if (filters.colorScreenOnly && !device.colorScreen) return false;
+      if (filters.warmLightOnly && !device.warmLight) return false;
+      if (filters.pageTurnButtonsOnly && !device.pageTurnButtons) return false;
+      if (filters.stylusSupportOnly && !device.stylusSupport) return false;
+      if (filters.waterproofOnly && !device.waterproof.includes('IPX8')) return false;
+      if (filters.audiobookOnly && !device.audiobookSupport) return false;
+      if (filters.openAndroidOnly && !device.openAndroid) return false;
+
+      // 3. Multi-select list checks (Small arrays O(k))
+      if (filters.selectedBrands.length > 0 && !filters.selectedBrands.includes(device.brand)) {
+        return false;
+      }
+
+      if (
+        filters.selectedCategories.length > 0 &&
+        !filters.selectedCategories.includes(device.category)
+      ) {
+        return false;
+      }
+
+      // 4. Text search query (Evaluated last only on survivors)
+      if (query !== '') {
         const matchName = device.name.toLowerCase().includes(query);
         const matchBrand = device.brand.toLowerCase().includes(query);
         const matchDesc = device.description.toLowerCase().includes(query);
@@ -100,33 +149,6 @@ export const EreadersView: React.FC<EreadersViewProps> = ({
         if (!matchName && !matchBrand && !matchDesc && !matchPros && !matchCons && !matchFormats) {
           return false;
         }
-      }
-
-      // Brand multi-select
-      if (filters.selectedBrands.length > 0 && !filters.selectedBrands.includes(device.brand)) {
-        return false;
-      }
-
-      // Category multi-select
-      if (
-        filters.selectedCategories.length > 0 &&
-        !filters.selectedCategories.includes(device.category)
-      ) {
-        return false;
-      }
-
-      // Feature toggles
-      if (filters.colorScreenOnly && !device.colorScreen) return false;
-      if (filters.warmLightOnly && !device.warmLight) return false;
-      if (filters.pageTurnButtonsOnly && !device.pageTurnButtons) return false;
-      if (filters.stylusSupportOnly && !device.stylusSupport) return false;
-      if (filters.waterproofOnly && !device.waterproof.includes('IPX8')) return false;
-      if (filters.audiobookOnly && !device.audiobookSupport) return false;
-      if (filters.openAndroidOnly && !device.openAndroid) return false;
-
-      // Price filter
-      if (device.priceUsd > filters.maxPrice) {
-        return false;
       }
 
       return true;
@@ -148,13 +170,18 @@ export const EreadersView: React.FC<EreadersViewProps> = ({
     });
   }, [filters]);
 
+  // Sync filtered count with parent/header
+  React.useEffect(() => {
+    onFilteredCountChange?.(filteredEreaders.length);
+  }, [filteredEreaders.length, onFilteredCountChange]);
+
   const selectedCompareDevices = useMemo(() => {
     return EREADERS_DATA.filter((e) => selectedCompareIds.includes(e.id));
   }, [selectedCompareIds]);
 
-  const scrollToExplore = () => {
+  const scrollToExplore = useCallback(() => {
     exploreRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
   return (
     <>
@@ -166,7 +193,7 @@ export const EreadersView: React.FC<EreadersViewProps> = ({
         {/* Recommendation Banner */}
         <EreaderRecommendationBanner
           ereaders={EREADERS_DATA}
-          onSelectDevice={(device) => setDetailedDevice(device)}
+          onSelectDevice={handleOpenDetails}
         />
 
         {/* Filter Section */}
@@ -185,33 +212,49 @@ export const EreadersView: React.FC<EreadersViewProps> = ({
           totalDevicesCount={EREADERS_DATA.length}
           selectedCompareIds={selectedCompareIds}
           onToggleCompare={handleToggleCompare}
-          onOpenDetails={(device) => setDetailedDevice(device)}
+          onOpenDetails={handleOpenDetails}
           filters={filters}
           setFilters={setFilters}
           onResetFilters={handleResetFilters}
         />
 
         {/* Strategic Decision Guide */}
-        <EreaderStrategicGuide />
+        <Suspense
+          fallback={
+            <div className="h-64 rounded-3xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 animate-pulse flex items-center justify-center text-slate-500 dark:text-slate-400 text-xs">
+              Cargando Guía Estratégica...
+            </div>
+          }
+        >
+          <EreaderStrategicGuide />
+        </Suspense>
       </main>
 
       {/* Side-by-Side Comparison Modal */}
-      <EreaderComparisonModal
-        isOpen={isCompareModalOpen}
-        onClose={() => setIsCompareModalOpen(false)}
-        selectedDevices={selectedCompareDevices}
-        onRemoveDevice={handleRemoveCompareDevice}
-        onClearAll={handleClearCompareAll}
-      />
+      {isCompareModalOpen && (
+        <Suspense fallback={null}>
+          <EreaderComparisonModal
+            isOpen={isCompareModalOpen}
+            onClose={handleCloseCompareModal}
+            selectedDevices={selectedCompareDevices}
+            onRemoveDevice={handleRemoveCompareDevice}
+            onClearAll={handleClearCompareAll}
+          />
+        </Suspense>
+      )}
 
       {/* Single Device Detail Modal */}
-      <EreaderDetailModal
-        device={detailedDevice}
-        onClose={() => setDetailedDevice(null)}
-        onToggleCompare={handleToggleCompare}
-        isSelectedForCompare={Boolean(detailedDevice && selectedCompareIds.includes(detailedDevice.id))}
-        isCompareMaxReached={selectedCompareIds.length >= 4}
-      />
+      {detailedDevice && (
+        <Suspense fallback={null}>
+          <EreaderDetailModal
+            device={detailedDevice}
+            onClose={handleCloseDetails}
+            onToggleCompare={handleToggleCompare}
+            isSelectedForCompare={selectedCompareIds.includes(detailedDevice.id)}
+            isCompareMaxReached={selectedCompareIds.length >= 4}
+          />
+        </Suspense>
+      )}
     </>
   );
-};
+});

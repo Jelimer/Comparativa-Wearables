@@ -46,7 +46,7 @@ const ALL_ECOSYSTEMS: { label: string; value: EcosystemType }[] = [
   { label: 'Samsung Exclusive', value: 'Samsung' },
 ];
 
-export const FilterBar: React.FC<FilterBarProps> = ({
+export const FilterBar: React.FC<FilterBarProps> = React.memo(({
   filters,
   setFilters,
   onReset,
@@ -126,14 +126,14 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   };
 
   return (
-    <div className="bg-slate-900/90 rounded-2xl border border-slate-800 p-4 sm:p-6 shadow-xl space-y-6">
+    <div className="bg-white dark:bg-slate-900/90 rounded-2xl border border-slate-200 dark:border-slate-800 p-4 sm:p-6 shadow-sm dark:shadow-xl space-y-6 transition-colors">
       {/* Header of Filter Bar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 dark:border-slate-800 pb-4">
         <div className="flex items-center gap-2">
-          <Filter className="w-5 h-5 text-cyan-400" />
-          <h3 className="text-lg font-bold text-white">Filtros Multidimensionales</h3>
+          <Filter className="w-5 h-5 text-cyan-600 dark:text-cyan-400" />
+          <h3 className="text-lg font-bold text-slate-900 dark:text-white">Filtros Multidimensionales</h3>
           {activeFilterCount > 0 && (
-            <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">
+            <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-cyan-50 dark:bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-500/40">
               {activeFilterCount} activo{activeFilterCount > 1 ? 's' : ''}
             </span>
           )}
@@ -143,7 +143,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           {activeFilterCount > 0 && (
             <button
               onClick={onReset}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors border border-slate-700 cursor-pointer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors border border-slate-300 dark:border-slate-700 cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Limpiar filtros</span>
@@ -160,12 +160,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           value={filters.searchQuery}
           onChange={handleSearchChange}
           placeholder="Buscar por nombre, tecnología o característica (ej. Whoop, ECG, Titanio)..."
-          className="w-full pl-11 pr-10 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+          className="w-full pl-11 pr-10 py-3 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-900 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 text-sm focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
         />
         {filters.searchQuery && (
           <button
             onClick={() => setFilters((prev) => ({ ...prev, searchQuery: '' }))}
-            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 cursor-pointer"
+            className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -176,13 +176,13 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Multi-select Brand Dropdown */}
         <div className="relative" ref={brandDropdownRef}>
-          <label className="block text-xs font-semibold text-slate-400 mb-1.5">
+          <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
             Marcas ({filters.selectedBrands.length === 0 ? 'Todas' : `${filters.selectedBrands.length} selec.`})
           </label>
           <button
             type="button"
             onClick={() => setIsBrandDropdownOpen((prev) => !prev)}
-            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-xs sm:text-sm font-medium hover:border-slate-700 focus:outline-none focus:border-cyan-500 cursor-pointer"
+            className="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-medium hover:border-slate-400 dark:hover:border-slate-700 focus:outline-none focus:border-cyan-500 cursor-pointer"
           >
             <span className="truncate">
               {filters.selectedBrands.length === 0
@@ -193,13 +193,13 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           </button>
 
           {isBrandDropdownOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 p-2 bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl z-40 max-h-60 overflow-y-auto space-y-1">
-              <div className="flex items-center justify-between px-2 py-1 border-b border-slate-800 text-[11px] font-bold text-slate-400">
+            <div className="absolute top-full left-0 right-0 mt-2 p-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-2xl z-40 max-h-60 overflow-y-auto space-y-1">
+              <div className="flex items-center justify-between px-2 py-1 border-b border-slate-100 dark:border-slate-800 text-[11px] font-bold text-slate-500 dark:text-slate-400">
                 <span>SELECCIÓN MÚLTIPLE</span>
                 {filters.selectedBrands.length > 0 && (
                   <button
                     onClick={() => setFilters((prev) => ({ ...prev, selectedBrands: [] }))}
-                    className="text-cyan-400 hover:underline"
+                    className="text-cyan-600 dark:text-cyan-400 hover:underline cursor-pointer"
                   >
                     Borrar
                   </button>
@@ -214,12 +214,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                     onClick={() => toggleBrand(b.value)}
                     className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-colors cursor-pointer ${
                       isSelected
-                        ? 'bg-cyan-500/20 text-cyan-300 font-bold'
-                        : 'text-slate-300 hover:bg-slate-800'
+                        ? 'bg-cyan-50 dark:bg-cyan-500/20 text-cyan-800 dark:text-cyan-300 font-bold'
+                        : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                     }`}
                   >
                     <span>{b.label}</span>
-                    {isSelected && <Check className="w-4 h-4 text-cyan-400" />}
+                    {isSelected && <Check className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />}
                   </button>
                 );
               })}
@@ -229,7 +229,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
 
         {/* Category Multi-select Chips */}
         <div>
-          <label className="block text-xs font-semibold text-slate-400 mb-1.5">
+          <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
             Categoría Formato (Multiselección)
           </label>
           <div className="flex flex-wrap gap-1.5">
@@ -242,8 +242,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                   onClick={() => toggleCategory(cat.value)}
                   className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-cyan-500/20 text-cyan-300 border-cyan-500/50 shadow-sm'
-                      : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
+                      ? 'bg-cyan-50 dark:bg-cyan-500/20 text-cyan-800 dark:text-cyan-300 border-cyan-300 dark:border-cyan-500/50 shadow-sm'
+                      : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-300'
                   }`}
                 >
                   {cat.label}
@@ -255,7 +255,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
 
         {/* Ecosystem Multi-select Chips */}
         <div>
-          <label className="block text-xs font-semibold text-slate-400 mb-1.5">
+          <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">
             Ecosistema Smartphone
           </label>
           <div className="flex flex-wrap gap-1.5">
@@ -268,8 +268,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                   onClick={() => toggleEcosystem(eco.value)}
                   className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-sky-500/20 text-sky-300 border-sky-500/50 shadow-sm'
-                      : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
+                      ? 'bg-sky-50 dark:bg-sky-500/20 text-sky-800 dark:text-sky-300 border-sky-300 dark:border-sky-500/50 shadow-sm'
+                      : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-300'
                   }`}
                 >
                   {eco.label}
@@ -282,7 +282,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
         {/* Subscription Multi-select */}
         <div>
           <div className="flex items-center gap-1 mb-1.5">
-            <label className="block text-xs font-semibold text-slate-400">Tipo de Cobro</label>
+            <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400">Tipo de Cobro</label>
             <Tooltip termKey="subscription" iconOnly />
           </div>
           <div className="flex flex-wrap gap-1.5">
@@ -291,8 +291,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               onClick={() => toggleSubscription('free')}
               className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                 filters.selectedSubscriptions.includes('free')
-                  ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50 shadow-sm'
-                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
+                  ? 'bg-emerald-50 dark:bg-emerald-500/20 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-500/50 shadow-sm'
+                  : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-300'
               }`}
             >
               $0 Cuotas (Sin sub.)
@@ -302,8 +302,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               onClick={() => toggleSubscription('subscription')}
               className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
                 filters.selectedSubscriptions.includes('subscription')
-                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/50 shadow-sm'
-                  : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
+                  ? 'bg-amber-50 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-500/50 shadow-sm'
+                  : 'bg-slate-50 dark:bg-slate-950 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-300'
               }`}
             >
               Con Suscripción
@@ -313,15 +313,15 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       </div>
 
       {/* Price & Battery Sliders */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-slate-800/80">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2 border-t border-slate-200 dark:border-slate-800/80">
         {/* Price Slider */}
         <div className="space-y-2">
           <div className="flex justify-between items-center text-xs font-semibold">
-            <span className="text-slate-300 flex items-center gap-1">
-              <DollarSign className="w-3.5 h-3.5 text-emerald-400" />
+            <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1">
+              <DollarSign className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
               Precio Máximo Hardware
             </span>
-            <span className="text-emerald-400 font-bold">
+            <span className="text-emerald-600 dark:text-emerald-400 font-bold">
               ${filters.maxPrice} USD {filters.maxPrice >= 1000 ? '(Sin límite)' : ''}
             </span>
           </div>
@@ -332,7 +332,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             step="20"
             value={filters.maxPrice}
             onChange={handleMaxPriceChange}
-            className="w-full accent-cyan-500 cursor-pointer h-2 bg-slate-950 rounded-lg appearance-none"
+            className="w-full accent-cyan-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none"
           />
           <div className="flex justify-between text-[10px] text-slate-500">
             <span>$40</span>
@@ -344,12 +344,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
         {/* Battery Slider */}
         <div className="space-y-2">
           <div className="flex justify-between items-center text-xs font-semibold">
-            <span className="text-slate-300 flex items-center gap-1">
-              <Battery className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-slate-700 dark:text-slate-300 flex items-center gap-1">
+              <Battery className="w-3.5 h-3.5 text-amber-500 dark:text-amber-400" />
               <span>Batería Mínima</span>
               <Tooltip termKey="battery" iconOnly />
             </span>
-            <span className="text-amber-400 font-bold">
+            <span className="text-amber-600 dark:text-amber-400 font-bold">
               {filters.minBatteryHours === 0
                 ? 'Todas'
                 : `${filters.minBatteryHours} h (${Math.round(filters.minBatteryHours / 24)} días approx)`}
@@ -362,7 +362,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
             step="24"
             value={filters.minBatteryHours}
             onChange={handleMinBatteryChange}
-            className="w-full accent-amber-500 cursor-pointer h-2 bg-slate-950 rounded-lg appearance-none"
+            className="w-full accent-amber-500 cursor-pointer h-2 bg-slate-200 dark:bg-slate-950 rounded-lg appearance-none"
           />
           <div className="flex justify-between text-[10px] text-slate-500">
             <span>24h (1 día)</span>
@@ -373,13 +373,13 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       </div>
 
       {/* Advanced Medical Sensors Toggle */}
-      <div className="pt-2 border-t border-slate-800/80">
+      <div className="pt-2 border-t border-slate-200 dark:border-slate-800/80">
         <button
           onClick={() => setShowAdvancedSensors(!showAdvancedSensors)}
-          className="flex items-center justify-between w-full py-2 text-xs font-bold text-slate-300 hover:text-cyan-400 transition-colors cursor-pointer"
+          className="flex items-center justify-between w-full py-2 text-xs font-bold text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-400 transition-colors cursor-pointer"
         >
           <div className="flex items-center gap-2">
-            <SlidersHorizontal className="w-4 h-4 text-cyan-400" />
+            <SlidersHorizontal className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
             <span>Filtro de Sensores Médicos Específicos</span>
           </div>
           {showAdvancedSensors ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -433,7 +433,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
       </div>
     </div>
   );
-};
+});
 
 interface SensorCheckboxProps {
   label: string;
@@ -446,8 +446,8 @@ const SensorCheckbox: React.FC<SensorCheckboxProps> = ({ label, termKey, checked
   <div
     className={`flex items-center justify-between gap-1 px-3 py-2 rounded-xl text-xs font-medium border transition-all ${
       checked
-        ? 'bg-cyan-500/15 text-cyan-300 border-cyan-500/50 shadow-sm'
-        : 'bg-slate-950 text-slate-400 border-slate-800 hover:border-slate-700 hover:text-slate-300'
+        ? 'bg-cyan-50 dark:bg-cyan-500/15 text-cyan-800 dark:text-cyan-300 border-cyan-300 dark:border-cyan-500/50 shadow-sm'
+        : 'bg-slate-50 dark:bg-slate-950 text-slate-700 dark:text-slate-400 border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-700 hover:text-slate-900 dark:hover:text-slate-300'
     }`}
   >
     <button
@@ -455,7 +455,7 @@ const SensorCheckbox: React.FC<SensorCheckboxProps> = ({ label, termKey, checked
       onClick={onChange}
       className="flex items-center gap-2 flex-1 min-w-0 text-left cursor-pointer"
     >
-      <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${checked ? 'text-cyan-400' : 'text-slate-600'}`} />
+      <CheckCircle2 className={`w-3.5 h-3.5 flex-shrink-0 ${checked ? 'text-cyan-600 dark:text-cyan-400' : 'text-slate-400 dark:text-slate-600'}`} />
       <span className="truncate">{label}</span>
     </button>
     {termKey && <Tooltip termKey={termKey} iconOnly />}

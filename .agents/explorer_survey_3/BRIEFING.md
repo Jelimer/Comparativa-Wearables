@@ -1,37 +1,41 @@
-# BRIEFING — 2026-08-13T00:08:00Z
+# BRIEFING — 2026-08-28T15:11:00Z
 
 ## Mission
-Auditoría e investigación de mercado (Agosto 2026) para las marcas autorizadas Apple y Xiaomi en la comparativa de wearables.
+Investigar exhaustivamente la UI/UX, sistema de diseño, microinteracciones, contrastes (dark/light), accesibilidad, componentes de tooltip/modal y comportamiento responsivo de la plataforma Comparativa Wearables & E-readers para redactar survey_ui_ux.md y handoff.md.
 
 ## 🔒 My Identity
-- Archetype: teamwork_preview_explorer
-- Roles: Explorer 3 (Apple, Xiaomi market audit & codebase inspection)
+- Archetype: Explorer
+- Roles: UI/UX & Design Systems Investigator
 - Working directory: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3
-- Original parent: bde1d85e-311a-4ac7-ad9b-f415af637593
-- Milestone: Market Audit & Analysis (Agosto 2026)
+- Original parent: 16213801-81bf-45fe-a35e-ea0310d3622b
+- Milestone: Survey & UI/UX Audit
 
 ## 🔒 Key Constraints
-- Read-only investigation — do NOT implement code changes in main codebase
-- Exclusión estricta de marcas no autorizadas. Marcas autorizadas SOLO: Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi.
-- Enfoque asignado: Apple y Xiaomi.
-- Explicaciones e interfaz en español.
+- Read-only investigation — do NOT implement modifications to source code
+- Produce structured findings and concrete proposals (diff patches / snippets / recommendations) in agent folder
+- Language: Español
 
 ## Current Parent
-- Conversation ID: bde1d85e-311a-4ac7-ad9b-f415af637593
-- Updated: 2026-08-13T00:08:00Z
+- Conversation ID: 16213801-81bf-45fe-a35e-ea0310d3622b
+- Updated: 2026-08-28T15:11:00Z
 
 ## Investigation State
-- **Explored paths**: ORIGINAL_REQUEST.md, informe_wearables_salud.md, src/data/wearables.ts, src/types/wearable.ts, public/images/devices/, package.json
-- **Key findings**: 
-  - Hallazgos de mercado (Agosto 2026): Apple Watch Ultra 3 (Lanzamiento Sept 2025, 49mm titanio, 5G/satélite, 3000 nits, WR100, $799 USD) y Xiaomi Smart Band 10 Pro (Lanzamiento Mayo 2026, 1.74" AMOLED 2000 nits, GPS GNSS integrado, VFC, 21 días batería, ~$89 USD).
-  - Auditoría de codebase: El markdown `informe_wearables_salud.md` carece de las secciones descriptivas para Apple y Xiaomi en las secciones principales, y se deben actualizar las tablas comparativas y datasets.
-- **Unexplored areas**: Ninguna dentro del alcance de Explorer 3.
+- **Explored paths**: `src/` (App.tsx, Header.tsx, HeroSection.tsx, WearablesView.tsx, EreadersView.tsx, FilterBar.tsx, EreaderFilterBar.tsx, DeviceGrid.tsx, EreaderGrid.tsx, DeviceCard.tsx, EreaderCard.tsx, ComparisonModal.tsx, EreaderComparisonModal.tsx, DeviceDetailModal.tsx, EreaderDetailModal.tsx, Tooltip.tsx, EreaderTooltip.tsx, StrategicGuide.tsx, EreaderStrategicGuide.tsx, RecommendationBanner.tsx, EreaderRecommendationBanner.tsx, Footer.tsx), `src/index.css`, `tailwind.config.js`, `index.html`.
+- **Key findings**:
+  1. Modo claro bloqueado por clases oscuras no condicionales en el contenedor raíz y componentes.
+  2. Tooltips fijos (`w-72`/`w-80`) propensos a desbordar en móviles.
+  3. Tablas de comparativa sin primera columna `sticky left-0` para scroll en móviles.
+  4. Inconsistencias de accesibilidad entre modales (Escape, scroll lock, backdrop click).
+  5. EreaderGrid sin soporte ultrawide (`2xl`/`3xl`).
+  6. Fechas y contadores desincronizados (15 vs 21 wearables, "julio 2026" vs "agosto 2026").
+- **Unexplored areas**: Ninguna dentro del alcance de UI/UX.
 
 ## Key Decisions Made
-- Concluida la investigación y redactado el reporte completo en `handoff.md`.
+- Estructurar el reporte exhaustivo en `survey_ui_ux.md` con 8 secciones de análisis, matriz de hallazgos priorizada y propuestas de código listas para implementación.
+- Formalizar el handoff con los 5 componentes en `handoff.md`.
 
 ## Artifact Index
-- c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\DISPATCH.md — Registro de tareas recibidas
-- c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\BRIEFING.md — Memoria de trabajo
-- c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\progress.md — Control de progreso / heartbeat
-- c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_3\handoff.md — Reporte final de entrega
+- `.agents/explorer_survey_3/DISPATCH.md` — Registro de dispatch
+- `.agents/explorer_survey_3/progress.md` — Heartbeat y seguimiento
+- `.agents/explorer_survey_3/survey_ui_ux.md` — Informe exhaustivo de auditoría UI/UX
+- `.agents/explorer_survey_3/handoff.md` — Reporte de handoff formal con 5 componentes

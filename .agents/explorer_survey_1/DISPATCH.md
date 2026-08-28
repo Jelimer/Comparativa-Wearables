@@ -1,12 +1,18 @@
-## 2026-08-13T00:06:00Z
-You are Explorer 1 (teamwork_preview_explorer).
+## 2026-08-28T15:02:53Z
+You are an Explorer agent investigating the Technical Reports and Datasets for Wearables and E-readers (August 2026).
 Your working directory is: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_1
-Path to ORIGINAL_REQUEST.md: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md
+The authoritative user request is at: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md
+Also read: c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\PROJECT.md
 
-Your task:
-1. Read c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md (specifically the latest request under "## Follow-up — 2026-08-13T03:04:47Z").
-2. Inspect existing project files: informe_wearables_salud.md and dataset files in src/ to see what devices and specs are currently documented.
-3. Perform web searches for August 2026 market audit regarding recent releases or technical spec updates up to August 2026 for strictly authorized brands: Google/Fitbit, Garmin, Samsung.
-4. Note: Strict exclusion of unauthorized brands (e.g. Ultrahuman, Amazfit, Huawei, etc.). Authorized brands are ONLY: Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi.
-5. Write your complete findings, evidence chains, and recommended additions/updates to c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_1\handoff.md.
-6. Update progress.md in your working directory and send a message back to parent when complete.
+Tasks:
+1. Examine both reference reports: `informe_wearables_salud.md` and `informe_ereaders_kindles.md`.
+2. Examine TypeScript datasets in `src/data/` (e.g. `wearables.ts`, `ereaders.ts`, etc.) and image assets in `public/images/`.
+3. Check market currency as of August 2026 for all authorized brands:
+   - Wearables: Apple, Samsung, Garmin, Google/Fitbit, Oura, Whoop, RingConn, Signal Ring, Xiaomi.
+   - E-readers: Amazon Kindle, Rakuten Kobo, Onyx BOOX, PocketBook, reMarkable, Lenovo.
+4. Identify any inaccuracies, outdated models, missing 2026 devices, software/sensor updates, price mismatches, and discrepancies between Markdown reports and TypeScript datasets.
+5. Check image assets availability for all devices.
+6. Write your detailed survey report to `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_1\survey_reports_data.md` and write a handoff report at `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\explorer_survey_1\handoff.md`.
+7. Send a message to the caller when done.
+
+Language: Español.

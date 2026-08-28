@@ -1,13 +1,21 @@
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useCallback, Suspense, lazy } from 'react';
 import { HeroSection } from './HeroSection';
 import { RecommendationBanner } from './RecommendationBanner';
 import { FilterBar } from './FilterBar';
 import { DeviceGrid } from './DeviceGrid';
-import { StrategicGuide } from './StrategicGuide';
-import { ComparisonModal } from './ComparisonModal';
-import { DeviceDetailModal } from './DeviceDetailModal';
 import { WEARABLES_DATA } from '../data/wearables';
 import { Wearable, FilterState } from '../types/wearable';
+
+// On-demand code splitting for heavy modals and guides
+const ComparisonModal = lazy(() =>
+  import('./ComparisonModal').then((m) => ({ default: m.ComparisonModal }))
+);
+const DeviceDetailModal = lazy(() =>
+  import('./DeviceDetailModal').then((m) => ({ default: m.DeviceDetailModal }))
+);
+const StrategicGuide = lazy(() =>
+  import('./StrategicGuide').then((m) => ({ default: m.StrategicGuide }))
+);
 
 const INITIAL_FILTERS: FilterState = {
   searchQuery: '',
@@ -34,13 +42,15 @@ interface WearablesViewProps {
   setSelectedCompareIds: React.Dispatch<React.SetStateAction<string[]>>;
   isCompareModalOpen: boolean;
   setIsCompareModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onFilteredCountChange?: (count: number) => void;
 }
 
-export const WearablesView: React.FC<WearablesViewProps> = ({
+export const WearablesView: React.FC<WearablesViewProps> = React.memo(({
   selectedCompareIds,
   setSelectedCompareIds,
   isCompareModalOpen,
   setIsCompareModalOpen,
+  onFilteredCountChange,
 }) => {
   const [filters, setFilters] = useState<FilterState>(INITIAL_FILTERS);
   const [detailedDevice, setDetailedDevice] = useState<Wearable | null>(null);
@@ -63,11 +73,11 @@ export const WearablesView: React.FC<WearablesViewProps> = ({
     return count;
   }, [filters]);
 
-  const handleResetFilters = () => {
+  const handleResetFilters = useCallback(() => {
     setFilters(INITIAL_FILTERS);
-  };
+  }, []);
 
-  const handleToggleCompare = (device: Wearable) => {
+  const handleToggleCompare = useCallback((device: Wearable) => {
     setSelectedCompareIds((prev) => {
       if (prev.includes(device.id)) {
         return prev.filter((id) => id !== device.id);
@@ -77,31 +87,54 @@ export const WearablesView: React.FC<WearablesViewProps> = ({
       }
       return [...prev, device.id];
     });
-  };
+  }, [setSelectedCompareIds]);
 
-  const handleRemoveCompareDevice = (deviceId: string) => {
+  const handleRemoveCompareDevice = useCallback((deviceId: string) => {
     setSelectedCompareIds((prev) => prev.filter((id) => id !== deviceId));
-  };
+  }, [setSelectedCompareIds]);
 
-  const handleClearCompareAll = () => {
+  const handleClearCompareAll = useCallback(() => {
     setSelectedCompareIds([]);
-  };
+  }, [setSelectedCompareIds]);
 
-  // Filter & Sort Wearables
+  const handleOpenDetails = useCallback((device: Wearable) => {
+    setDetailedDevice(device);
+  }, []);
+
+  const handleCloseDetails = useCallback(() => {
+    setDetailedDevice(null);
+  }, []);
+
+  const handleCloseCompareModal = useCallback(() => {
+    setIsCompareModalOpen(false);
+  }, [setIsCompareModalOpen]);
+
+  // Filter & Sort Wearables with fast-fail optimization & hoisted search normalization
   const filteredWearables = useMemo(() => {
+    const query = filters.searchQuery.trim().toLowerCase();
+
     return WEARABLES_DATA.filter((device) => {
-      if (filters.searchQuery.trim() !== '') {
-        const query = filters.searchQuery.trim().toLowerCase();
-        const matchName = device.name.toLowerCase().includes(query);
-        const matchBrand = device.brand.toLowerCase().includes(query);
-        const matchDesc = device.description.toLowerCase().includes(query);
-        const matchPros = device.pros.some((p) => p.toLowerCase().includes(query));
-        const matchCons = device.cons.some((c) => c.toLowerCase().includes(query));
-        if (!matchName && !matchBrand && !matchDesc && !matchPros && !matchCons) {
-          return false;
-        }
+      // 1. Fast Numeric checks (O(1))
+      if (device.priceUsd > filters.maxPrice) {
+        return false;
       }
 
+      if (device.batteryHours < filters.minBatteryHours) {
+        return false;
+      }
+
+      // 2. Fast Boolean sensor flags (O(1))
+      const { ecg, spO2, edaStress, bodyComposition, bloodPressure, gps, skinTemp } =
+        filters.requiredSensors;
+      if (ecg && !device.sensors.ecg) return false;
+      if (spO2 && !device.sensors.spO2) return false;
+      if (edaStress && !device.sensors.edaStress) return false;
+      if (bodyComposition && !device.sensors.bodyComposition) return false;
+      if (bloodPressure && !device.sensors.bloodPressure) return false;
+      if (gps && !device.sensors.gps) return false;
+      if (skinTemp && !device.sensors.skinTemp) return false;
+
+      // 3. Multi-select list checks (Small arrays O(k))
       if (filters.selectedBrands.length > 0 && !filters.selectedBrands.includes(device.brand)) {
         return false;
       }
@@ -125,23 +158,17 @@ export const WearablesView: React.FC<WearablesViewProps> = ({
         }
       }
 
-      if (device.priceUsd > filters.maxPrice) {
-        return false;
+      // 4. Text search query (Evaluated last only on survivors)
+      if (query !== '') {
+        const matchName = device.name.toLowerCase().includes(query);
+        const matchBrand = device.brand.toLowerCase().includes(query);
+        const matchDesc = device.description.toLowerCase().includes(query);
+        const matchPros = device.pros.some((p) => p.toLowerCase().includes(query));
+        const matchCons = device.cons.some((c) => c.toLowerCase().includes(query));
+        if (!matchName && !matchBrand && !matchDesc && !matchPros && !matchCons) {
+          return false;
+        }
       }
-
-      if (device.batteryHours < filters.minBatteryHours) {
-        return false;
-      }
-
-      const { ecg, spO2, edaStress, bodyComposition, bloodPressure, gps, skinTemp } =
-        filters.requiredSensors;
-      if (ecg && !device.sensors.ecg) return false;
-      if (spO2 && !device.sensors.spO2) return false;
-      if (edaStress && !device.sensors.edaStress) return false;
-      if (bodyComposition && !device.sensors.bodyComposition) return false;
-      if (bloodPressure && !device.sensors.bloodPressure) return false;
-      if (gps && !device.sensors.gps) return false;
-      if (skinTemp && !device.sensors.skinTemp) return false;
 
       return true;
     }).sort((a, b) => {
@@ -162,13 +189,18 @@ export const WearablesView: React.FC<WearablesViewProps> = ({
     });
   }, [filters]);
 
+  // Sync filtered count with parent/header
+  React.useEffect(() => {
+    onFilteredCountChange?.(filteredWearables.length);
+  }, [filteredWearables.length, onFilteredCountChange]);
+
   const selectedCompareDevices = useMemo(() => {
     return WEARABLES_DATA.filter((w) => selectedCompareIds.includes(w.id));
   }, [selectedCompareIds]);
 
-  const scrollToExplore = () => {
+  const scrollToExplore = useCallback(() => {
     exploreRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  }, []);
 
   return (
     <>
@@ -180,7 +212,7 @@ export const WearablesView: React.FC<WearablesViewProps> = ({
         {/* Recommendation Highlights */}
         <RecommendationBanner
           wearables={WEARABLES_DATA}
-          onSelectDevice={(device) => setDetailedDevice(device)}
+          onSelectDevice={handleOpenDetails}
         />
 
         {/* Filter Section */}
@@ -199,33 +231,49 @@ export const WearablesView: React.FC<WearablesViewProps> = ({
           totalDevicesCount={WEARABLES_DATA.length}
           selectedCompareIds={selectedCompareIds}
           onToggleCompare={handleToggleCompare}
-          onOpenDetails={(device) => setDetailedDevice(device)}
+          onOpenDetails={handleOpenDetails}
           filters={filters}
           setFilters={setFilters}
           onResetFilters={handleResetFilters}
         />
 
         {/* Strategic Decision Guide (4 steps) */}
-        <StrategicGuide />
+        <Suspense
+          fallback={
+            <div className="h-64 rounded-3xl bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 animate-pulse flex items-center justify-center text-slate-500 dark:text-slate-400 text-xs">
+              Cargando Guía Estratégica...
+            </div>
+          }
+        >
+          <StrategicGuide />
+        </Suspense>
       </main>
 
       {/* Side-by-Side Comparison Modal */}
-      <ComparisonModal
-        isOpen={isCompareModalOpen}
-        onClose={() => setIsCompareModalOpen(false)}
-        selectedDevices={selectedCompareDevices}
-        onRemoveDevice={handleRemoveCompareDevice}
-        onClearAll={handleClearCompareAll}
-      />
+      {isCompareModalOpen && (
+        <Suspense fallback={null}>
+          <ComparisonModal
+            isOpen={isCompareModalOpen}
+            onClose={handleCloseCompareModal}
+            selectedDevices={selectedCompareDevices}
+            onRemoveDevice={handleRemoveCompareDevice}
+            onClearAll={handleClearCompareAll}
+          />
+        </Suspense>
+      )}
 
       {/* Single Device Detail Modal */}
-      <DeviceDetailModal
-        device={detailedDevice}
-        onClose={() => setDetailedDevice(null)}
-        onToggleCompare={handleToggleCompare}
-        isSelectedForCompare={Boolean(detailedDevice && selectedCompareIds.includes(detailedDevice.id))}
-        isCompareMaxReached={selectedCompareIds.length >= 4}
-      />
+      {detailedDevice && (
+        <Suspense fallback={null}>
+          <DeviceDetailModal
+            device={detailedDevice}
+            onClose={handleCloseDetails}
+            onToggleCompare={handleToggleCompare}
+            isSelectedForCompare={selectedCompareIds.includes(detailedDevice.id)}
+            isCompareMaxReached={selectedCompareIds.length >= 4}
+          />
+        </Suspense>
+      )}
     </>
   );
-};
+});

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Activity, ShieldCheck, Heart, FileText } from 'lucide-react';
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC = React.memo(() => {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 px-4 sm:px-6 lg:px-10 xl:px-12 mt-16">
+    <footer className="bg-slate-100 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 py-12 px-4 sm:px-6 lg:px-10 xl:px-12 mt-16 transition-colors duration-200">
       <div className="w-full max-w-[1920px] mx-auto space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Col 1: Brand info */}
@@ -12,29 +12,29 @@ export const Footer: React.FC = () => {
               <div className="p-2 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-600 text-white">
                 <Activity className="w-5 h-5" />
               </div>
-              <span className="text-lg font-black text-white tracking-tight">
-                Comparativa Wearables 2026
+              <span className="text-lg font-black text-slate-900 dark:text-white tracking-tight">
+                Comparativa Tech 2026 (Wearables & E-readers)
               </span>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed max-w-md">
-              Plataforma independiente de análisis técnico y comparativa multidimensional de smartwatches, pulseras biométricas y anillos inteligentes. Datos extraídos de la auditoría técnica de julio de 2026.
+            <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
+              Plataforma independiente de análisis técnico y comparativa multidimensional de smartwatches, pulseras biométricas, anillos inteligentes y lectores de tinta electrónica. Datos extraídos de la auditoría técnica de agosto de 2026.
             </p>
           </div>
 
           {/* Col 2: Metodología */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Metodología</h4>
-            <ul className="text-xs space-y-1.5 text-slate-400">
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Metodología</h4>
+            <ul className="text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
               <li className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-cyan-400" />
-                <span>Auditoría de senores FDA / CE</span>
+                <ShieldCheck className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
+                <span>Auditoría de sensores FDA / CE</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                <FileText className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                 <span>Cálculo TCO a 36 meses</span>
               </li>
               <li className="flex items-center gap-1.5">
-                <Activity className="w-3.5 h-3.5 text-cyan-400" />
+                <Activity className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
                 <span>Validación de precisión de VFC</span>
               </li>
             </ul>
@@ -42,16 +42,16 @@ export const Footer: React.FC = () => {
 
           {/* Col 3: Enlaces y Créditos */}
           <div className="space-y-2">
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider">Proyecto</h4>
-            <ul className="text-xs space-y-1.5 text-slate-400">
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">Proyecto</h4>
+            <ul className="text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
               <li>Web App desarrollada con React + Vite + TS + Tailwind CSS</li>
               <li>Repositorio: GitHub Jelimer/Comparativa-Wearables</li>
-              <li>Actualizado: Julio 2026</li>
+              <li>Actualizado: Agosto 2026</li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-6 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <div className="pt-6 border-t border-slate-200 dark:border-slate-900 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 dark:text-slate-500 gap-4">
           <p>© 2026 Comparativa de Wearables. Todos los derechos reservados.</p>
           <div className="flex items-center gap-1">
             <span>Diseñado para análisis de salud con</span>
@@ -62,4 +62,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});

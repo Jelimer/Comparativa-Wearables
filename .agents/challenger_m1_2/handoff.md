@@ -1,67 +1,57 @@
-# Handoff Report — Challenger M1-2 (`teamwork_preview_challenger`)
+# Handoff Report — Challenger 2 (Milestone 1)
 
-## Verdict: APPROVE
+## 1. Observation
 
----
-
-### 1. Observation
-- **File Inspected**: `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\informe_wearables_salud.md` (393 lines, 32,957 bytes).
-- **Reference File**: `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\ORIGINAL_REQUEST.md` (111 lines, 7,659 bytes).
-- **Empirical Validation Tools Executed**:
-  - `verify_markdown.py`: Scanned markdown syntax, header jumping, table column counts, callouts, and unauthorized brand occurrences. Result: 0 syntax issues.
-  - `deep_verify_markdown.py`: Deep-parsed 34 headers, 34 GitHub callout blocks (`> [!IMPORTANT]`, `> [!WARNING]`, `> [!NOTE]`, `> [!TIP]`), 4 markdown tables (29 total data rows), and 23 H3 sub-headers. Output:
-    - Table 1 (L308): 4 columns, 7 rows, valid separator (`| :--- | :--- | :--- | :--- |`).
-    - Table 2 (L319): 4 columns, 6 rows, valid separator (`| :--- | :--- | :--- | :--- |`).
-    - Table 3 (L329): 4 columns, 4 rows, valid separator (`| :--- | :--- | :--- | :--- |`).
-    - Table 4 (L356): 4 columns, 12 rows, valid separator (`| :--- | :--- | :--- | :--- |`).
-  - `check_data_consistency.py`: Verified 100% device representation between text sections and comparative tables.
-- **Brand Compliance Check**:
-  - All mentioned brands strictly match the authorized list: Google/Fitbit, Garmin, Samsung, WHOOP, Oura, Signal Ring, RingConn, Apple, Xiaomi.
-  - Whoop is fully integrated in section 3.5 (`Whoop 5.0 y Whoop MG`), Table 2, Table 4, section 8, and section 9.
-  - 0 unauthorized brands detected.
-- **August 2026 Market Audit Integration**:
-  - Google Pixel Watch 5 (L10: August 12, 2026 launch)
-  - Garmin CIRQA Smart Band (L96: August 2026 Live HR Streaming update)
-  - Samsung Galaxy Watch Ultra 2 & Watch 9 (L116: August 7, 2026 retail availability)
-  - Samsung Galaxy Ring (L135: August 2026 FDA Sleep Apnea approval update)
-  - Oura Ring 5 (L178: May 2026 launch & June 2026 Health Panels)
-  - Signal Ring (L195: July 2026 announcement & Oct 2026 shipping)
-  - Xiaomi Smart Band 10 Pro (L285: May 2026 launch)
+- **Compilación de Producción**:
+  - Comando: `npm run build`
+  - Resultado: Código de salida 0. `1607 modules transformed`. Bundles generados: `dist/index.html` (1.04 kB), `dist/assets/index-Cb0T2FFj.css` (46.68 kB), `dist/assets/index-DNqcrzAj.js` (367.10 kB). Cero errores de TypeScript.
+- **Auditoría de Marcas y Catálogos**:
+  - `src/data/wearables.ts`: 21 elementos exactos (`google-pixel-watch-5`, `google-pixel-watch-4`, `fitbit-sense-2`, `fitbit-charge-6`, `fitbit-air`, `garmin-epix-pro`, `garmin-cirqa`, `samsung-galaxy-watch-ultra-2`, `samsung-galaxy-watch-9`, `samsung-galaxy-ring`, `oura-ring-5`, `oura-ring-4`, `signal-ring`, `ringconn-gen-2`, `whoop-5-0`, `whoop-mg`, `whoop-4`, `apple-watch-ultra-3`, `apple-watch-series-10`, `xiaomi-smart-band-10-pro`, `xiaomi-smart-band-9`). Todas las marcas pertenecen estrictamente al conjunto autorizado: Google/Fitbit, Garmin, Samsung, Oura, Signal, RingConn, Whoop, Apple, Xiaomi.
+  - `src/data/ereaders.ts`: 18 elementos exactos (`kindle-paperwhite`, `kindle-paperwhite-signature`, `kindle-basic`, `kindle-colorsoft`, `kindle-oasis`, `kindle-scribe`, `remarkable-2`, `remarkable-paper-pro`, `lenovo-smart-paper`, `kobo-clara-bw`, `kobo-clara-colour`, `kobo-libra-colour`, `kobo-sage`, `kobo-elipsa-2e`, `boox-palma`, `boox-page`, `boox-note-air3-c`, `pocketbook-era-color`). Todas las marcas pertenecen estrictamente al conjunto autorizado: Amazon Kindle, reMarkable, Lenovo, Rakuten Kobo, Onyx BOOX, PocketBook.
+- **Calculadora TCO en `src/components/StrategicGuide.tsx` (Líneas 30-41)**:
+  - `getMonthlySubPrice` maneja explícitamente:
+    - `whoop-4` y `whoop-5-0`: $30/mes (Sub 36m: $1,080 | TCO: $1,319 y $1,329 USD)
+    - `whoop-mg`: $35/mes (Sub 36m: $1,260 | TCO: $1,559 USD)
+    - `oura-ring-4` y `oura-ring-5`: $6/mes (Sub 36m: $216 | TCO: $515 y $565 USD)
+    - Dispositivos sin cuota: $0/mes (Sub 36m: $0 | TCO: hardware inicial)
+- **Filtros por Defecto y Sincronización Reactiva**:
+  - `src/components/EreadersView.tsx` (Línea 24): `INITIAL_EREADER_FILTERS.maxPrice = 600`. El modelo más costoso del catálogo es `remarkable-paper-pro` ($579 USD), por lo que el 100% de los e-readers (18/18) son visibles al montar la vista.
+  - `src/components/WearablesView.tsx` (Línea 18): `INITIAL_FILTERS.maxPrice = 1000`. El modelo más costoso es `garmin-epix-pro` ($899 USD), por lo que el 100% de los wearables (21/21) son visibles al montar la vista.
+  - Sincronización en tiempo real vía `onFilteredCountChange` hacia `App.tsx` y `Header.tsx`.
+- **Badges y Fechas**:
+  - Referencias actualizadas a "Agosto 2026" / "Edición 2026" en `Header.tsx`, `HeroSection.tsx`, `EreaderHero.tsx` y `Footer.tsx`.
+  - Conteo explícito de 21 wearables en `HeroSection.tsx` y 18 e-readers en `EreaderHero.tsx`.
 
 ---
 
-### 2. Logic Chain
-1. **Header & Document Structure**:
-   - Observation: 34 headers following strict H1 -> H2 -> H3 hierarchy (e.g. H1 title at L1, H2 sections 1 through 9 at lines L7, L76, L113, L154, L176, L227, L266, L305, L338, L385, and H3 device headers under each section).
-   - Inference: Document navigation and rendering hierarchy are structural and compliant with CommonMark/GFM specifications.
+## 2. Logic Chain
 
-2. **Table Column Alignment & Rendering**:
-   - Observation: All 4 tables use explicit column alignment syntax (`| :--- | :--- | :--- | :--- |`). Every row has exactly 4 pipe-delimited cells matching the header column count. Inline HTML breaks (`<br>`) are used appropriately inside table cells for multi-line formatting without disrupting markdown table syntax.
-   - Inference: Tables will render cleanly across all Markdown parsers, GitHub previewers, and web tools.
-
-3. **Callout Alert Blocks**:
-   - Observation: 34 GitHub Flavored Markdown alerts (`> [!IMPORTANT]`, `> [!WARNING]`, `> [!NOTE]`, `> [!TIP]`) were parsed. Each alert block maintains consistent line-prefix quoting (`> `) throughout its body.
-   - Inference: Callout blocks render properly as visual alert cards on GitHub and GFM-compliant renderers.
-
-4. **Brand Exclusivity & Content Requirements**:
-   - Observation: Text search for non-authorized competitor brands (e.g., Amazfit, Coros, Huawei, Withings, etc.) yielded zero occurrences. Whoop 5.0 and Whoop MG are thoroughly covered.
-   - Inference: Strict compliance with `ORIGINAL_REQUEST.md` brand restriction rules.
+1. La compilación exitosa con `npm run build` confirma que no existen inconsistencias de tipos en TypeScript, imports rotos ni errores de sintaxis en ninguno de los componentes o datasets.
+2. La inspección línea por línea de `wearables.ts` y `ereaders.ts` demuestra que todos los modelos corresponden a marcas explícitamente autorizadas en `ORIGINAL_REQUEST.md`, sin inclusiones no permitidas ni marcas desautorizadas.
+3. El análisis de `getMonthlySubPrice` en `StrategicGuide.tsx` cubre todos los dispositivos con `subscriptionRequired: true`, proporcionando cálculos matemáticamente exactos a 36 meses sin casos omitidos.
+4. El ajuste de `maxPrice: 600` en `INITIAL_EREADER_FILTERS` resuelve cualquier truncamiento inicial de modelos tope de gama como el *reMarkable Paper Pro* ($579) y *BOOX Note Air3 C* ($499), garantizando que los 18 dispositivos se muestren de forma predeterminada.
+5. La elevación (*hoisting*) de la normalización del término de búsqueda y el orden de evaluación por costo computacional ($O(1)$ numérico → $O(1)$ booleano → $O(k)$ array → $O(s)$ subcadenas) optimiza el tiempo de CPU durante la interacción con la barra de filtros.
 
 ---
 
-### 3. Caveats
-- No caveats. The empirical verification covered 100% of the lines in `informe_wearables_salud.md`.
+## 3. Caveats
+
+- Los subsiguientes Milestones (M2: Code-splitting/memoización, M3: UI/UX/Temas, M4: Despliegue) abordarán la optimización de tamaño de bundle mediante `React.lazy` y la modularización de modales pesados, según lo planificado en `PROJECT.md`.
 
 ---
 
-### 4. Conclusion
-The file `informe_wearables_salud.md` passes all stress tests for markdown syntax validity, table column alignment, callout block structure, brand compliance, and market audit completeness for August 2026.
+## 4. Conclusion
 
-**Final Verdict**: **APPROVE**
+**Veredicto**: **`APPROVE`**
+
+El Milestone 1 cumple al 100% con los criterios de aceptación técnicos, matemáticos, de arquitectura de datos y de exclusividad de marca. No se detectaron anomalías, regresiones ni vulnerabilidades.
 
 ---
 
-### 5. Verification Method
-To independently re-verify:
-1. Run `python c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\challenger_m1_2\deep_verify_markdown.py` to inspect header structure, table column counts, and callout block integrity.
-2. Run `python c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\challenger_m1_2\check_data_consistency.py` to confirm device mapping across text and tables.
+## 5. Verification Method
+
+Para verificar independientemente:
+1. Ejecutar `npm run build` en el directorio raíz del proyecto para comprobar salida con código 0 y 0 errores de compilación.
+2. Inspeccionar `src/data/wearables.ts` (21 modelos) y `src/data/ereaders.ts` (18 modelos).
+3. Inspeccionar `src/components/StrategicGuide.tsx` (Líneas 30-41) para comprobar la función `getMonthlySubPrice`.
+4. Inspeccionar `src/components/EreadersView.tsx` (Línea 24) y `src/components/WearablesView.tsx` (Línea 18) para comprobar los filtros iniciales.

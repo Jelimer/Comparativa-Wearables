@@ -1,5 +1,7 @@
 import React from 'react';
 import { Activity, Moon, Sun, ShieldCheck, Cpu, Layers, BookOpen } from 'lucide-react';
+import { WEARABLES_DATA } from '../data/wearables';
+import { EREADERS_DATA } from '../data/ereaders';
 
 interface HeaderProps {
   activeSection: 'wearables' | 'ereaders';
@@ -12,7 +14,7 @@ interface HeaderProps {
   onOpenCompare: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({
+export const Header: React.FC<HeaderProps> = React.memo(({
   activeSection,
   setActiveSection,
   darkMode,
@@ -23,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenCompare,
 }) => {
   return (
-    <header className="sticky top-0 z-30 backdrop-blur-md bg-slate-900/80 dark:bg-slate-950/80 border-b border-slate-800 transition-colors">
+    <header className="sticky top-0 z-30 backdrop-blur-md bg-white/85 dark:bg-slate-950/85 border-b border-slate-200 dark:border-slate-800 transition-colors duration-200">
       <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 py-3 flex flex-wrap items-center justify-between gap-4">
         {/* Logo and Navigation Tabs */}
         <div className="flex items-center space-x-4">
@@ -43,33 +45,33 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-500 bg-clip-text text-transparent">
+                <h1 className="text-xl sm:text-2xl font-extrabold tracking-tight bg-gradient-to-r from-cyan-500 via-sky-500 to-blue-600 dark:from-cyan-400 dark:via-sky-300 dark:to-blue-500 bg-clip-text text-transparent">
                   Comparativa Tech
                 </h1>
-                <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-800 text-slate-300 border border-slate-700 shadow-sm">
+                <span className="px-2.5 py-0.5 text-xs font-semibold rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 shadow-sm">
                   Edición 2026
                 </span>
               </div>
-              <p className="text-xs text-slate-400 font-medium hidden sm:block">
+              <p className="text-xs text-slate-500 dark:text-slate-400 font-medium hidden sm:block">
                 Plataforma de Análisis Objetivo & Comparativas Técnicas
               </p>
             </div>
           </div>
 
           {/* Section Navigation Pills */}
-          <div className="flex items-center p-1 rounded-2xl bg-slate-950/80 border border-slate-800 shadow-inner ml-2">
+          <div className="flex items-center p-1 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 shadow-inner ml-2">
             <button
               onClick={() => setActiveSection('wearables')}
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeSection === 'wearables'
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25'
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <Activity className="w-4 h-4" />
               <span>Wearables</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-slate-900/60 text-slate-200">
-                15
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-slate-200 dark:bg-slate-900/60 text-slate-700 dark:text-slate-200 font-semibold">
+                {WEARABLES_DATA.length}
               </span>
             </button>
 
@@ -78,13 +80,13 @@ export const Header: React.FC<HeaderProps> = ({
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeSection === 'ereaders'
                   ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-md shadow-amber-500/25'
-                  : 'text-slate-400 hover:text-white'
+                  : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
               <BookOpen className="w-4 h-4" />
               <span>E-readers / Kindles</span>
-              <span className="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-400/20 text-amber-300 font-extrabold">
-                18
+              <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-amber-100 dark:bg-amber-400/20 text-amber-800 dark:text-amber-300 font-extrabold">
+                {EREADERS_DATA.length}
               </span>
             </button>
           </div>
@@ -92,20 +94,20 @@ export const Header: React.FC<HeaderProps> = ({
 
         {/* Quick Stats Badges */}
         <div className="hidden xl:flex items-center gap-3 text-xs">
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/70 border border-slate-700/60 text-slate-300">
-            <Cpu className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">
+            <Cpu className="w-3.5 h-3.5 text-cyan-600 dark:text-cyan-400" />
             <span>
-              <strong className="text-white">{totalDevices}</strong> Modelos en catálogo
+              <strong className="text-slate-900 dark:text-white">{totalDevices}</strong> Modelos en catálogo
             </span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/70 border border-slate-700/60 text-slate-300">
-            <Layers className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">
+            <Layers className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
             <span>
-              <strong className="text-white">{filteredCount}</strong> Filtrados
+              <strong className="text-slate-900 dark:text-white">{filteredCount}</strong> Filtrados
             </span>
           </div>
-          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/70 border border-slate-700/60 text-slate-300">
-            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300">
+            <ShieldCheck className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
             <span>Datos Técnicos Auditados 2026</span>
           </div>
         </div>
@@ -121,7 +123,7 @@ export const Header: React.FC<HeaderProps> = ({
                 ? activeSection === 'wearables'
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 hover:shadow-cyan-500/40 hover:scale-[1.02] cursor-pointer'
                   : 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-lg shadow-amber-500/25 hover:shadow-amber-500/40 hover:scale-[1.02] cursor-pointer'
-                : 'bg-slate-800 text-slate-500 cursor-not-allowed border border-slate-700'
+                : 'bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed border border-slate-200 dark:border-slate-700'
             }`}
           >
             <span>Comparar</span>
@@ -131,7 +133,7 @@ export const Header: React.FC<HeaderProps> = ({
                   ? activeSection === 'wearables'
                     ? 'bg-white text-slate-900'
                     : 'bg-slate-950 text-white'
-                  : 'bg-slate-700 text-slate-400'
+                  : 'bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400'
               }`}
             >
               {compareCount}
@@ -142,12 +144,12 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             onClick={() => setDarkMode(!darkMode)}
             title={darkMode ? 'Cambiar a Modo Claro' : 'Cambiar a Modo Oscuro'}
-            className="p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition-colors cursor-pointer"
+            className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer"
           >
-            {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-400" />}
+            {darkMode ? <Sun className="w-5 h-5 text-amber-400" /> : <Moon className="w-5 h-5 text-indigo-600" />}
           </button>
         </div>
       </div>
     </header>
   );
-};
+});

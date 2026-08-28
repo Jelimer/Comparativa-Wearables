@@ -1,70 +1,42 @@
-# Handoff Report - Challenger M1-1 (Empirical Audit)
-
-**Verdict**: `REQUEST_CHANGES`
-
----
+# Handoff Report — Challenger 1 (Milestone 1)
 
 ## 1. Observation
-
-### A. Brand Compliance
-- Executed empirical regex check over `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\informe_wearables_salud.md` and `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\src\data\wearables.ts` for forbidden competitor brands (e.g. Ultrahuman, Circular, Withings, Amazfit, Huawei, Coros, Polar).
-- **Result**: 0 forbidden brands detected. All 9 authorized brands (Google/Fitbit, Garmin, Samsung, Oura, Whoop, RingConn, Signal Ring, Apple, Xiaomi) are respected.
-
-### B. Image Asset Integrity & Build Verification
-- Verified all `imageUrl` references in `src/data/wearables.ts` against physical filesystem paths in `c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\public\`.
-- **Result**: All 15 referenced SVG image paths exist on disk.
-- Ran `npx tsc --noEmit` on the codebase.
-- **Result**: Command exited with code 0 (zero TypeScript compilation errors).
-
-### C. Device & Market Discrepancies (August 2026 Audit Window)
-1. **Dataset Outdated / Missing Devices (`src/data/wearables.ts`)**:
-   - `informe_wearables_salud.md` features **Google Pixel Watch 5** (line 10), but `src/data/wearables.ts` line 6 still lists `'Google Pixel Watch 4'`.
-   - `informe_wearables_salud.md` features **Whoop 5.0 / Whoop MG** (line 157), but `src/data/wearables.ts` line 454 still lists `'Whoop 4.0 / Whoop Peak'`.
-   - `informe_wearables_salud.md` features **Oura Ring 5** (line 178), but `src/data/wearables.ts` line 343 still lists `'Oura Ring 4'`.
-   - `informe_wearables_salud.md` features **Xiaomi Smart Band 10 Pro** (line 285), but `src/data/wearables.ts` lacks Xiaomi Smart Band 10 Pro entirely (only has Xiaomi Smart Band 9).
-   - `informe_wearables_salud.md` features **Apple Watch Ultra 3** (line 246), but `src/data/wearables.ts` lacks Apple Watch Ultra 3 entirely.
-
-2. **Pricing Discrepancies**:
-   - **Signal Ring**: `informe_wearables_salud.md` line 196 states `$399 USD`, but `src/data/wearables.ts` line 383 lists `priceUsd: 299` ($100 mismatch).
-   - **Google Pixel Watch 5**: `informe_wearables_salud.md` line 310 lists `~$349 USD`, but official August 12, 2026 launch MSRP is **$399 USD** (41mm) / **$429 USD** (45mm).
-   - **Samsung Galaxy Watch Ultra 2**: `informe_wearables_salud.md` line 313 lists `~$649 USD`, but official August 7, 2026 launch MSRP is **$699 USD**.
-   - **Samsung Galaxy Watch 9**: `informe_wearables_salud.md` line 314 lists `~$299 USD`, but official launch MSRP starts at **$379.99 USD**.
-   - **Fitbit Air**: `informe_wearables_salud.md` line 322 and `src/data/wearables.ts` line 123 list `~$129 USD`, but official MSRP is **$99.99 USD**.
-
----
+- **Dataset de Wearables (`src/data/wearables.ts:3-785`)**: Contiene exactamente 21 dispositivos (`WEARABLES_DATA.length === 21`) con identificadores únicos y precios entre $49 (*Xiaomi Smart Band 9*) y $899 (*Garmin Epix Pro Gen 2*).
+- **Dataset de E-readers (`src/data/ereaders.ts:3-798`)**: Contiene exactamente 18 dispositivos (`EREADERS_DATA.length === 18`) con identificadores únicos y precios entre $99 (*Kindle Básico*) y $579 (*reMarkable Paper Pro*).
+- **Límites de filtros por defecto**:
+  - En `src/components/WearablesView.tsx:18`: `INITIAL_FILTERS.maxPrice = 1000`.
+  - En `src/components/EreadersView.tsx:24`: `INITIAL_EREADER_FILTERS.maxPrice = 600`.
+- **Ejecución de suite empírica automatizada (`tests/test_m1_comprehensive.mjs`)**:
+  - Comando: `node tests/test_m1_comprehensive.mjs`
+  - Resultado: `TOTAL DE PRUEBAS EJECUTADAS: 62 | EXITOSAS: 62 | FALLIDAS: 0 | Código de salida: 0`.
+- **Compilación de producción**:
+  - Comando: `npm run build` (`tsc && vite build`)
+  - Resultado: Código de salida 0, 1607 módulos transformados con éxito sin errores de TypeScript ni linter.
 
 ## 2. Logic Chain
-
-1. **Premise**: Requirement R3 of the August 2026 follow-up task explicitly states: *"El dataset de la aplicación web debe reflejar los mismos cambios que el documento de texto."*
-2. **Observation**: The markdown report (`informe_wearables_salud.md`) was updated with August 2026 devices (Pixel Watch 5, Whoop 5.0 / MG, Oura Ring 5, Xiaomi Smart Band 10 Pro, Apple Watch Ultra 3), but the React dataset (`src/data/wearables.ts`) remains on previous-generation models (Pixel Watch 4, Whoop 4.0, Oura Ring 4) and omits Xiaomi Smart Band 10 Pro and Apple Watch Ultra 3.
-3. **Inference**: The web application display will be out of sync with the report and will display stale device data to users.
-4. **Premise**: Financial data presented in comparisons must be accurate to MSRP launch pricing in August 2026 and consistent across report text and web dataset.
-5. **Observation**: Signal Ring is $399 in MD vs $299 in TS; Pixel Watch 5 is $349 in MD vs $399 MSRP; Galaxy Watch Ultra 2 is $649 in MD vs $699 MSRP; Galaxy Watch 9 is $299 in MD vs $379.99 MSRP; Fitbit Air is $129 in MD/TS vs $99.99 MSRP.
-6. **Inference**: The pricing comparison tables contain inaccuracies that misinform the user regarding true acquisition costs.
-
----
+1. *Dado que* `max(wearables.priceUsd) = 899` y `INITIAL_FILTERS.maxPrice = 1000`, el estado inicial muestra el 100% de los 21 wearables sin exclusión involuntaria (observado en prueba de aserción `INITIAL_STATE`).
+2. *Dado que* `max(ereaders.priceUsd) = 579` y `INITIAL_EREADER_FILTERS.maxPrice = 600`, el estado inicial muestra el 100% de los 18 e-readers, resolviendo la exclusión previa del *reMarkable Paper Pro* ($579) (observado en prueba `PRICE_BOUNDS`).
+3. *Dado que* el motor de búsqueda en `WearablesView.tsx:94` y `EreadersView.tsx:92` implementa `const query = filters.searchQuery.trim().toLowerCase()` hoisted fuera del predicado de filtrado, las comparaciones son insensibles a mayúsculas/minúsculas y resistentes a espacios en blanco (observado en suite `SEARCH_NORMALIZATION`).
+4. *Dado que* los filtros por facetas (marcas, categorías, sensores, ecosistemas) se evalúan antes de la búsqueda de subcadenas y filtran con precisión de conjunto, la selección simultánea de múltiples criterios opera con lógica booleana determinista (observado en suite `COMPLEX_MULTI_FILTER`).
+5. *Dado que* `npm run build` concluye con código de salida 0 y 0 errores de tipado, la integridad de tipos en TypeScript queda formalmente asegurada.
 
 ## 3. Caveats
-
-- Software features and firmware updates (e.g. FDA sleep apnea detection on Galaxy Ring) rely on official August 2026 release announcements confirmed via web search.
-- No caveats regarding build safety: local build checks pass without compilation errors.
-
----
+- No se detectaron anomalías funcionales ni de tipado.
+- Se asume que en los siguientes hitos (Milestone 2 a Milestone 4) se abordarán la carga diferida (`React.lazy`), la memoización de tarjetas (`React.memo`) y las mejoras de contraste de modo claro/oscuro ya calendarizadas en `PROJECT.md`.
 
 ## 4. Conclusion
-
-**Verdict**: `REQUEST_CHANGES`
-
-The report correctly omits forbidden brands and passes TypeScript compilation, but fails acceptance criteria due to:
-1. Critical dataset-report misalignment (`wearables.ts` is missing Pixel Watch 5, Whoop 5.0/MG, Oura Ring 5, Xiaomi Smart Band 10 Pro, and Apple Watch Ultra 3).
-2. Internal price conflict on Signal Ring ($399 vs $299).
-3. Market price inaccuracies for Pixel Watch 5 ($399 MSRP), Galaxy Watch Ultra 2 ($699 MSRP), Galaxy Watch 9 ($379.99 MSRP), and Fitbit Air ($99.99 MSRP).
-
----
+**VEREDICTO: `APPROVE`**.
+Los cambios correspondientes al Milestone 1 satisfacen íntegramente los requisitos de sincronización de catálogo (21 wearables y 18 e-readers a Agosto 2026), rangos de precios por defecto (0-1000$ y 0-600$), optimización de búsqueda hoisted y consistencia de contadores. Se autoriza el avance al Milestone 2.
 
 ## 5. Verification Method
-
-To verify these findings independently:
-1. Run `python c:\Users\jelim\.gemini\antigravity\scratch\comparativa-wearables\.agents\challenger_m1_1\test_audit.py` to verify local images and list device headers.
-2. Inspect `src/data/wearables.ts` lines 5, 343, 383, 454 to confirm outdated model IDs (`google-pixel-watch-4`, `oura-ring-4`, `whoop-4`) and Signal Ring price ($299).
-3. Run `npx tsc --noEmit` from root directory to verify build compilation status.
+1. **Ejecutar suite de pruebas empíricas**:
+   ```bash
+   node tests/test_m1_comprehensive.mjs
+   ```
+   *Criterio de éxito*: Salida esperada `TOTAL DE PRUEBAS EJECUTADAS: 62 | EXITOSAS: 62 | FALLIDAS: 0` con código de salida 0.
+2. **Ejecutar compilación TypeScript y Vite**:
+   ```bash
+   npm run build
+   ```
+   *Criterio de éxito*: Compilación limpia con código de salida 0.
+3. **Condición de invalidación**: Cualquier fallo en la suite de 62 aserciones o error de TypeScript en `npm run build`.
