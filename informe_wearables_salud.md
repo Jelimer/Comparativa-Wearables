@@ -1,4 +1,4 @@
-# Informe Comparativo: Dispositivos de Monitoreo de Salud y Rendimiento (Actualizado Agosto 2026)
+# Informe Comparativo: Dispositivos de Monitoreo de Salud y Rendimiento (Actualizado Octubre 2026)
 
 Este documento detalla exhaustivamente las opciones de *wearables* enfocados en la recolección de datos fisiológicos. Dado que no tienes restricciones de presupuesto y cuentas con **Google AI Pro** (lo que te da acceso gratuito a Fitbit Premium), la comparación detalla exactamente qué sensores aporta cada dispositivo, qué carencias tienen y los últimos lanzamientos y competidores del mercado.
 
@@ -7,8 +7,8 @@ Este documento detalla exhaustivamente las opciones de *wearables* enfocados en 
 ## 1. 🔵 Ecosistema Alphabet Inc. (Google / Fitbit)
 *Al tener Google AI Pro, este ecosistema no te requiere pago mensual adicional para ver analíticas avanzadas.*
 
-### ⌚ Google Pixel Watch 5 (¡Nuevo Lanzamiento Agosto 2026!)
-El nuevo buque insignia de Google (anunciado el 12 de agosto de 2026). Un *smartwatch* de alto rendimiento impulsado por el chip Snapdragon W5 Gen 2, 3 GB de RAM y Gemini AI ejecutable localmente sin conexión a internet. Reemplaza al Pixel Watch 4 como la opción principal del ecosistema Alphabet.
+### ⌚ Google Pixel Watch 5 (Gama Alta — Otoño 2026)
+El buque insignia de Google para la segunda mitad de 2026. Un *smartwatch* de alto rendimiento impulsado por el chip Snapdragon W5 Gen 2, 3 GB de RAM y Gemini AI ejecutable localmente sin conexión a internet. Reemplaza al Pixel Watch 4 como la opción principal del ecosistema Alphabet.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
@@ -93,12 +93,12 @@ Computadoras corporales diseñadas para el máximo rendimiento y recolección ma
 > - Sensor de composición corporal.
 > - Funciones de *smartwatch* avanzadas (responder mensajes por voz es limitado, sin integración nativa de Google Assistant).
 
-### 💨 Garmin CIRQA Smart Band (¡Actualizado Agosto 2026!)
-El primer rastreador de Garmin sin pantalla, lanzado el 21 de julio de 2026 y actualizado en agosto de 2026. Es el competidor directo del Fitbit Air en el segmento de rastreadores discretos sin pantalla, pero ofreciendo analíticas avanzadas sin cuotas mensuales.
+### 💨 Garmin CIRQA Smart Band (Edición Actualizada 2026)
+El primer rastreador de Garmin sin pantalla, lanzado a mediados de 2026 y optimizado con transmisión de datos en vivo. Es el competidor directo del Fitbit Air en el segmento de rastreadores discretos sin pantalla, pero ofreciendo analíticas avanzadas sin cuotas mensuales.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
-> - **Transmisión de Pulso en Tiempo Real (Actualización Agosto 2026):** Permite transmitir en vivo el ritmo cardíaco a la pantalla del teléfono durante entrenamientos sin costo ni suscripción (*Live Heart Rate Streaming*).
+> - **Transmisión de Pulso en Tiempo Real (Live HR Streaming):** Permite transmitir en vivo el ritmo cardíaco a la pantalla del teléfono durante entrenamientos sin costo ni suscripción (*Live Heart Rate Streaming*).
 > - **Cero distracciones:** Sin pantalla, se enfoca al 100% en la recolección pasiva de datos (VFC, estrés, Pulse Ox, sueño y temperatura).
 > - **Sin Suscripción:** A diferencia de modelos con suscripción obligatoria como Oura Ring 4, no pagas mensualidad por tus datos (acceso total en Garmin Connect).
 > - Batería de 10 días, diseño en polímero reforzado y opción de usarse en el brazo o la muñeca.
@@ -113,11 +113,11 @@ El primer rastreador de Garmin sin pantalla, lanzado el 21 de julio de 2026 y ac
 ## 3. 🟣 Ecosistema Samsung Electronics
 *Ideal si buscas radiografiar los componentes de tu cuerpo físico.*
 
-### 🔋 Samsung Galaxy Watch Ultra 2 y Watch 9 (¡Disponibles desde el 7 de Agosto de 2026!)
+### 🔋 Samsung Galaxy Watch Ultra 2 y Watch 9 (Consolidados en Mercado)
 El reloj más extremo, potente y resistente en la historia del mundo Android, renovado con su versión Ultra 2, junto a la alternativa urbana ligera **Galaxy Watch 9**.
 
 > [!NOTE]
-> **Disponibilidad Comercial Oficial (7 de Agosto de 2026):** Tras su anuncio en la conferencia Unpacked, el **Galaxy Watch Ultra 2** y el **Galaxy Watch 9** se lanzaron oficialmente a la venta física y entregas globales el **7 de agosto de 2026**. Ambos incorporan el procesador de 3nm *Snapdragon Wear Elite*, pantalla de máximo brillo (5,000 nits en Ultra 2 / 3,000 nits en Watch 9) y la función "Vitals" que rastrea 5 biomarcadores simultáneos. El **Galaxy Watch 9** ofrece una opción urbana delgada con chasis de aluminio ($379.99 USD) equipada con el mismo sensor BioActivo 3-en-1.
+> **Disponibilidad Comercial Plena:** El **Galaxy Watch Ultra 2** y el **Galaxy Watch 9** se encuentran plenamente consolidados con entregas globales inmediatas. Ambos incorporan el procesador de 3nm *Snapdragon Wear Elite*, pantalla de máximo brillo (5,000 nits en Ultra 2 / 3,000 nits en Watch 9) y la función "Vitals" que rastrea 5 biomarcadores simultáneos. El **Galaxy Watch 9** ofrece una opción urbana delgada con chasis de aluminio ($379.99 USD) equipada con el mismo sensor BioActivo 3-en-1.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
@@ -132,12 +132,12 @@ El reloj más extremo, potente y resistente en la historia del mundo Android, re
 > - El Ultra 2 es masivo y muy grueso (el Watch 9 resuelve esto con un perfil más delgado).
 > - Las métricas de recuperación siguen siendo ligeramente menos profundas que las de Garmin.
 
-### 💍 Samsung Galaxy Ring (¡Actualización FDA Agosto 2026!)
+### 💍 Samsung Galaxy Ring (Detección FDA Activa)
 El anillo inteligente de Samsung para monitorización silenciosa y sin suscripciones.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
-> - **Detección de Apnea del Sueño Aprobada por la FDA (Actualización Agosto 2026):** Incorporada mediante actualización de firmware de Samsung Health para monitoreo continuo del sueño.
+> - **Detección de Apnea del Sueño Aprobada por la FDA:** Plenamente integrada en Samsung Health para monitoreo continuo del sueño y alertas nocturnas.
 > - Integración nativa con Samsung Health y el algoritmo de "Puntuación de Vitalidad".
 > - Mide temperatura de la piel, oxígeno en sangre, ritmo cardíaco y calidad de sueño.
 > - Diseño ultraligero en titanio, ideal para dormir cómodamente.
@@ -192,8 +192,8 @@ El estándar de oro histórico para el análisis nocturno y de salud preventiva.
 > - Baja precisión en lecturas cardíacas durante levantamiento de pesas de alta resistencia.
 > - **Suscripción obligatoria:** Requiere un pago mensual de ~$6 USD (Oura Membership) para acceder a analíticas avanzadas y paneles de salud.
 
-### 🩺 Signal Ring (Vital Signals) - *Nuevo Retador Confirmado Julio 2026*
-Startup médica que oficializó la preventa de su anillo el 16 de julio de 2026 a **$399 USD** (sin cuotas de suscripción) con envíos programados para **Octubre de 2026**.
+### 🩺 Signal Ring (Vital Signals) — *Despliegue Comercial Octubre 2026*
+Startup médica innovadora que lanzó su revolucionario anillo a **$399 USD** (sin cuotas de suscripción) con primeros envíos y distribución comercial activa a partir de **Octubre de 2026**.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
@@ -203,7 +203,7 @@ Startup médica que oficializó la preventa de su anillo el 16 de julio de 2026 
 
 > [!WARNING]
 > **Qué NO TIENE:**
-> - Disponibilidad inmediata (envíos iniciales a partir de Octubre de 2026).
+> - Distribución inicial en lotes escalonados para pedidos tempranos.
 > - Algoritmos de recuperación y fases del sueño menos maduros en comparación con Oura o Samsung.
 > - Ecosistema reducido de aplicaciones de terceros y sin integración nativa previa con grandes plataformas de salud.
 
@@ -310,8 +310,8 @@ La evolución definitiva de las pulseras inteligentes con GPS autónomo y análi
 | **Pixel Watch 5**<br>💰 $399 USD (41mm) / $429 USD (45mm)<br>🔋 24-36 h | Lector óptico multi-ruta IA 2da gen, ECG FDA, Termistor de piel, SpO2, Snapdragon W5 Gen 2 (3GB/64GB). | **Gemini AI local/offline**, Suite **Health Guardian** (resistencia a la insulina, apnea), Recuperación. | **Ceguera de composición anatómica.** Carece del chip de bioimpedancia y su autonomía obliga a cargar a diario. |
 | **Fitbit Sense 2**<br>💰 ~$249 USD<br>🔋 6+ días | **Sensor cEDA continuo exclusivo**, Termistor de piel, Sensor infrarrojo SpO2, ECG. | Manejo del Estrés, Detección de Respuestas Físicas en tiempo real, Separación de sueño profundo. | **Estancamiento de ecosistema.** Sistema cerrado sin apps de terceros ni asistente de voz fluido. |
 | **Garmin Epix Pro**<br>💰 ~$899+ USD<br>🔋 16 a 31 días | **Sensor óptico Elevate V5 con ECG FDA**, Altímetro barométrico, Termómetro dual, Acelerómetros. | Body Battery, Predisposición para Entrenar, VO2 Max élite, Carga Crónica vs Aguda. | **Fricción de interfaz urbana.** Interacción táctil menos responsiva y limitadas funciones *smart*. |
-| **Galaxy Watch Ultra 2**<br>💰 $699 USD<br>🔋 ~60+ horas | **Sensor BioActivo 3-en-1**, Termistor infrarrojo, Sensor de Presión Arterial, ECG, Chip Snapdragon Elite (3nm). | Composición Corporal Completa, Función "Vitals", Detección de Apnea, Pantalla 5000 nits (Disponible desde 7 de Ago 2026). | **Cautiverio de ecosistema.** Funciones médicas estrella (ECG, Presión) bloqueadas si no usas móvil Samsung. |
-| **Galaxy Watch 9**<br>💰 $379.99 USD<br>🔋 ~40 horas | **Sensor BioActivo 3-en-1**, Termistor infrarrojo, Sensor de Presión Arterial, ECG, Chip Snapdragon Elite, chasis aluminio. | Composición Corporal Completa, Función "Vitals", Detección de Apnea del Sueño (Disponible desde 7 de Ago 2026). | **Cautiverio de ecosistema.** Funciones médicas estrella bloqueadas sin smartphone Samsung. Autonomía menor que Ultra 2. |
+| **Galaxy Watch Ultra 2**<br>💰 $699 USD<br>🔋 ~60+ horas | **Sensor BioActivo 3-en-1**, Termistor infrarrojo, Sensor de Presión Arterial, ECG, Chip Snapdragon Elite (3nm). | Composición Corporal Completa, Función "Vitals", Detección de Apnea, Pantalla 5000 nits (Consolidado en mercado global). | **Cautiverio de ecosistema.** Funciones médicas estrella (ECG, Presión) bloqueadas si no usas móvil Samsung. |
+| **Galaxy Watch 9**<br>💰 $379.99 USD<br>🔋 ~40 horas | **Sensor BioActivo 3-en-1**, Termistor infrarrojo, Sensor de Presión Arterial, ECG, Chip Snapdragon Elite, chasis aluminio. | Composición Corporal Completa, Función "Vitals", Detección de Apnea del Sueño (Consolidado en mercado global). | **Cautiverio de ecosistema.** Funciones médicas estrella bloqueadas sin smartphone Samsung. Autonomía menor que Ultra 2. |
 | **Apple Watch Series 10**<br>💰 ~$399 USD<br>🔋 18-36 h | Lector óptico 3ª gen, ECG FDA, Termistor piel/agua, SpO2, profundímetro (6m). | Apnea del sueño, VFC nocturna, Carga de entrenamiento, Integración total iOS. | **Ceguera Android.** Exclusivo de iOS. Autonomía limitada a 1-1.5 días de uso. |
 | **Apple Watch Ultra 3**<br>💰 ~$799 USD<br>🔋 42-72 h | **Sensor óptico/eléctrico 3ª gen con ECG FDA**, SpO2, Termistor, profundímetro EN13319 (100m), GPS L1+L5, **Conectividad Satelital SOS**. | SOS Satelital nativo, Alertas de Hipertensión, Apnea del sueño, Detección de Caídas/Accidentes. | **Exclusividad iOS y volumen.** Incompatible con Android. Chasis abultado de 49mm para monitoreo nocturno. |
 
@@ -320,7 +320,7 @@ La evolución definitiva de las pulseras inteligentes con GPS autónomo y análi
 | :--- | :--- | :--- | :--- |
 | **Fitbit Charge 6**<br>💰 ~$159 USD<br>🔋 7 días | Sensor óptico IA, Sensor eléctrico dual (ECG y EDA manual), SpO2, GPS integrado. | VO2 Max adaptativo, Zonas de frecuencia cardíaca, Nivel de Recuperación, HRV nocturno. | **Sin altímetro.** No detecta pisos subidos ni cambios de elevación. El EDA es manual, no continuo. |
 | **Fitbit Air**<br>💰 $99.99 USD<br>🔋 7 días | Pulsómetro óptico de ultra bajo consumo continuo, Acelerómetro triaxial, SpO2 de fondo. | Fases del sueño simplificadas, Detección de siestas, Alertas de pulso irregulares. | **Sin pantalla ni alertas.** Bloque inerte que no permite interactuar activamente con tu cuerpo. |
-| **Garmin CIRQA**<br>💰 ~$199 USD<br>🔋 10 días | Sensor óptico continuo, Pulse Ox, Termómetro cutáneo, Acelerómetro. | **Live HR Display continuo a smartphone (Actualización Ago 2026)**, HRV status, Estrés 24/7, Sleep Score profundo (Garmin). | **Sin GPS integrado.** Requiere llevar el celular para rastrear rutas con precisión. Más caro que el Fitbit Air. |
+| **Garmin CIRQA**<br>💰 ~$199 USD<br>🔋 10 días | Sensor óptico continuo, Pulse Ox, Termómetro cutáneo, Acelerómetro. | **Live HR Display continuo a smartphone**, HRV status, Estrés 24/7, Sleep Score profundo (Garmin). | **Sin GPS integrado.** Requiere llevar el celular para rastrear rutas con precisión. Más caro que el Fitbit Air. |
 | **Whoop 5.0 / MG**<br>💰 $239/año o $30/mes (Membresía)<br>🔋 14+ días (5.0) | Sensores ópticos 10x más eficientes, versatilidad Any-Wear, ECG clínico y Presión Arterial diaria (versión MG). | Strain (Esfuerzo), Recovery, HRV, Healthspan (Edad biológica), Advanced Labs, IA Conversacional. | **Suscripción obligatoria perpetua y sin pantalla.** Exige pago mensual/anual continuo y requiere smartphone para ver datos. |
 | **Xiaomi Smart Band 9**<br>💰 ~$49 USD<br>🔋 21 días | Sensor óptico FC/SpO2 dual, acelerómetro 3D, pantalla AMOLED 1200 nits. | Puntuación Vitality, Monitoreo del sueño, 150+ modos deportivos. | **Sin GPS autónomo.** Obliga a llevar el teléfono inteligente para registrar rutas al aire libre. |
 | **Xiaomi Smart Band 10 Pro**<br>💰 ~$89.90 USD<br>🔋 21 días | **GNSS (GPS) multi-sistema integrado**, matriz óptica dual-light/dual-PD, SpO2, AMOLED 2000 nits. | **Análisis continuo de VFC (VFC status)**, Algoritmo Sleep 2.0, Estrés 24/7, HyperOS 3. | **Sin ecosistema de apps.** Sin almacenamiento de música local ni soporte para llamadas de voz. |
@@ -329,8 +329,8 @@ La evolución definitiva de las pulseras inteligentes con GPS autónomo y análi
 | Dispositivo | 🏥 Sensores Nocturnos y Hardware Médico | 📊 Métricas Biométricas Especializadas | 🔴 La Carencia Crítica |
 | :--- | :--- | :--- | :--- |
 | **Oura Ring 5 / 4**<br>💰 $349-$399 + $6/mes<br>🔋 6-9 días (Oura 5) | Sensores de 12 vías biológicas, cúpulas NTC optimizadas, LEDs infrarrojos de alta potencia, PPG 24/7. | Health Panels (análisis de sangre), Puntuación de Sueño Clínico, tendencia de presión arterial, control de ciclo/GLP-1. | **Mensualidad vitalicia.** Exige suscripción de $6/mes. Pierde precisión en levantamiento de pesas. |
-| **Galaxy Ring**<br>💰 ~$399 (Sin sub)<br>🔋 6-7 días | Matriz PPG, Termistor infrarrojo continuo, Acelerómetro espacial, Giroscopio rotacional. | **Detección de Apnea del Sueño aprobada por FDA (Actualización Ago 2026)**, Puntuación de Vitalidad de Galaxy AI. | **Ecosistema cerrado.** No funciona con iPhone, te ancla a Samsung Health. |
-| **Signal Ring**<br>💰 $399 USD (Sin sub)<br>🔋 ~5 días | **Monitorización continua de Presión Arterial** (sin manguito ni calibración previa). | Monitoreo cardiovascular sistólico/diastólico 24/7. Envíos programados para Octubre 2026. | Ecosistema nuevo, disponibilidad inicial en Octubre 2026, algoritmos de recuperación menos probados. |
+| **Galaxy Ring**<br>💰 ~$399 (Sin sub)<br>🔋 6-7 días | Matriz PPG, Termistor infrarrojo continuo, Acelerómetro espacial, Giroscopio rotacional. | **Detección de Apnea del Sueño aprobada por FDA**, Puntuación de Vitalidad de Galaxy AI. | **Ecosistema cerrado.** No funciona con iPhone, te ancla a Samsung Health. |
+| **Signal Ring**<br>💰 $399 USD (Sin sub)<br>🔋 ~5 días | **Monitorización continua de Presión Arterial** (sin manguito ni calibración previa). | Monitoreo cardiovascular sistólico/diastólico 24/7. Envíos y distribución comercial activos (Octubre 2026). | Ecosistema nuevo, distribución escalonada por lotes, algoritmos de recuperación en maduración. |
 | **RingConn Gen 2**<br>💰 ~$299 (Sin sub)<br>🔋 10-12 días | Sensores PPG de alta eficiencia, Termistor NTC y Acelerómetro 3D. Sumergible 100m (10 ATM). | Detección pasiva de Apnea del Sueño (deep learning), VFC continua y estrés sin suscripción. | Menor integración con plataformas de salud externas comparado con Oura. |
 
 ---
@@ -386,7 +386,7 @@ Aunque no hay restricciones de presupuesto, es vital visualizar el costo real a 
 
 Si el presupuesto no es un obstáculo y quieres obtener la máxima cantidad de datos de tu cuerpo, el mercado actual se divide según la zona de tu cuerpo que estés dispuesto a monitorizar y tu ecosistema de teléfono preferido:
 
-1. **La Mejor Opción Global de Reloj:** Dado que ya cuentas con Google AI Pro, el recién anunciado **Google Pixel Watch 5** (12 de agosto de 2026) es la elección más avanzada y lógica en Android. Te dará el mejor seguimiento general con Gemini AI offline y la suite Health Guardian sin costo extra de suscripción. En iOS, el **Apple Watch Ultra 3** destaca como el reloj más avanzado en resistencia y conectividad satelital de emergencia, mientras que los **Galaxy Watch Ultra 2** (disponibles en tiendas desde el 7 de agosto de 2026) y el ecosistema **Garmin** son los indiscutibles líderes en resistencia física y datos deportivos.
-2. **El Mejor Análisis Nocturno:** Dormir con un reloj es molesto para la mayoría de las personas. Los anillos y bandas discretas resuelven esto: **Oura Ring 5** lidera con integración de análisis de sangre (*Health Panels*), **Whoop 5.0** ofrece 14+ días de batería con monitoreo continuo en el cuerpo, el **Samsung Galaxy Ring** es ideal para usuarios de Android sin cuotas mensuales (reforzado con **detección de apnea del sueño aprobada por la FDA**), el **RingConn Gen 2** brinda 10–12 días de batería con tamizaje de apnea del sueño sin suscripción, y el **Signal Ring** destaca por su monitoreo continuo de presión arterial sin manguito ni calibración.
+1. **La Mejor Opción Global de Reloj:** Dado que ya cuentas con Google AI Pro, el **Google Pixel Watch 5** es la elección más avanzada y lógica en Android. Te dará el mejor seguimiento general con Gemini AI offline y la suite Health Guardian sin costo extra de suscripción. En iOS, el **Apple Watch Ultra 3** destaca como el reloj más avanzado en resistencia y conectividad satelital de emergencia, mientras que los **Galaxy Watch Ultra 2** y el ecosistema **Garmin** son los indiscutibles líderes en resistencia física y datos deportivos.
+2. **El Mejor Análisis Nocturno:** Dormir con un reloj es molesto para la mayoría de las personas. Los anillos y bandas discretas resuelven esto: **Oura Ring 5** lidera con integración de análisis de sangre (*Health Panels*), **Whoop 5.0** ofrece 14+ días de batería con monitoreo continuo en el cuerpo, el **Samsung Galaxy Ring** es ideal para usuarios de Android sin cuotas mensuales (reforzado con **detección de apnea del sueño aprobada por la FDA**), el **RingConn Gen 2** brinda 10–12 días de batería con tamizaje de apnea del sueño sin suscripción, y el **Signal Ring** destaca por su monitoreo continuo de presión arterial sin manguito ni calibración en su despliegue comercial de Octubre 2026.
 3. **La Opción Más Económica y Mejor Calidad/Precio:** La **Xiaomi Smart Band 10 Pro** se consolida como la reina indiscutible del segmento económico por debajo de $90 USD, integrando GPS multi-sistema y análisis biométrico continuo de VFC con 21 días de batería.
 4. **El Veredicto Definitivo:** Tras aplicar los filtros estratégicos, la mejor táctica para registrar *todo* tu cuerpo sin duplicar datos ni sufrir distracciones es combinar un excelente reloj inteligente (**Pixel Watch 5** o **Apple Watch Series 10 / Ultra 3** de día) con un rastreador pasivo (**Oura Ring 5**, **Galaxy Ring**, **Whoop 5.0** o la banda **Garmin CIRQA** de noche) para obtener un perfil biométrico las 24 horas del día, sincronizado limpiamente a través de Health Connect o Apple Health.

@@ -17,7 +17,7 @@ export const EreaderHero: React.FC<EreaderHeroProps> = React.memo(({ onScrollToE
           {/* Top Pill Tag */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-50 dark:bg-amber-500/10 border border-amber-300 dark:border-amber-500/30 text-amber-800 dark:text-amber-300 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
             <Sparkles className="w-4 h-4 text-amber-600 dark:text-amber-400" />
-            <span>Guía de Compra y Comparativa — E-readers & Kindles Agosto 2026</span>
+            <span>Guía de Compra y Comparativa — E-readers & Kindles Octubre 2026</span>
           </div>
 
           {/* Main Title */}

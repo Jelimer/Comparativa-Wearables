@@ -1,4 +1,4 @@
-# Informe Comparativo: E-readers, Kindles y Tinta Electrónica (Edición 2026)
+# Informe Comparativo: E-readers, Kindles y Tinta Electrónica (Edición Actualizada Octubre 2026)
 
 Este documento detalla exhaustivamente las opciones del mercado de lectores de libros electrónicos (*e-readers*), cuadernos digitales de tinta electrónica (*e-notes*) y dispositivos Android E-Ink. Analiza en profundidad tecnologías de pantalla (Carta 1300, Colorsoft, Kaleido 3, Canvas Color), ergonomía, compatibilidad de formatos (EPUB vs MOBI/AZW3), suscripciones y comparativas lado a lado.
 
@@ -7,14 +7,14 @@ Este documento detalla exhaustivamente las opciones del mercado de lectores de l
 ## 1. 🟠 Ecosistema Amazon Kindle
 *El estándar histórico de la lectura digital con el catálogo más extenso y sincronización en la nube Whispersync.*
 
-### 📖 Amazon Kindle Paperwhite (16GB)
-El modelo de referencia indiscutible para la gran mayoría de lectores.
+### 📖 Amazon Kindle Paperwhite (16GB — Nueva Generación)
+El modelo de referencia indiscutible para la gran mayoría de lectores, renovado con mayor pantalla, panel Carta 1300 y mayor autonomía.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
-> - **Pantalla E-Ink Carta 1200 de 6.8 pulgadas a 300 PPI:** Nitidez idéntica al papel impreso y bordes reducidos a ras de cristal.
+> - **Pantalla E-Ink Carta 1300 de 7.0 pulgadas a 300 PPI:** Panel más amplio con contraste 25% superior, negros más profundos y pasos de página 25% más rápidos a ras de cristal.
 > - **Luz Cálida Ajustable (LEDs ámbar):** Regula la temperatura de color de blanco frío a ámbar cálido para eliminar la luz azul por la noche.
-> - **Autonomía récord de hasta 10 semanas:** Carga moderna por conector USB-C.
+> - **Autonomía récord de hasta 12 semanas:** La batería más duradera de la serie Paperwhite con carga por puerto USB-C.
 > - **Resistencia al agua IPX8:** Soporta inmersión accidental en agua dulce hasta 2 metros durante 60 minutos.
 > - 16 GB de almacenamiento interno (capacidad para miles de libros y audiolibros Audible vía Bluetooth).
 
@@ -24,14 +24,15 @@ El modelo de referencia indiscutible para la gran mayoría de lectores.
 > - Soporte nativo directo para préstamo de bibliotecas públicas en español (eBiblio / OverDrive).
 > - Pantalla a color.
 
-### 🌟 Kindle Paperwhite Signature Edition (32GB)
-La versión de lujo con automatización y carga inalámbrica.
+### 🌟 Kindle Paperwhite Signature Edition (32GB — Nueva Generación)
+La versión de lujo con automatización, carga inalámbrica y mayor capacidad.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
+> - **Pantalla Carta 1300 de 7.0 pulgadas:** Misma fluidez y tamaño expandido con sensor de luz ambiental autorregulable.
 > - **32 GB de almacenamiento masivo:** Diseñado para amantes de audiolibros pesados y colecciones completas de manga.
 > - **Carga Inalámbrica Qi:** Compatible con cualquier base de carga inalámbrica estándar.
-> - **Sensor de luz ambiental autoregulable:** Ajusta el brillo automáticamente según la iluminación de la habitación.
+> - **Autonomía récord de hasta 12 semanas:** Carga mensual prácticamente olvidable.
 > - **Sin publicidad en pantalla de bloqueo de serie.**
 
 > [!WARNING]
@@ -39,13 +40,15 @@ La versión de lujo con automatización y carga inalámbrica.
 > - Sigue sin incorporar botones físicos ergonómicos.
 > - Precio superior para usuarios que solo leen libros de texto plano.
 
-### 🎒 Amazon Kindle Básico (11ª Gen)
-El lector más compacto y económico por debajo de $100 USD.
+### 🎒 Amazon Kindle Básico (11ª Gen — Refresh 2024-2026)
+El lector más compacto y económico, actualizado con mayor luminosidad y nuevos colores.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
 > - **Ultraligero (solo 158 gramos):** Cabe en cualquier bolsillo de chaqueta o pantalón.
-> - Pantalla nítida de 6.0 pulgadas a 300 PPI con 16 GB de almacenamiento y puerto USB-C.
+> - **Pantalla nítida de 6.0 pulgadas a 300 PPI con 25% más brillo frontal:** Mayor legibilidad bajo luz tenue y pasos de página más ágiles.
+> - 16 GB de almacenamiento interno y puerto USB-C.
+> - Nuevas opciones de color (incluyendo acabado Verde Matcha y Negro).
 > - Batería de 6 semanas de autonomía.
 
 > [!WARNING]
@@ -54,27 +57,29 @@ El lector más compacto y económico por debajo de $100 USD.
 > - Sin resistencia al agua (cero protección contra lluvia o piscina).
 > - Bisel frontal elevado (no es pantalla a ras de cristal).
 
-### 🎨 Kindle Colorsoft Signature Edition (¡Lanzamiento Tinta a Color!)
-El primer Kindle con pantalla de tinta electrónica a todo color.
+### 🎨 Kindle Colorsoft Signature Edition (32GB)
+El primer Kindle con pantalla de tinta electrónica a todo color de Amazon.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
-> - **Tecnología Colorsoft E-Ink (7.0"):** Colores suaves tipo papel para disfrutar portadas, cómics, libros ilustrados y novelas gráficas.
-> - **Resaltado multicolor:** Subraya texto en amarillo, verde, azul y rosa para organizar apuntes.
-> - 32 GB de almacenamiento, carga inalámbrica Qi, sensor de luz autoregulable y resistencia IPX8.
+> - **Tecnología Colorsoft E-Ink (7.0"):** Colores suaves tipo papel para disfrutar portadas, cómics, libros ilustrados y novelas gráficas sin fatiga visual.
+> - **Resaltado multicolor:** Subraya texto en amarillo, verde, azul y rosa para organizar apuntes visualmente.
+> - 32 GB de almacenamiento, carga inalámbrica Qi, sensor de luz autorregulable y resistencia IPX8.
+> - Autonomía de hasta 8 semanas.
 
 > [!WARNING]
 > **Qué NO TIENE:**
 > - Precio prémium ($279 USD).
 > - La resolución en contenido a color es de 150 PPI (mantiene 300 PPI en texto blanco y negro).
 
-### 📝 Amazon Kindle Scribe (10.2" + Lápiz Prémium)
-El cuaderno digital y e-reader gigante para leer y escribir.
+### 📝 Amazon Kindle Scribe (10.2" + Active Canvas)
+El cuaderno digital y e-reader gigante para leer y escribir con nueva experiencia de anotación integrada.
 
 > [!IMPORTANT]
 > **Qué TIENE:**
-> - **Pantalla de 10.2 pulgadas a 300 PPI:** La más nítida del mercado en gran formato (ideal para PDFs técnicos y partituras).
-> - **Lápiz Prémium magnético sin batería:** Sensación de fricción al escribir asombrosamente similar a papel real con borrador y botón de acción.
+> - **Pantalla de 10.2 pulgadas a 300 PPI con marco blanco tipo libreta:** La más nítida del mercado en gran formato (ideal para PDFs técnicos, documentos y partituras).
+> - **Active Canvas:** Permite escribir notas directamente en las páginas de libros; el texto fluye dinámicamente alrededor de tu anotación manuscrita.
+> - **Nuevo Lápiz Prémium magnético:** Fricción natural similar al grafito sobre papel con borrador suave integrado.
 > - Cuadernos digitales ilimitados con plantillas (puntos, líneas, listas de tareas).
 
 > [!WARNING]
@@ -165,12 +170,12 @@ Pantalla Kaleido 3 a color con chip gráfico BSR, Android 12 para OneNote y Goog
 
 | Dispositivo | 📱 Pantalla & Tecnología | 🔘 Ergonomía & Lápiz | 💧 Agua / Batería | 📂 Formatos & Sistema | 💰 Precio |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| **Kindle Paperwhite 16GB** | 6.8" 300 PPI (Carta 1200, B/N) | Solo táctil, luz cálida | IPX8 • 10 semanas | Amazon Kindle, EPUB (Send-to-Kindle) | **$149 USD** |
-| **Kindle Paperwhite Signature** | 6.8" 300 PPI (Carta 1200, B/N) | Carga Qi, auto-brillo, 32GB | IPX8 • 10 semanas | Amazon Kindle, Audible | **$189 USD** |
-| **Kindle Básico (11ª Gen)** | 6.0" 300 PPI (Carta HD, B/N) | 158g ultraligero, luz fría | Sin IPX8 • 6 semanas | Amazon Kindle Store | **$99 USD** |
+| **Kindle Paperwhite 16GB** | 7.0" 300 PPI (**Carta 1300**, B/N) | Solo táctil, luz cálida | IPX8 • 12 semanas | Amazon Kindle, EPUB (Send-to-Kindle) | **$159 USD** |
+| **Kindle Paperwhite Signature** | 7.0" 300 PPI (**Carta 1300**, B/N) | Carga Qi, auto-brillo, 32GB | IPX8 • 12 semanas | Amazon Kindle, Audible | **$199 USD** |
+| **Kindle Básico (11ª Gen)** | 6.0" 300 PPI (Carta HD, 25% más brillo) | 158g ultraligero, Matcha/Negro | Sin IPX8 • 6 semanas | Amazon Kindle Store | **$109 USD** |
 | **Kindle Colorsoft Signature** | 7.0" Colorsoft (150/300 PPI) | Carga Qi, resaltado color | IPX8 • 8 semanas | Amazon Kindle, ComiXology | **$279 USD** |
 | **Kindle Oasis (10ª Gen)** | 7.0" 300 PPI (Carta 1200, B/N) | **Botones físicos**, aluminio | IPX8 • 6 semanas | Amazon Kindle, Micro-USB | **$249 USD** |
-| **Kindle Scribe** | 10.2" 300 PPI (Carta 1200, B/N) | **Lápiz prémium notas**, 433g | Sin IPX8 • 12 semanas | Amazon Kindle, Notas PDF/Word | **$369 USD** |
+| **Kindle Scribe** | 10.2" 300 PPI (Active Canvas) | **Lápiz prémium + Borrador suave** | Sin IPX8 • 12 semanas | Amazon Kindle, Notas en página | **$399 USD** |
 | **reMarkable 2** | 10.3" 226 PPI (**Canvas**, B/N) | **Marker Plus (4.7mm)** | Sin IPX8 • 2 semanas | **Papel digital puro**, PDF, EPUB | **$399 USD** |
 | **reMarkable Paper Pro** | 11.8" 229 PPI (**Canvas Color**) | **Marker Plus + Luz Frontal** | Sin IPX8 • 2 semanas | **Notas Color (12ms)**, PDF, EPUB | **$579 USD** |
 | **Lenovo Smart Paper** | 10.3" 227 PPI (Carta 1200, B/N) | **Audio Sync + Lápiz + Funda** | Sin IPX8 • 4 semanas | **Grabación Voz Sincronizada**, EPUB | **$399 USD** |
@@ -183,3 +188,12 @@ Pantalla Kaleido 3 a color con chip gráfico BSR, Android 12 para OneNote y Goog
 | **BOOX Page** | 7.0" 300 PPI (Carta 1200, B/N) | **Botones físicos**, MicroSD | Sin IPX8 • 3-4 sem | **Android 11 + Google Play**, Altavoz | **$249 USD** |
 | **BOOX Note Air3 C** | 10.3" Kaleido 3 (**Color + BSR**) | **Wacom Pen**, chasis 5.8mm | Sin IPX8 • 2-3 sem | **Android 12 + Google Play**, OneNote | **$499 USD** |
 | **PocketBook Era Color** | 7.0" Kaleido 3 (**Color + Audio**) | **Botones laterales + Altavoz** | IPX8 • 6 semanas | **25 Formatos nativos**, TTS voz | **$259 USD** |
+
+---
+
+## 7. 🎯 Guía de Decisión Rápida: ¿Cuál Deberías Elegir en Octubre 2026?
+
+1. **La Mejor Opción Global en Blanco y Negro:** 👉 **Kindle Paperwhite (16GB)** ($159 USD) con panel de 7.0" Carta 1300 y hasta 12 semanas de batería. Si prefieres un ecosistema abierto con soporte nativo de bibliotecas públicas (Libby/eBiblio) y formato compacto de 6", el **Kobo Clara BW** ($129 USD) ofrece la máxima nitidez monocromática.
+2. **El Mejor Lector a Color:** 👉 **Kobo Libra Colour** ($219 USD) para quienes buscan ergonomía con botones físicos, compatibilidad con lápiz para anotaciones y sincronización en la nube (Drive/Dropbox). Si tu biblioteca está íntegramente en Amazon, el nuevo **Kindle Colorsoft Signature Edition** ($279 USD) ofrece la experiencia de color nativa de Kindle con carga inalámbrica.
+3. **El Mejor Cuaderno Digital (E-Note):** 👉 **reMarkable Paper Pro** ($579 USD) para trabajo profesional a color con luz frontal y latencia récord de 12ms, o **reMarkable 2** ($399 USD) para escritura pura monocromática sin distracciones. Para reuniones ejecutivas con audio sincronizado, el **Lenovo Smart Paper** ($399 USD con lápiz y funda incluidos) es insuperable.
+4. **La Máxima Flexibilidad Android:** 👉 **BOOX Note Air3 C** ($499 USD) para trabajar con OneNote, Kindle y Drive sobre Android libre, o el **BOOX Palma** ($279 USD) para leer en formato ultraportátil tipo smartphone.

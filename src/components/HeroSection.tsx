@@ -17,7 +17,7 @@ export const HeroSection: React.FC<HeroSectionProps> = React.memo(({ onScrollToE
           {/* Top Pill Tag */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-50 dark:bg-cyan-500/10 border border-cyan-300 dark:border-cyan-500/30 text-cyan-800 dark:text-cyan-300 text-xs sm:text-sm font-semibold mb-6 shadow-sm">
             <Sparkles className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />
-            <span>Informe Técnico Actualizado — Agosto 2026</span>
+            <span>Informe Técnico Actualizado — Octubre 2026</span>
           </div>
 
           {/* Main Title */}

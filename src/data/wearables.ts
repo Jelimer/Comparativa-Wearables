@@ -37,7 +37,7 @@ export const WEARABLES_DATA: Wearable[] = [
       'Totalmente incompatible con iPhone (iOS)',
     ],
     description:
-      'El nuevo buque insignia de Google (Agosto 2026). Impulsado por el chip Snapdragon W5 Gen 2, 3GB RAM, Gemini AI local/offline y la suite Health Guardian para monitoreo metabólico y respiratorio.',
+      'El buque insignia de Google para la segunda mitad de 2026. Impulsado por el chip Snapdragon W5 Gen 2, 3GB RAM, Gemini AI local/offline y la suite Health Guardian para monitoreo metabólico y respiratorio.',
   },
   {
     id: 'google-pixel-watch-4',
@@ -248,7 +248,7 @@ export const WEARABLES_DATA: Wearable[] = [
       gps: false,
     },
     pros: [
-      'Transmisión de Pulso en Tiempo Real (Live HR Streaming) a smartphone en entrenamientos sin cuotas (Actualización Agosto 2026)',
+      'Transmisión de Pulso en Tiempo Real (Live HR Streaming) a smartphone en entrenamientos sin cuotas',
       'Formato sin pantalla enfocado 100% en recolección pasiva de métricas fisiológicas',
       'Acceso total a métricas de Garmin Connect sin pagar suscripción mensual',
       'Batería de 10 días y opción de llevar en la muñeca o brazo',
@@ -259,7 +259,7 @@ export const WEARABLES_DATA: Wearable[] = [
       'Precio más alto que rastreadores básicos sin pantalla',
     ],
     description:
-      'Lanzada el 21 de julio de 2026 y actualizada en agosto de 2026 con Live HR Streaming. La primera banda sin pantalla de Garmin para rastreo bio-deportivo continuo 24/7 sin cuotas mensuales.',
+      'Lanzada a mediados de 2026 y optimizada con Live HR Streaming. La primera banda sin pantalla de Garmin para rastreo bio-deportivo continuo 24/7 sin cuotas mensuales.',
   },
   {
     id: 'samsung-galaxy-watch-ultra-2',
@@ -286,7 +286,7 @@ export const WEARABLES_DATA: Wearable[] = [
       bloodPressure: true,
     },
     pros: [
-      'Disponible comercialmente desde el 7 de agosto de 2026 ($699 USD)',
+      'Consolidado comercialmente a nivel global ($699 USD)',
       'Sensor BioActivo 3-en-1 con análisis de composición corporal (grasa, músculo, agua) y Presión Arterial',
       'Chasis de Titanio Grado 4, cristal de zafiro y pantalla de 5,000 nits',
       'Procesador Snapdragon Wear Elite (3nm) y función Vitals con detección de apnea del sueño',
@@ -297,7 +297,7 @@ export const WEARABLES_DATA: Wearable[] = [
       'Totalmente incompatible con iPhone (iOS)',
     ],
     description:
-      'Lanzado comercialmente el 7 de agosto de 2026 ($699 USD). El reloj inteligente más potente y resistente en el ecosistema Android, con titanio de grado aeroespacial, composición corporal y procesador Snapdragon Wear Elite.',
+      'El reloj inteligente más potente y resistente en el ecosistema Android ($699 USD), con titanio de grado aeroespacial, composición corporal y procesador Snapdragon Wear Elite.',
   },
   {
     id: 'samsung-galaxy-watch-9',
@@ -324,7 +324,7 @@ export const WEARABLES_DATA: Wearable[] = [
       bloodPressure: true,
     },
     pros: [
-      'Disponible en tiendas desde el 7 de agosto de 2026 ($379.99 USD)',
+      'Consolidado en tiendas globales ($379.99 USD)',
       'Diseño delgado de aluminio ideal para uso urbano diario',
       'Equipado con el mismo sensor BioActivo 3-en-1 y chip Snapdragon Wear Elite que el Ultra 2',
       'Detección médica de Apnea del Sueño y función Vitals',
@@ -335,7 +335,7 @@ export const WEARABLES_DATA: Wearable[] = [
       'Incompatible con iOS',
     ],
     description:
-      'La alternativa urbana delgada de Samsung (lanzada el 7 de agosto de 2026 por $379.99 USD). Integra composición corporal completa, chip Snapdragon Wear Elite (3nm) y seguimiento biométrico avanzado.',
+      'La alternativa urbana delgada de Samsung ($379.99 USD). Integra composición corporal completa, chip Snapdragon Wear Elite (3nm) y seguimiento biométrico avanzado.',
   },
   {
     id: 'samsung-galaxy-ring',
@@ -360,7 +360,7 @@ export const WEARABLES_DATA: Wearable[] = [
       gps: false,
     },
     pros: [
-      'Detección de Apnea del Sueño aprobada por la FDA (Actualización Agosto 2026)',
+      'Detección de Apnea del Sueño aprobada por la FDA plenamente activa',
       'Cero cuotas de suscripción mensual',
       'Construcción ultraligera de titanio para monitoreo de sueño sin molestias',
       'Algoritmo Puntuación de Vitalidad de Galaxy AI y análisis de ronquidos',
@@ -371,7 +371,7 @@ export const WEARABLES_DATA: Wearable[] = [
       'No recomendable para levantamiento de pesas de alta fricción',
     ],
     description:
-      'El anillo inteligente de titanio de Samsung. Actualizado en agosto de 2026 con detección de apnea del sueño aprobada por la FDA, Puntuación de Vitalidad de Galaxy AI y cero mensualidades.',
+      'El anillo inteligente de titanio de Samsung con detección de apnea del sueño aprobada por la FDA, Puntuación de Vitalidad de Galaxy AI y cero mensualidades.',
   },
   {
     id: 'oura-ring-5',
@@ -478,12 +478,12 @@ export const WEARABLES_DATA: Wearable[] = [
       'Chasis de titanio biocompatible y $0 en tarifas de suscripción',
     ],
     cons: [
-      'Envíos programados para Octubre de 2026',
+      'Distribución inicial en lotes escalonados de envíos para pedidos tempranos',
       'Algoritmos de recuperación y análisis de sueño menos maduros que Oura',
       'Autonomía de 5 días',
     ],
     description:
-      'Confirmado en preventa oficial por $399 USD (Julio 2026, envíos en Octubre 2026). Anillo pionero en salud hemodinámica con lectura continua de presión arterial en tiempo real sin manguito.',
+      'Lanzado por $399 USD con primeros envíos activos en Octubre de 2026. Anillo pionero en salud hemodinámica con lectura continua de presión arterial en tiempo real sin manguito ni calibración previa.',
   },
   {
     id: 'ringconn-gen-2',

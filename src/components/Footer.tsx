@@ -17,7 +17,7 @@ export const Footer: React.FC = React.memo(() => {
               </span>
             </div>
             <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
-              Plataforma independiente de análisis técnico y comparativa multidimensional de smartwatches, pulseras biométricas, anillos inteligentes y lectores de tinta electrónica. Datos extraídos de la auditoría técnica de agosto de 2026.
+              Plataforma independiente de análisis técnico y comparativa multidimensional de smartwatches, pulseras biométricas, anillos inteligentes y lectores de tinta electrónica. Datos extraídos de la auditoría técnica de octubre de 2026.
             </p>
           </div>
 
@@ -46,7 +46,7 @@ export const Footer: React.FC = React.memo(() => {
             <ul className="text-xs space-y-1.5 text-slate-600 dark:text-slate-400">
               <li>Web App desarrollada con React + Vite + TS + Tailwind CSS</li>
               <li>Repositorio: GitHub Jelimer/Comparativa-Wearables</li>
-              <li>Actualizado: Agosto 2026</li>
+              <li>Actualizado: Octubre 2026</li>
             </ul>
           </div>
         </div>
