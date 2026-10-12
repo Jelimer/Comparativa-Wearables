@@ -199,7 +199,7 @@ export const EreaderCard: React.FC<EreaderCardProps> = React.memo(({
                 <EreaderTooltip termKey="warm_light" iconOnly />
               </span>
             )}
-            {device.waterproof.includes('IPX8') && (
+            {device.waterproof.startsWith('IPX8') && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 text-[10px] font-semibold rounded bg-cyan-50 dark:bg-cyan-950 text-cyan-800 dark:text-cyan-300 border border-cyan-200 dark:border-cyan-800/60">
                 <span>IPX8 Agua</span>
                 <EreaderTooltip termKey="ipx8" iconOnly />

@@ -1,14 +1,56 @@
 import { useState, useEffect, useCallback, lazy, Suspense } from 'react';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
+import { ErrorBoundary } from './components/ErrorBoundary';
 import { WEARABLES_DATA } from './data/wearables';
 import { EREADERS_DATA } from './data/ereaders';
 
+// Resilient code-splitting with auto-retry and cache-busting recovery
+function lazyWithRetry<T extends React.ComponentType<any>>(
+  factory: () => Promise<{ default: T }>,
+  retries = 3,
+  interval = 800
+) {
+  return lazy(() =>
+    new Promise<{ default: T }>((resolve, reject) => {
+      const attempt = (remaining: number) => {
+        factory()
+          .then(resolve)
+          .catch((error) => {
+            if (remaining <= 1) {
+              const isChunkError =
+                error?.message?.includes('Failed to fetch') ||
+                error?.message?.includes('Importing a module script failed') ||
+                error?.name === 'ChunkLoadError';
+
+              if (typeof window !== 'undefined' && isChunkError) {
+                const reloadKey = 'app_chunk_reload_attempt';
+                if (!sessionStorage.getItem(reloadKey)) {
+                  sessionStorage.setItem(reloadKey, 'true');
+                  window.location.reload();
+                  return;
+                }
+              }
+              reject(error);
+              return;
+            }
+
+            setTimeout(() => {
+              attempt(remaining - 1);
+            }, interval);
+          });
+      };
+
+      attempt(retries);
+    })
+  );
+}
+
 // Code-Splitting: Lazy load main section views
-const WearablesView = lazy(() =>
+const WearablesView = lazyWithRetry(() =>
   import('./components/WearablesView').then((m) => ({ default: m.WearablesView }))
 );
-const EreadersView = lazy(() =>
+const EreadersView = lazyWithRetry(() =>
   import('./components/EreadersView').then((m) => ({ default: m.EreadersView }))
 );
 
@@ -74,6 +116,26 @@ export default function App() {
     }
   }, [darkMode]);
 
+  // Precargar vistas en segundo plano cuando el navegador esté en reposo
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.removeItem('app_chunk_reload_attempt');
+
+      const preloadChunks = () => {
+        import('./components/EreadersView').catch(() => {});
+        import('./components/WearablesView').catch(() => {});
+      };
+
+      if ('requestIdleCallback' in window) {
+        const idleId = (window as any).requestIdleCallback(preloadChunks, { timeout: 2000 });
+        return () => (window as any).cancelIdleCallback?.(idleId);
+      } else {
+        const timer = setTimeout(preloadChunks, 1000);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, []);
+
   const handleOpenActiveCompare = useCallback(() => {
     if (activeSection === 'wearables') {
       setIsWearablesCompareOpen(true);
@@ -121,26 +183,28 @@ export default function App() {
         onOpenCompare={handleOpenActiveCompare}
       />
 
-      {/* Main Dynamic View with Lazy Loading Suspense */}
-      <Suspense fallback={<ViewLoadingFallback activeSection={activeSection} />}>
-        {activeSection === 'wearables' ? (
-          <WearablesView
-            selectedCompareIds={wearablesCompareIds}
-            setSelectedCompareIds={setWearablesCompareIds}
-            isCompareModalOpen={isWearablesCompareOpen}
-            setIsCompareModalOpen={setIsWearablesCompareOpen}
-            onFilteredCountChange={handleWearablesFilteredCount}
-          />
-        ) : (
-          <EreadersView
-            selectedCompareIds={ereadersCompareIds}
-            setSelectedCompareIds={setEreadersCompareIds}
-            isCompareModalOpen={isEreadersCompareOpen}
-            setIsCompareModalOpen={setIsEreadersCompareOpen}
-            onFilteredCountChange={handleEreadersFilteredCount}
-          />
-        )}
-      </Suspense>
+      {/* Main Dynamic View with Lazy Loading Suspense & ErrorBoundary */}
+      <ErrorBoundary resetKey={activeSection}>
+        <Suspense fallback={<ViewLoadingFallback activeSection={activeSection} />}>
+          {activeSection === 'wearables' ? (
+            <WearablesView
+              selectedCompareIds={wearablesCompareIds}
+              setSelectedCompareIds={setWearablesCompareIds}
+              isCompareModalOpen={isWearablesCompareOpen}
+              setIsCompareModalOpen={setIsWearablesCompareOpen}
+              onFilteredCountChange={handleWearablesFilteredCount}
+            />
+          ) : (
+            <EreadersView
+              selectedCompareIds={ereadersCompareIds}
+              setSelectedCompareIds={setEreadersCompareIds}
+              isCompareModalOpen={isEreadersCompareOpen}
+              setIsCompareModalOpen={setIsEreadersCompareOpen}
+              onFilteredCountChange={handleEreadersFilteredCount}
+            />
+          )}
+        </Suspense>
+      </ErrorBoundary>
 
       {/* Shared Footer */}
       <Footer />

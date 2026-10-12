@@ -62,6 +62,12 @@ export const Header: React.FC<HeaderProps> = React.memo(({
           <div className="flex items-center p-1 rounded-2xl bg-slate-100 dark:bg-slate-950/80 border border-slate-200 dark:border-slate-800 shadow-inner ml-2">
             <button
               onClick={() => setActiveSection('wearables')}
+              onMouseEnter={() => {
+                import('./WearablesView').catch(() => {});
+              }}
+              onFocus={() => {
+                import('./WearablesView').catch(() => {});
+              }}
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeSection === 'wearables'
                   ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-md shadow-cyan-500/25'
@@ -77,6 +83,12 @@ export const Header: React.FC<HeaderProps> = React.memo(({
 
             <button
               onClick={() => setActiveSection('ereaders')}
+              onMouseEnter={() => {
+                import('./EreadersView').catch(() => {});
+              }}
+              onFocus={() => {
+                import('./EreadersView').catch(() => {});
+              }}
               className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeSection === 'ereaders'
                   ? 'bg-gradient-to-r from-amber-500 to-yellow-500 text-slate-950 shadow-md shadow-amber-500/25'
