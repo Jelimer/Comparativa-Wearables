@@ -23,6 +23,7 @@
 | 11 | Auditoría Forense de Integridad | Verificación independiente de autenticidad sin hardcoding ni evasiones. | M4 | System Protocol |
 | 12 | Git Commit y Despliegue en GitHub/Vercel | Commit de todos los cambios y `git push origin main` hacia el repositorio remoto. | M4 | Request |
 | 13 | Actualización de Mercado Octubre 2026 | Sincronización de Kindle 12ª Gen (7.0" Carta 1300), despliegue comercial de Signal Ring, actualización de informes y UI web a Octubre 2026. | M5 | User Request |
+| 14 | Actualización de Nuevos Productos y Características | Integración de Garmin Fenix 8 / Enduro 3 (320h GPS), Oura Ring 4 Smart Sensing, BOOX Palma 2 / Note Air4 C / Go 10.3, Kindle Colorsoft y Pixel Watch Pérdida de Pulso. | M6 | User Request |
 
 ## Milestones
 | # | Name | Scope | Dependencies | Status |
@@ -32,6 +33,7 @@
 | M3 | UI/UX, Themes & Responsiveness | Soporte Dark/Light, modales accesibles, tooltips responsivos, rejillas ultrawide | M2 | DONE |
 | M4 | Verification, Build & Deploy | `npm run build`, auditoría de integridad, git commit y push a `origin main` | M3 | DONE |
 | M5 | Autumn 2026 Market Update | Actualización de informes a Octubre 2026, nuevos Kindles 7.0" Carta 1300, Signal Ring despliegue comercial, sincronización web y despliegue | M4 | DONE |
+| M6 | Vanguard Products & Features Update | Expansión de informes técnicos con Fenix 8 (AMOLED/Solar/Buceo), Enduro 3 (320h), Oura Ring 4 (Smart Sensing 18 vías, sensores empotrados), BOOX Palma 2 / Air4 C / Go 10.3, Kindle Colorsoft y Detección Pérdida de Pulso FDA | M5 | DONE |
 
 ## Interface Contracts
 ### Data & Filter Contract
