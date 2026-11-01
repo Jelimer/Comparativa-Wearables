@@ -10,9 +10,11 @@ import {
   Trash2,
   ExternalLink,
   Award,
+  Calendar,
 } from 'lucide-react';
 import { Wearable } from '../types/wearable';
 import { Tooltip } from './Tooltip';
+import { formatReleaseDateFull } from '../utils/formatDate';
 
 interface ComparisonModalProps {
   isOpen: boolean;
@@ -239,6 +241,14 @@ export const ComparisonModal: React.FC<ComparisonModalProps> = ({
                           </span>
                         ))}
                       </div>
+                    </td>
+                  ))}
+                </MatrixRow>
+
+                <MatrixRow label="Lanzamiento al Mercado" icon={<Calendar className="w-4 h-4 text-cyan-600 dark:text-cyan-400" />}>
+                  {selectedDevices.map((dev) => (
+                    <td key={dev.id} className="p-3 text-center text-xs font-semibold text-slate-700 dark:text-slate-300">
+                      {formatReleaseDateFull(dev.releaseDate)}
                     </td>
                   ))}
                 </MatrixRow>

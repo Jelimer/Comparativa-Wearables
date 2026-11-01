@@ -100,6 +100,8 @@ export const EreaderFilterBar: React.FC<EreaderFilterBarProps> = React.memo(({
             className="px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-950/80 border border-slate-300 dark:border-slate-700/80 text-slate-800 dark:text-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-2 focus:ring-amber-500/50 cursor-pointer"
           >
             <option value="rating_desc">Puntuación (Mayor a menor)</option>
+            <option value="release_desc">Fecha de Lanzamiento (Más recientes)</option>
+            <option value="release_asc">Fecha de Lanzamiento (Más antiguos)</option>
             <option value="price_asc">Precio (Más económico primero)</option>
             <option value="price_desc">Precio (Mayor a menor)</option>
             <option value="screen_desc">Tamaño de Pantalla (Mayor a menor)</option>

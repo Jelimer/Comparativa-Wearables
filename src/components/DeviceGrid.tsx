@@ -62,6 +62,8 @@ export const DeviceGrid: React.FC<DeviceGridProps> = React.memo(({
             className="px-3 py-1.5 rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold focus:outline-none focus:border-cyan-500 transition-colors cursor-pointer"
           >
             <option value="rating_desc">Mayor Valoración (Puntuación)</option>
+            <option value="release_desc">Fecha de Lanzamiento (Más recientes)</option>
+            <option value="release_asc">Fecha de Lanzamiento (Más antiguos)</option>
             <option value="price_asc">Precio: Menor a Mayor</option>
             <option value="price_desc">Precio: Mayor a Menor</option>
             <option value="battery_desc">Mayor Autonomía Batería</option>

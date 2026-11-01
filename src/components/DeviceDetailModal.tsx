@@ -8,9 +8,11 @@ import {
   HeartPulse,
   Star,
   Plus,
+  Calendar,
 } from 'lucide-react';
 import { Wearable } from '../types/wearable';
 import { Tooltip } from './Tooltip';
+import { formatReleaseDateFull } from '../utils/formatDate';
 
 interface DeviceDetailModalProps {
   device: Wearable | null;
@@ -112,8 +114,8 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
             </div>
           </div>
 
-          {/* Subscription & Ecosystem info */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* Subscription & Ecosystem & Release info */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
               <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wide font-bold block mb-1">
                 Modelo de Cobro
@@ -142,6 +144,16 @@ export const DeviceDetailModal: React.FC<DeviceDetailModalProps> = ({
                     {eco}
                   </span>
                 ))}
+              </div>
+            </div>
+
+            <div className="p-4 rounded-xl bg-slate-50 dark:bg-slate-950 border border-slate-200 dark:border-slate-800">
+              <span className="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-wide font-bold block mb-1">
+                Lanzamiento al Mercado
+              </span>
+              <div className="flex items-center gap-1.5 mt-1 text-xs font-bold text-cyan-700 dark:text-cyan-400">
+                <Calendar className="w-3.5 h-3.5 flex-shrink-0" />
+                <span>{formatReleaseDateFull(device.releaseDate)}</span>
               </div>
             </div>
           </div>

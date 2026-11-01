@@ -73,6 +73,8 @@ function filterAndSortWearables(data, filters) {
       case 'battery_desc': return b.batteryHours - a.batteryHours;
       case 'rating_desc': return b.rating - a.rating;
       case 'name_asc': return a.name.localeCompare(b.name);
+      case 'release_desc': return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+      case 'release_asc': return new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime();
       default: return 0;
     }
   });
@@ -126,6 +128,8 @@ function filterAndSortEreaders(data, filters) {
       case 'screen_desc': return b.screenSize - a.screenSize;
       case 'rating_desc': return b.rating - a.rating;
       case 'name_asc': return a.name.localeCompare(b.name);
+      case 'release_desc': return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+      case 'release_asc': return new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime();
       default: return 0;
     }
   });
@@ -365,6 +369,22 @@ for (let i = 0; i < eSortScreenDesc.length - 1; i++) {
   if (eSortScreenDesc[i].screenSize < eSortScreenDesc[i + 1].screenSize) isScreenDesc = false;
 }
 check('SORTING', 'E-readers screen_desc sorts correctly from largest screen to smallest', isScreenDesc, `Max: ${eSortScreenDesc[0].screenSize}", Min: ${eSortScreenDesc[eSortScreenDesc.length - 1].screenSize}"`);
+
+// Wearables Release Date Descending (Newest first)
+const wSortReleaseDesc = filterAndSortWearables(WEARABLES_DATA, { ...INITIAL_WEARABLE_FILTERS, sortBy: 'release_desc' });
+let isReleaseDescW = true;
+for (let i = 0; i < wSortReleaseDesc.length - 1; i++) {
+  if (new Date(wSortReleaseDesc[i].releaseDate).getTime() < new Date(wSortReleaseDesc[i + 1].releaseDate).getTime()) isReleaseDescW = false;
+}
+check('SORTING', 'Wearables release_desc sorts correctly from newest to oldest', isReleaseDescW, `Newest: ${wSortReleaseDesc[0].name} (${wSortReleaseDesc[0].releaseDate})`);
+
+// E-readers Release Date Descending (Newest first)
+const eSortReleaseDesc = filterAndSortEreaders(EREADERS_DATA, { ...INITIAL_EREADER_FILTERS, sortBy: 'release_desc' });
+let isReleaseDescE = true;
+for (let i = 0; i < eSortReleaseDesc.length - 1; i++) {
+  if (new Date(eSortReleaseDesc[i].releaseDate).getTime() < new Date(eSortReleaseDesc[i + 1].releaseDate).getTime()) isReleaseDescE = false;
+}
+check('SORTING', 'E-readers release_desc sorts correctly from newest to oldest', isReleaseDescE, `Newest: ${eSortReleaseDesc[0].name} (${eSortReleaseDesc[0].releaseDate})`);
 
 // 9. COMPLEX MULTI-FILTER COMBINATIONS
 // Combined 1: Wearables Garmin + GPS + MinBattery 168h + Price <= 900

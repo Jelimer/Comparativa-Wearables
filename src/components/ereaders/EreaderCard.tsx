@@ -10,9 +10,11 @@ import {
   Award,
   Palette,
   Edit3,
+  Calendar,
 } from 'lucide-react';
 import { Ereader } from '../../types/ereader';
 import { EreaderTooltip } from './EreaderTooltip';
+import { formatReleaseDate } from '../../utils/formatDate';
 
 interface EreaderCardProps {
   device: Ereader;
@@ -100,9 +102,20 @@ export const EreaderCard: React.FC<EreaderCardProps> = React.memo(({
     >
       {/* Top Banner Badges */}
       <div className="p-4 pb-0 flex flex-wrap items-center justify-between gap-2 z-10">
-        <span className="px-2.5 py-0.5 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-          {device.brand}
-        </span>
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <span className="px-2.5 py-0.5 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+            {device.brand}
+          </span>
+          {device.releaseDate && (
+            <span
+              title={`Lanzamiento: ${formatReleaseDate(device.releaseDate)}`}
+              className="px-2 py-0.5 text-[11px] font-semibold rounded-lg bg-slate-100 dark:bg-slate-800/90 text-amber-700 dark:text-amber-400 border border-slate-200 dark:border-slate-700/80 flex items-center gap-1"
+            >
+              <Calendar className="w-3 h-3 text-amber-600 dark:text-amber-400" />
+              <span>{formatReleaseDate(device.releaseDate)}</span>
+            </span>
+          )}
+        </div>
         {getRecommendationBadge()}
       </div>
 

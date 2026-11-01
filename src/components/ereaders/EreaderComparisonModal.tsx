@@ -6,8 +6,10 @@ import {
   Check,
   BookOpen,
   Sparkles,
+  Calendar,
 } from 'lucide-react';
 import { Ereader } from '../../types/ereader';
+import { formatReleaseDateFull } from '../../utils/formatDate';
 
 interface EreaderComparisonModalProps {
   isOpen: boolean;
@@ -139,6 +141,21 @@ export const EreaderComparisonModal: React.FC<EreaderComparisonModalProps> = ({
               </thead>
 
               <tbody className="divide-y divide-slate-200 dark:divide-slate-800/60">
+                {/* Release Date */}
+                <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
+                  <td className="p-3 font-semibold text-slate-800 dark:text-slate-200 sticky left-0 z-10 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shadow-[2px_0_6px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_6px_rgba(0,0,0,0.4)]">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400" />
+                      <span>Lanzamiento</span>
+                    </div>
+                  </td>
+                  {selectedDevices.map((d) => (
+                    <td key={d.id} className="p-3 text-slate-800 dark:text-slate-200 font-semibold text-xs">
+                      {formatReleaseDateFull(d.releaseDate)}
+                    </td>
+                  ))}
+                </tr>
+
                 {/* Screen size & Tech */}
                 <tr className="hover:bg-slate-50 dark:hover:bg-slate-800/30 transition-colors">
                   <td className="p-3 font-semibold text-slate-800 dark:text-slate-200 sticky left-0 z-10 bg-slate-50 dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 shadow-[2px_0_6px_rgba(0,0,0,0.05)] dark:shadow-[2px_0_6px_rgba(0,0,0,0.4)]">

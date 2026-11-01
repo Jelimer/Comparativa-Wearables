@@ -34,6 +34,7 @@ export interface Wearable {
   priceUsd: number;
   batteryLife: string;
   batteryHours: number;
+  releaseDate: string; // ISO 'YYYY-MM' o 'YYYY-MM-DD' para orden cronológico
   subscriptionRequired: boolean;
   subscriptionCost?: string;
   imageUrl: string;
@@ -64,5 +65,12 @@ export interface FilterState {
     gps: boolean;
     skinTemp: boolean;
   };
-  sortBy: 'price_asc' | 'price_desc' | 'battery_desc' | 'rating_desc' | 'name_asc';
+  sortBy:
+    | 'rating_desc'
+    | 'release_desc'
+    | 'release_asc'
+    | 'price_asc'
+    | 'price_desc'
+    | 'battery_desc'
+    | 'name_asc';
 }

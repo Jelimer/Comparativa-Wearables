@@ -173,6 +173,10 @@ export const WearablesView: React.FC<WearablesViewProps> = React.memo(({
       return true;
     }).sort((a, b) => {
       switch (filters.sortBy) {
+        case 'release_desc':
+          return new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime();
+        case 'release_asc':
+          return new Date(a.releaseDate).getTime() - new Date(b.releaseDate).getTime();
         case 'price_asc':
           return a.priceUsd - b.priceUsd;
         case 'price_desc':

@@ -11,9 +11,11 @@ import {
   BookOpen,
   Layers,
   Cpu,
+  Calendar,
 } from 'lucide-react';
 import { Ereader } from '../../types/ereader';
 import { EreaderTooltip } from './EreaderTooltip';
+import { formatReleaseDateFull } from '../../utils/formatDate';
 
 interface EreaderDetailModalProps {
   device: Ereader | null;
@@ -119,6 +121,14 @@ export const EreaderDetailModal: React.FC<EreaderDetailModalProps> = ({
             </h3>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs">
+              <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80">
+                <span className="text-slate-500 dark:text-slate-400 block mb-1">Lanzamiento al Mercado:</span>
+                <span className="font-bold text-amber-700 dark:text-amber-400 flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 flex-shrink-0" />
+                  {formatReleaseDateFull(device.releaseDate)}
+                </span>
+              </div>
+
               <div className="p-3 rounded-xl bg-slate-50 dark:bg-slate-950/70 border border-slate-200 dark:border-slate-800/80">
                 <span className="text-slate-500 dark:text-slate-400 block mb-1">Tecnología de Pantalla:</span>
                 <span className="font-bold text-slate-900 dark:text-white flex items-center gap-1">

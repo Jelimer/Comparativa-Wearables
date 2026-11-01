@@ -33,6 +33,7 @@ export interface Ereader {
   priceUsd: number;
   rating: number;
   recommendationTag?: EreaderRecommendationTag;
+  releaseDate: string; // ISO 'YYYY-MM' o 'YYYY-MM-DD' para orden cronológico
   screenSize: number; // e.g. 6.0, 6.8, 7.0, 10.2, 10.3, 11.8
   screenResolution: string; // e.g. '300 ppi (1448 × 1072)'
   ppi: number;
@@ -75,5 +76,12 @@ export interface EreaderFilterState {
   audiobookOnly: boolean;
   openAndroidOnly: boolean;
   maxPrice: number;
-  sortBy: 'price_asc' | 'price_desc' | 'rating_desc' | 'screen_desc' | 'name_asc';
+  sortBy:
+    | 'rating_desc'
+    | 'release_desc'
+    | 'release_asc'
+    | 'price_asc'
+    | 'price_desc'
+    | 'screen_desc'
+    | 'name_asc';
 }
